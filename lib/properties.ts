@@ -206,7 +206,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
     description:
       "Duplex penthouse with private terrace, outdoor kitchen, and panoramic Ngong Hills views. Designer interiors and imported fittings.",
     amenities: ["Private terrace", "Outdoor kitchen", "Jacuzzi", "Two covered parking"],
-    gallery: [u("photo-1600566752355-35792bedcfea"), u("photo-1600585154363-67eb9e2e2099")],
+    gallery: ["/images/penthouse-lavington.png"],
     heroVideoUrl:
       "https://videos.pexels.com/video-files/3044073/3044073-sd_640_360_25fps.mp4",
   },
