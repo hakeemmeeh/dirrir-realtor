@@ -108,7 +108,7 @@ export function EnquiryForm() {
               <input
                 name="budget"
                 className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-sm"
-                placeholder="e.g. KES 15M or KES 80k/mo"
+                placeholder="e.g. USD 120,000 or USD 1,000/mo"
               />
             </div>
             <div className="sm:col-span-2">

@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Bath, Bed, Maximize2 } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
-import { cn, formatKes } from "@/lib/utils";
+import { cn, formatUsd } from "@/lib/utils";
 import type { Property } from "@/lib/properties";
 
 type Props = {
@@ -20,7 +20,8 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
   const t = useTranslations("PropertiesPage");
   const badgeVariant = p.status === "For Sale" ? "sale" : "rent";
   const priceLabel =
-    p.status === "For Sale" ? formatKes(p.price) : `${formatKes(p.price)}/mo`;
+    p.status === "For Sale" ? formatUsd(p.price) : `${formatUsd(p.price)}/mo`;
+  const areaLabel = p.areaSqft > 0 ? `${p.areaSqft.toLocaleString()} SQ FT` : "N/A";
 
   const tagline = p.tagline ?? p.location;
 
@@ -89,9 +90,9 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
             ) : null}
             <span>{p.areaSqft.toLocaleString()} SQ FT</span>
           </div>
-          <p className="mt-10 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.25em] text-white transition-all duration-300 group-hover:gap-4">
-            {t("viewDetails")} <span className="h-px w-6 bg-accent" />
-          </p>
+          <span className="mt-10 inline-flex w-fit items-center rounded-full border border-white/45 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition-colors duration-300 group-hover:border-black group-hover:bg-black">
+            {t("viewDetails")}
+          </span>
         </div>
       </motion.article>
     );
@@ -104,7 +105,7 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
       viewport={{ once: true, margin: "-40px" }}
       transition={{ delay: index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "group overflow-hidden border border-border bg-background transition-all duration-500 hover:border-accent/40",
+        "group border border-border bg-background transition-all duration-500 hover:border-accent/40",
         className,
       )}
     >
@@ -124,7 +125,7 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent" />
       </Link>
       
-      <div className="flex flex-col p-10 lg:p-14">
+      <div className="flex flex-col p-6 sm:p-7 lg:p-8">
         <div className="flex items-center justify-between">
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.35em] text-accent">
             {p.location}
@@ -135,52 +136,59 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
         </div>
         
         <Link href={`/properties/${p.slug}`}>
-          <h3 className="mt-10 font-serif text-3xl leading-[1.1] tracking-tight text-primary transition-colors hover:text-accent sm:text-4xl">
+          <h3 className="mt-5 line-clamp-2 min-h-[3.1rem] font-serif text-2xl font-medium leading-[1.1] tracking-[-0.01em] text-primary transition-colors hover:text-accent sm:text-[1.95rem]">
             {p.title}
           </h3>
         </Link>
         
-        <div className="mt-12 flex flex-col gap-8 border-y border-border/50 py-10 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col gap-3">
-            <span className="font-mono text-[10px] lowercase tracking-[0.3em] text-accent/80">
+        <div className="mt-6 flex flex-col gap-5 border-y border-border/50 py-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="min-w-0 flex flex-col gap-2">
+            <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent/80">
               {t("features")}
             </span>
-            <div className="flex items-center gap-8 text-[14px] font-bold text-primary">
-              {p.propertyType !== "Land" && (
-                <div className="flex items-center gap-2.5">
-                  <Bed className="h-4.5 w-4.5 text-accent" />
-                  <span>{p.bedrooms === 0 ? "Studio" : p.bedrooms}</span>
-                </div>
-              )}
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] font-bold text-primary">
+              {p.propertyType !== "Land" ? (
+                <>
+                  <div className="flex items-center gap-2.5">
+                    <Bed className="h-4.5 w-4.5 text-accent" />
+                    <span>{p.bedrooms === 0 ? t("studio") : p.bedrooms}</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <Bath className="h-4.5 w-4.5 text-accent" />
+                    <span>{p.bathrooms}</span>
+                  </div>
+                </>
+              ) : null}
               <div className="flex items-center gap-2.5">
                 <Maximize2 className="h-4.5 w-4.5 text-accent" />
-                <span>{p.areaSqft.toLocaleString()} <span className="text-[10px] font-medium text-text-light/60">SQ FT</span></span>
+                <span>{areaLabel}</span>
               </div>
             </div>
           </div>
           
-          <div className="flex flex-col gap-3 lg:items-end">
-            <span className="font-mono text-[10px] lowercase tracking-[0.3em] text-accent/80">
+          <div className="flex shrink-0 flex-col gap-2 lg:items-end">
+            <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent/80">
               {t("priceRange")}
             </span>
-            <p className="font-serif text-2xl font-semibold leading-none text-primary lg:text-3xl">
+            <p className="font-serif text-xl font-semibold leading-none text-primary lg:text-2xl">
               {priceLabel}
             </p>
           </div>
         </div>
 
-        <div className="mt-12 flex items-center justify-between">
-          <Link 
-            href={`/properties/${p.slug}`} 
-            className="group/btn relative h-fit overflow-hidden py-1 text-[11px] font-bold uppercase tracking-[0.35em] text-primary transition-colors hover:text-accent"
+        <div className="mt-6 flex items-center justify-between">
+          <Link
+            href={`/properties/${p.slug}`}
+            className="inline-flex items-center rounded-full border border-primary/30 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-primary transition-colors hover:border-black hover:bg-black hover:text-white"
           >
             {t("viewDetails")}
-            <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent transition-all duration-500 group-hover/btn:w-full" />
           </Link>
           <div className="flex items-center gap-4">
             <div className="h-px w-12 bg-border" />
             <Link href="/contact" className="text-[11px] font-bold uppercase tracking-[0.25em] text-text-light transition-colors hover:text-accent">
-              Enquire
+              <span className="inline-flex items-center rounded-full border border-border px-4 py-2 transition-colors hover:border-accent hover:bg-accent hover:text-white">
+                {t("enquireNow")}
+              </span>
             </Link>
           </div>
         </div>

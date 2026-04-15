@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { fadeUp, fadeUpReduced, getStaggerContainer } from "@/lib/motion";
 import type { Property } from "@/lib/properties";
-import { cn, formatKes } from "@/lib/utils";
+import { cn, formatUsd } from "@/lib/utils";
 
 const HERO_IMAGE = "/images/hero-fallback.png";
 
@@ -134,8 +134,8 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
 
   const priceLabel =
     current.status === "For Sale"
-      ? formatKes(current.price)
-      : `${formatKes(current.price)}/mo`;
+      ? formatUsd(current.price)
+      : `${formatUsd(current.price)}/mo`;
 
   const itemVariants = reduceMotion ? fadeUpReduced : fadeUp;
 

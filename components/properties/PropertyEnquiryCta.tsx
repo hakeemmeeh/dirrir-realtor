@@ -15,7 +15,11 @@ export function PropertyEnquiryCta({ propertyTitle }: { propertyTitle: string })
         <p className="font-semibold text-primary">{t("enquiryAssuranceTitle")}</p>
         <p className="mt-1">{t("enquiryAssuranceBody")}</p>
       </div>
-      <Button variant="primary" className="w-full justify-center sm:w-auto" onClick={() => setOpen(true)}>
+      <Button
+        variant="primary"
+        className="w-full justify-center rounded-full px-6 py-3 hover:!bg-accent sm:w-auto"
+        onClick={() => setOpen(true)}
+      >
         {t("enquire")}
       </Button>
       <EnquiryModal open={open} onClose={() => setOpen(false)} propertyTitle={propertyTitle} />

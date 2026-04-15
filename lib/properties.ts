@@ -41,11 +41,26 @@ export type Property = {
 const u = (id: string, w = 1600, h = 1000) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
 
+const INTERIOR_FALLBACK_IMAGES = [
+  "/images/intro-detail.png",
+  "/images/story-1.png",
+  "/images/story-2.png",
+  "/images/story-3.png",
+] as const;
+
+const withInteriorFallbacks = (images: string[]) => {
+  const merged = [...images];
+  for (const src of INTERIOR_FALLBACK_IMAGES) {
+    if (!merged.includes(src)) merged.push(src);
+  }
+  return merged;
+};
+
 /** Local fallback when Sanity is unset or returns no documents. */
 export const FALLBACK_PROPERTIES: Property[] = [
   {
     slug: "3-bed-second-avenue-parklands",
-    title: "3-Bedroom Apartment, Second Avenue, Parklands",
+    title: "Dirrir Square Residences",
     propertyType: "Apartment",
     status: "For Sale",
     price: 18500000,
@@ -54,7 +69,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
     areaSqft: 1450,
     floor: "4th",
     location: "Parklands",
-    tagline: "Second Avenue · Corner light",
+    tagline: "Parklands · Signature family residences",
     collection: "living",
     featured: true,
     description:
@@ -67,17 +82,20 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Gym",
       "Children's play area",
     ],
-    gallery: [
+    gallery: withInteriorFallbacks([
       "/images/hero-1.png",
       u("photo-1600585154340-be6161a56a0c"),
       u("photo-1600607687939-ce8a6c25118c"),
-    ],
+      u("photo-1600566753376-12c8ab7fb75b"),
+      u("photo-1600607687920-4e2a09cf159d"),
+      u("photo-1600607688969-a5bfcd646154"),
+    ]),
     heroVideoUrl:
       "https://videos.pexels.com/video-files/7578542/7578542-sd_640_360_25fps.mp4",
   },
   {
     slug: "2-bed-kilimani-yaya-corridor",
-    title: "2-Bedroom Apartment near Yaya Centre, Kilimani",
+    title: "Dirrir Residence Kilimani",
     propertyType: "Apartment",
     status: "For Rent",
     price: 95000,
@@ -86,19 +104,25 @@ export const FALLBACK_PROPERTIES: Property[] = [
     areaSqft: 1100,
     floor: "6th",
     location: "Kilimani",
-    tagline: "Steps from Yaya Centre",
+    tagline: "Kilimani · Urban living collection",
     collection: "living",
     featured: true,
     description:
       "Fully furnished executive apartment steps from Yaya Centre. Floor-to-ceiling windows, high-speed fibre, and a rooftop pool. Perfect for young professionals and expatriates.",
     amenities: ["Furnished", "Rooftop pool", "Fibre ready", "DSTV ready", "Ample parking"],
-    gallery: ["/images/hero-2.png", u("photo-1600210492486-724fe5c67fb0")],
+    gallery: withInteriorFallbacks([
+      "/images/hero-2.png",
+      u("photo-1600210492486-724fe5c67fb0"),
+      u("photo-1600566752734-6c5250b0f55a"),
+      u("photo-1600566753052-3f7ea31d52d0"),
+      u("photo-1600210491369-e753d80a41f3"),
+    ]),
     heroVideoUrl:
       "https://videos.pexels.com/video-files/2796070/2796070-sd_640_360_25fps.mp4",
   },
   {
     slug: "4-bed-lavington-mansionette",
-    title: "4-Bedroom Townhouse, Lavington",
+    title: "Dirrir Gardens Lavington",
     propertyType: "Townhouse",
     status: "For Sale",
     price: 42000000,
@@ -107,17 +131,23 @@ export const FALLBACK_PROPERTIES: Property[] = [
     areaSqft: 3200,
     floor: "GF + 1",
     location: "Lavington",
-    tagline: "Leafy suburb · Gated compound",
+    tagline: "Lavington · Gated townhouse collection",
     collection: "living",
     featured: true,
     description:
       "Private gated compound with mature garden, staff quarters, and double-volume living room. Quiet leafy street with easy access to international schools and Valley Arcade.",
     amenities: ["Staff quarters", "Garden", "Solar water", "Electric fence", "Two carports"],
-    gallery: ["/images/hero-3.png", u("photo-1600585154526-990dced4db0d")],
+    gallery: withInteriorFallbacks([
+      "/images/hero-3.png",
+      u("photo-1600585154526-990dced4db0d"),
+      u("photo-1600607687644-aac4c3eac7f4"),
+      u("photo-1600607688969-a5bfcd646154"),
+      u("photo-1600573472591-ee6b68d14c68"),
+    ]),
   },
   {
     slug: "studio-westlands-sarit",
-    title: "Executive Studio, Westlands",
+    title: "Dirrir Heights Westlands",
     propertyType: "Apartment",
     status: "For Rent",
     price: 55000,
@@ -126,17 +156,22 @@ export const FALLBACK_PROPERTIES: Property[] = [
     areaSqft: 520,
     floor: "9th",
     location: "Westlands",
-    tagline: "Sarit corridor · Strong yield",
+    tagline: "Westlands · Investor-ready studios",
     collection: "investment",
     featured: false,
     description:
       "Compact studio with quality finishes, ideal for consultants and short stays. Walking distance to Sarit Centre and expressway access.",
     amenities: ["Gym", "Rooftop lounge", "High security", "Water storage"],
-    gallery: [u("photo-1600607687644-c7171b42498f")],
+    gallery: withInteriorFallbacks([
+      u("photo-1600607687644-c7171b42498f"),
+      u("photo-1600566753190-17f0baa2a6c3"),
+      u("photo-1600566753376-12c8ab7fb75b"),
+      u("photo-1600210492486-724fe5c67fb0"),
+    ]),
   },
   {
     slug: "5-bed-riverside-garden",
-    title: "5-Bedroom House, Riverside Drive",
+    title: "Dirrir Riverside Villas",
     propertyType: "House",
     status: "For Sale",
     price: 89000000,
@@ -144,17 +179,23 @@ export const FALLBACK_PROPERTIES: Property[] = [
     bathrooms: 5,
     areaSqft: 5500,
     location: "Riverside",
-    tagline: "Riverside Drive · Estate living",
+    tagline: "Riverside · Luxury villa collection",
     collection: "living",
     featured: true,
     description:
       "Ambassadorial residence with guest cottage, heated pool, and chef's kitchen. Mature trees, full backup power, and smart-home lighting.",
     amenities: ["Guest cottage", "Pool", "Smart home", "Full backup", "Staff block"],
-    gallery: [u("photo-1613490493576-7fde63acd811"), u("photo-1600585154084-4e5fe7c39198")],
+    gallery: withInteriorFallbacks([
+      u("photo-1613490493576-7fde63acd811"),
+      u("photo-1600585154084-4e5fe7c39198"),
+      u("photo-1600607687920-4e2a09cf159d"),
+      u("photo-1600607688969-a5bfcd646154"),
+      u("photo-1600566753086-00f18fb6b3ea"),
+    ]),
   },
   {
     slug: "3-bed-parklands-family",
-    title: "3-Bedroom Apartment, Parklands Road",
+    title: "Dirrir Parklands Court",
     propertyType: "Apartment",
     status: "For Sale",
     price: 14200000,
@@ -163,17 +204,22 @@ export const FALLBACK_PROPERTIES: Property[] = [
     areaSqft: 1280,
     floor: "2nd",
     location: "Parklands",
-    tagline: "Near Karura · Schools access",
+    tagline: "Parklands · Family-centric apartments",
     collection: "living",
     featured: false,
     description:
       "Family-friendly layout with separate dining, utility area, and two parking slots. Close to Aga Khan institutions and Karura Forest trails.",
     amenities: ["Two parking", "Utility area", "Intercom", "CCTV"],
-    gallery: [u("photo-1600573472592-401b489a3cdc")],
+    gallery: withInteriorFallbacks([
+      u("photo-1600573472592-401b489a3cdc"),
+      u("photo-1600566752355-35792bedcfea"),
+      u("photo-1600607687939-ce8a6c25118c"),
+      u("photo-1600566753052-3f7ea31d52d0"),
+    ]),
   },
   {
     slug: "land-kilimani-quarter-acre",
-    title: "Quarter-Acre Plot, Kilimani",
+    title: "Dirrir Kilimani Quarter Acre",
     propertyType: "Land",
     status: "For Sale",
     price: 65000000,
@@ -181,17 +227,17 @@ export const FALLBACK_PROPERTIES: Property[] = [
     bathrooms: 0,
     areaSqft: 10890,
     location: "Kilimani",
-    tagline: "Quarter-acre · Development play",
+    tagline: "Kilimani · Prime development parcel",
     collection: "investment",
     featured: false,
     description:
       "Red-soil corner plot with approved building plans available. Excellent for boutique apartments or a private residence with room for a pool.",
     amenities: ["Corner plot", "Red soil", "Plans available"],
-    gallery: [u("photo-1500382017468-9049fed747ef")],
+    gallery: withInteriorFallbacks([u("photo-1500382017468-9049fed747ef")]),
   },
   {
     slug: "2-bed-lavington-penthouse",
-    title: "2-Bed Penthouse, Lavington",
+    title: "Dirrir Skyline Penthouse",
     propertyType: "Apartment",
     status: "For Rent",
     price: 220000,
@@ -200,13 +246,19 @@ export const FALLBACK_PROPERTIES: Property[] = [
     areaSqft: 1800,
     floor: "Penthouse",
     location: "Lavington",
-    tagline: "Duplex penthouse · Panoramic views",
+    tagline: "Lavington · Duplex sky residence",
     collection: "investment",
     featured: true,
     description:
       "Duplex penthouse with private terrace, outdoor kitchen, and panoramic Ngong Hills views. Designer interiors and imported fittings.",
     amenities: ["Private terrace", "Outdoor kitchen", "Jacuzzi", "Two covered parking"],
-    gallery: ["/images/penthouse-lavington.png"],
+    gallery: withInteriorFallbacks([
+      "/images/penthouse-lavington.png",
+      u("photo-1600566752355-35792bedcfea"),
+      u("photo-1600566752227-8f3b5f97f31a"),
+      u("photo-1600607687644-aac4c3eac7f4"),
+      u("photo-1600566753086-00f18fb6b3ea"),
+    ]),
     heroVideoUrl:
       "https://videos.pexels.com/video-files/3044073/3044073-sd_640_360_25fps.mp4",
   },
