@@ -108,74 +108,74 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
         className,
       )}
     >
-      <Link href={`/properties/${p.slug}`} className="relative aspect-[16/11] overflow-hidden block">
+      <Link href={`/properties/${p.slug}`} className="relative aspect-[16/10] overflow-hidden block">
         <Image
           src={p.gallery[0] ?? "/images/logo.svg"}
           alt={p.title}
           fill
-          className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+          className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
           sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
         />
         <div className="absolute left-0 top-0 z-[1]">
-          <Badge variant={badgeVariant} className="rounded-none bg-primary/90 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.2em] text-white border-none backdrop-blur-md">
+          <Badge variant={badgeVariant} className="rounded-none bg-primary/95 px-6 py-3 text-[10px] font-bold uppercase tracking-[0.25em] text-white border-none backdrop-blur-md">
             {p.status}
           </Badge>
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent" />
       </Link>
       
-      <div className="flex flex-col p-8 lg:p-10">
+      <div className="flex flex-col p-10 lg:p-14">
         <div className="flex items-center justify-between">
-          <p className="font-mono text-[9px] font-bold uppercase tracking-[0.3em] text-accent">
+          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.35em] text-accent">
             {p.location}
           </p>
-          <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-text-light/60">
+          <span className="font-mono text-[9px] font-bold uppercase tracking-[0.25em] text-text-light/50">
             {p.propertyType}
           </span>
         </div>
         
         <Link href={`/properties/${p.slug}`}>
-          <h3 className="mt-5 font-serif text-2xl leading-tight text-primary transition-colors hover:text-accent">
+          <h3 className="mt-10 font-serif text-3xl leading-[1.1] tracking-tight text-primary transition-colors hover:text-accent sm:text-4xl">
             {p.title}
           </h3>
         </Link>
         
-        <div className="mt-8 flex items-center justify-between border-y border-border/60 py-5">
-          <div className="flex flex-col gap-1">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-text-light/70">{t("features")}</span>
-            <div className="flex items-center gap-4 text-[11px] font-bold text-primary">
+        <div className="mt-12 flex items-center justify-between border-y border-border/50 py-10">
+          <div className="flex flex-col gap-2">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-light/60">{t("features")}</span>
+            <div className="flex items-center gap-6 text-[13px] font-bold text-primary">
               {p.propertyType !== "Land" && (
-                <div className="flex items-center gap-1.5">
-                  <Bed className="h-3.5 w-3.5" />
+                <div className="flex items-center gap-2">
+                  <Bed className="h-4 w-4 text-accent" />
                   <span>{p.bedrooms === 0 ? "Studio" : p.bedrooms}</span>
                 </div>
               )}
-              <div className="flex items-center gap-1.5">
-                <Maximize2 className="h-3.5 w-3.5" />
+              <div className="flex items-center gap-2">
+                <Maximize2 className="h-4 w-4 text-accent" />
                 <span>{p.areaSqft.toLocaleString()}</span>
               </div>
             </div>
           </div>
           
-          <div className="flex flex-col items-end gap-1">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-text-light/70">{t("priceRange")}</span>
-            <p className="font-serif text-xl font-medium text-primary">
+          <div className="flex flex-col items-end gap-2">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-light/60">{t("priceRange")}</span>
+            <p className="font-serif text-2xl font-medium text-primary">
               {priceLabel}
             </p>
           </div>
         </div>
 
-        <div className="mt-8 flex items-center justify-between">
+        <div className="mt-12 flex items-center justify-between">
           <Link 
             href={`/properties/${p.slug}`} 
-            className="group/btn relative overflow-hidden text-[10px] font-bold uppercase tracking-[0.3em] text-primary transition-colors hover:text-accent"
+            className="group/btn relative h-fit overflow-hidden py-1 text-[11px] font-bold uppercase tracking-[0.35em] text-primary transition-colors hover:text-accent"
           >
             {t("viewDetails")}
-            <span className="absolute bottom-0 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover/btn:w-full" />
+            <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent transition-all duration-500 group-hover/btn:w-full" />
           </Link>
-          <div className="flex items-center gap-3">
-            <div className="h-px w-8 bg-border" />
-            <Link href="/contact" className="text-[10px] font-bold uppercase tracking-[0.25em] text-text-light hover:text-accent">
+          <div className="flex items-center gap-4">
+            <div className="h-px w-12 bg-border" />
+            <Link href="/contact" className="text-[11px] font-bold uppercase tracking-[0.25em] text-text-light transition-colors hover:text-accent">
               Enquire
             </Link>
           </div>
