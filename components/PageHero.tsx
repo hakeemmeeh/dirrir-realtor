@@ -1,0 +1,97 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Container } from "@/components/ui/Container";
+
+type Props = {
+  title: string;
+  subtitle?: string;
+  compact?: boolean;
+  /** Optional background video (e.g. property tour). Falls back to gradient only when omitted. */
+  videoSrc?: string;
+  posterSrc?: string;
+};
+
+export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Props) {
+  const reduceMotion = useReducedMotion();
+  const [mountVideo, setMountVideo] = useState(false);
+
+  useEffect(() => {
+    if (!videoSrc || reduceMotion) {
+      setMountVideo(false);
+      return;
+    }
+    setMountVideo(false);
+    const t = window.setTimeout(() => setMountVideo(true), 400);
+    return () => window.clearTimeout(t);
+  }, [videoSrc, posterSrc, reduceMotion]);
+
+  return (
+    <section
+      className={`relative min-h-[220px] overflow-hidden text-ivory ${compact ? "py-24 lg:py-28" : "py-28 lg:py-36"} ${
+        videoSrc ? "bg-primary" : "bg-gradient-to-br from-charcoal via-primary to-primary"
+      }`}
+    >
+      {videoSrc ? (
+        <>
+          {posterSrc ? (
+            <Image
+              src={posterSrc}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
+              aria-hidden
+            />
+          ) : null}
+          {mountVideo ? (
+            <video
+              className="absolute inset-0 h-full min-h-[320px] w-full object-cover"
+              src={videoSrc}
+              poster={posterSrc}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden
+            />
+          ) : null}
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-charcoal/92 via-primary/88 to-primary/95"
+            aria-hidden
+          />
+        </>
+      ) : null}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-50"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 20% 20%, rgba(196,30,36,0.14), transparent 42%), radial-gradient(circle at 80% 0%, rgba(255,255,255,0.06), transparent 38%)",
+        }}
+      />
+      <Container className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl"
+        >
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.28em] text-accent">
+            Dirrir Realtor Limited
+          </p>
+          <div className="premium-hairline mt-4 h-px w-40" />
+          <h1 className="mt-6 font-serif text-4xl font-medium leading-tight sm:text-5xl lg:text-6xl">
+            {title}
+          </h1>
+          {subtitle ? (
+            <p className="story-editorial mt-6 max-w-2xl text-ivory/88 sm:text-lg">{subtitle}</p>
+          ) : null}
+        </motion.div>
+      </Container>
+    </section>
+  );
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <circle cx="60" cy="60" r="52" stroke="#1A1A1A" stroke-width="4"/>
+  <path d="M28 62c12-28 52-28 64 0" stroke="#C41E24" stroke-width="5" stroke-linecap="round"/>
+  <text x="60" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="28" font-weight="700" fill="#1A1A1A">DRL</text>
+</svg>

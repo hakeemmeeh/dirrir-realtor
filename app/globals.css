@@ -3,25 +3,97 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #1C2833;
+  --color-accent: #c5a059;
+  --color-accent-dark: #a68648;
+  --color-background: #ffffff;
+  --color-background-alt: #f9f9f9;
+  --color-text: #444444;
+  --color-text-light: #777777;
+  --color-border: #eaeaea;
+  --color-sand: #f7f6f2;
+  --color-ivory: #fafaf5;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-background text-text font-sans antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(196, 30, 36, 0.18);
+  color: #1a1a1a;
+}
+
+@layer base {
+  a,
+  button {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .premium-surface {
+    @apply border border-border/80 bg-white/95 shadow-[0_16px_60px_rgba(26,26,26,0.08)];
+  }
+
+  .premium-hairline {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0),
+      rgba(197, 160, 89, 0.35),
+      rgba(197, 160, 89, 0.85),
+      rgba(255, 255, 255, 0)
+    );
+  }
+
+  .premium-hairline-accent {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0),
+      rgba(197, 160, 89, 0.75),
+      rgba(255, 255, 255, 0)
+    );
+  }
+
+  .premium-hero-vignette {
+    box-shadow: inset 0 0 160px rgba(0, 0, 0, 0.55);
+  }
+
+  .glass-panel {
+    @apply border border-white/20 bg-white/10 backdrop-blur-xl;
+  }
+
+  .story-editorial {
+    @apply font-editorial text-[1.05rem] leading-[1.85] text-text;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
