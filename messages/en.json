@@ -132,6 +132,8 @@
     "journeyPrimary": "Shortlist via WhatsApp",
     "journeySecondary": "Book a Consultation",
     "viewDetails": "View Details",
+    "features": "Listing Features",
+    "priceRange": "Value Range",
     "filters": {
       "location": "Location",
       "type": "Type",

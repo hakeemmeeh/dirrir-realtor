@@ -140,26 +140,30 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
           </h3>
         </Link>
         
-        <div className="mt-12 flex items-center justify-between border-y border-border/50 py-10">
-          <div className="flex flex-col gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-light/60">{t("features")}</span>
-            <div className="flex items-center gap-6 text-[13px] font-bold text-primary">
+        <div className="mt-12 flex flex-col gap-8 border-y border-border/50 py-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-3">
+            <span className="font-mono text-[10px] lowercase tracking-[0.3em] text-accent/80">
+              {t("features")}
+            </span>
+            <div className="flex items-center gap-8 text-[14px] font-bold text-primary">
               {p.propertyType !== "Land" && (
-                <div className="flex items-center gap-2">
-                  <Bed className="h-4 w-4 text-accent" />
+                <div className="flex items-center gap-2.5">
+                  <Bed className="h-4.5 w-4.5 text-accent" />
                   <span>{p.bedrooms === 0 ? "Studio" : p.bedrooms}</span>
                 </div>
               )}
-              <div className="flex items-center gap-2">
-                <Maximize2 className="h-4 w-4 text-accent" />
-                <span>{p.areaSqft.toLocaleString()}</span>
+              <div className="flex items-center gap-2.5">
+                <Maximize2 className="h-4.5 w-4.5 text-accent" />
+                <span>{p.areaSqft.toLocaleString()} <span className="text-[10px] font-medium text-text-light/60">SQ FT</span></span>
               </div>
             </div>
           </div>
           
-          <div className="flex flex-col items-end gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-light/60">{t("priceRange")}</span>
-            <p className="font-serif text-2xl font-medium text-primary">
+          <div className="flex flex-col gap-3 lg:items-end">
+            <span className="font-mono text-[10px] lowercase tracking-[0.3em] text-accent/80">
+              {t("priceRange")}
+            </span>
+            <p className="font-serif text-2xl font-semibold leading-none text-primary lg:text-3xl">
               {priceLabel}
             </p>
           </div>
