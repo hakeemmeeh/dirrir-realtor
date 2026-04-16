@@ -53,7 +53,7 @@ function StaticHero() {
         }}
       />
       <div className="pointer-events-none absolute inset-0 -z-10 premium-hero-vignette" />
-      <Container className="flex min-h-[100svh] flex-col justify-center pb-28 pt-32 lg:pt-40">
+      <Container className="flex min-h-[100svh] flex-col justify-end pb-16 pt-40 lg:pb-24 lg:pt-48">
         <motion.div
           className="max-w-3xl text-white"
           initial="hidden"
@@ -207,7 +207,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
       />
       <div className="pointer-events-none absolute inset-0 -z-10 premium-hero-vignette" />
 
-      <Container className="relative flex min-h-[100svh] flex-col justify-center pb-36 pt-32 lg:pb-32 lg:pt-40">
+      <Container className="relative flex min-h-[100svh] flex-col justify-end pb-20 pt-40 lg:pb-28 lg:pt-48">
         <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl text-white">
             <p className="font-mono text-[11px] font-bold uppercase tracking-luxury-widest text-accent">

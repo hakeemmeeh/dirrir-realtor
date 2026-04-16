@@ -34,10 +34,10 @@ export function TrustStrip() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-[#0A0D10] py-24 text-ivory lg:py-32"
+      className="relative overflow-hidden bg-[#0A0D10] py-28 text-ivory lg:py-40"
     >
       <Container className="relative">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {/* Stat 1 */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

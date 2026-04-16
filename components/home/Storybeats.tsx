@@ -20,14 +20,26 @@ export function Storybeats() {
   const reduceMotion = useReducedMotion();
   const itemVariants = reduceMotion ? fadeUpReduced : fadeUp;
   const beats = [
-    { title: t("story1Title"), body: t("story1Body") },
-    { title: t("story2Title"), body: t("story2Body") },
-    { title: t("story3Title"), body: t("story3Body") },
+    {
+      title: t("story1Title"),
+      body: t("story1Body"),
+      details: ["Brief consultation", "Location shortlist", "Budget alignment"],
+    },
+    {
+      title: t("story2Title"),
+      body: t("story2Body"),
+      details: ["Private viewings", "Verified listings", "Clear comparisons"],
+    },
+    {
+      title: t("story3Title"),
+      body: t("story3Body"),
+      details: ["Offer support", "Documentation guidance", "Move-in readiness"],
+    },
   ] as const;
 
   return (
     <section className="border-y border-border bg-ivory">
-      <Container className="pt-20 lg:pt-28">
+      <Container className="pt-24 lg:pt-36">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -56,7 +68,7 @@ export function Storybeats() {
         </motion.div>
       </Container>
 
-      <div className="mt-14 lg:mt-24">
+      <div className="mt-20 lg:mt-28">
         {beats.map((beat, i) => {
           const imageRight = i % 2 === 0;
           return (
@@ -75,7 +87,7 @@ export function Storybeats() {
                 <motion.div
                   variants={reduceMotion ? fadeUpReduced : (imageRight ? slideInLeft : slideInRight)}
                   className={cn(
-                    "flex flex-col justify-center px-4 py-16 sm:px-6 sm:py-20 lg:px-14 lg:py-28 xl:px-20",
+                    "flex flex-col justify-center px-5 py-20 sm:px-8 sm:py-24 lg:px-16 lg:py-32 xl:px-24",
                     imageRight ? "lg:order-1" : "lg:order-2",
                   )}
                 >
@@ -88,10 +100,20 @@ export function Storybeats() {
                   <p className="mt-7 max-w-md text-base leading-relaxed text-text-light sm:text-lg">
                     {beat.body}
                   </p>
+                  <div className="mt-10 flex flex-wrap gap-3">
+                    {beat.details.map((detail) => (
+                      <span
+                        key={detail}
+                        className="inline-flex items-center border border-border bg-background/70 px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary/70"
+                      >
+                        {detail}
+                      </span>
+                    ))}
+                  </div>
                 </motion.div>
                 <div
                   className={cn(
-                    "group relative min-h-[300px] overflow-hidden sm:min-h-[400px] lg:min-h-[min(65vh,600px)]",
+                    "group relative min-h-[340px] overflow-hidden sm:min-h-[460px] lg:min-h-[min(72vh,680px)]",
                     imageRight ? "lg:order-2" : "lg:order-1",
                   )}
                 >

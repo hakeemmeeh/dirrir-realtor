@@ -12,14 +12,14 @@ export function MarketIntelligence() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="border-t border-border bg-background py-20 lg:py-32">
+    <section className="border-t border-border bg-background py-24 lg:py-36">
       <Container>
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={getStaggerContainer(!!reduceMotion)}
-          className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-12 sm:flex-row"
+          className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-16 sm:flex-row"
         >
           <div className="flex-1 text-center sm:text-left">
             <motion.p
@@ -43,7 +43,7 @@ export function MarketIntelligence() {
             </motion.p>
           </div>
           
-          <motion.div variants={fadeUp} className="flex shrink-0 flex-col items-center gap-6 rounded-none border border-border bg-ivory p-8 shadow-[0_20px_60px_rgba(26,26,26,0.08)] sm:p-10">
+          <motion.div variants={fadeUp} className="flex shrink-0 flex-col items-center gap-7 rounded-none border border-border bg-ivory p-10 shadow-[0_20px_60px_rgba(26,26,26,0.08)] sm:p-12">
             <div className="flex h-16 w-16 items-center justify-center rounded-none bg-primary text-accent">
               <FileText className="h-6 w-6" strokeWidth={1.5} />
             </div>

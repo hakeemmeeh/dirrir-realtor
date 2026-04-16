@@ -15,9 +15,9 @@ export function IntroBlock() {
   const itemVariants = reduceMotion ? fadeUpReduced : fadeUp;
 
   return (
-    <section className="relative overflow-hidden bg-background py-24 lg:py-40">
+    <section className="relative overflow-hidden bg-background py-28 lg:py-48">
       <Container>
-        <div className="grid gap-16 lg:grid-cols-12 lg:items-center">
+        <div className="grid gap-20 lg:grid-cols-12 lg:items-center xl:gap-24">
           {/* Text Content */}
           <div className="lg:col-span-12 xl:col-span-5">
             <motion.div
@@ -32,10 +32,10 @@ export function IntroBlock() {
                   {t("introKicker")}
                 </p>
               </div>
-              <h2 className="mt-8 font-serif text-[2.25rem] font-medium leading-[1.08] tracking-tight text-primary sm:text-[3rem] lg:text-[3.5rem] xl:text-[4rem]">
+              <h2 className="mt-10 font-serif text-[2.25rem] font-medium leading-[1.08] tracking-tight text-primary sm:text-[3rem] lg:text-[3.5rem] xl:text-[4rem]">
                 {t("introTitle")}
               </h2>
-              <div className="mt-12 max-w-xl space-y-8 story-editorial text-lg text-primary/80">
+              <div className="mt-14 max-w-xl space-y-9 story-editorial text-lg text-primary/80">
                 <p>{t("introP1")}</p>
                 <p>{t("introP2")}</p>
               </div>

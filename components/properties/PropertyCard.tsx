@@ -109,7 +109,7 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
         className,
       )}
     >
-      <Link href={`/properties/${p.slug}`} className="relative aspect-[16/10] overflow-hidden block">
+      <Link href={`/properties/${p.slug}`} className="relative block aspect-[4/3] overflow-hidden">
         <Image
           src={p.gallery[0] ?? "/images/logo.svg"}
           alt={p.title}
@@ -125,7 +125,7 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent" />
       </Link>
       
-      <div className="flex flex-col p-6 sm:p-7 lg:p-8">
+      <div className="flex flex-col px-5 pb-5 pt-7 sm:px-6 sm:pb-6 sm:pt-8 lg:px-7 lg:pb-7 lg:pt-9">
         <div className="flex items-center justify-between">
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.35em] text-accent">
             {p.location}
@@ -136,12 +136,12 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
         </div>
         
         <Link href={`/properties/${p.slug}`}>
-          <h3 className="mt-5 line-clamp-2 min-h-[3.1rem] font-serif text-2xl font-medium leading-[1.1] tracking-[-0.01em] text-primary transition-colors hover:text-accent sm:text-[1.95rem]">
+          <h3 className="mt-4 line-clamp-2 min-h-[3rem] font-serif text-2xl font-medium leading-[1.08] tracking-[-0.01em] text-primary transition-colors hover:text-accent sm:text-[1.9rem]">
             {p.title}
           </h3>
         </Link>
         
-        <div className="mt-6 flex flex-col gap-5 border-y border-border/50 py-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mt-8 flex flex-col gap-4 border-y border-border/50 py-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="min-w-0 flex flex-col gap-2">
             <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent/80">
               {t("features")}

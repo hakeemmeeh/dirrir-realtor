@@ -62,7 +62,7 @@ export function Navbar() {
             />
             <span
               className={cn(
-                "hidden font-serif text-lg font-semibold tracking-tight sm:block",
+                "hidden font-serif text-[1.15rem] font-medium tracking-[0.06em] sm:block",
                 solid ? "text-primary" : "text-white drop-shadow-sm",
               )}
             >
@@ -72,7 +72,7 @@ export function Navbar() {
 
           <nav
             className={cn(
-              "hidden items-center gap-8 lg:flex",
+              "hidden items-center gap-9 lg:flex",
               solid ? "text-primary" : "text-white drop-shadow",
             )}
           >
@@ -83,8 +83,8 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "relative text-sm font-medium transition-colors hover:text-accent",
-                    active && "font-semibold text-accent",
+                    "relative font-serif text-[1rem] font-medium tracking-[0.08em] transition-colors hover:text-accent",
+                    active && "text-accent",
                   )}
                 >
                   {t(item.key)}
@@ -127,7 +127,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="border-b border-border py-2 text-sm font-medium text-primary"
+                className="border-b border-border py-3 font-serif text-base font-medium tracking-[0.08em] text-primary"
               >
                 {t(item.key)}
               </Link>
