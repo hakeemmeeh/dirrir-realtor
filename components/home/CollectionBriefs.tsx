@@ -9,7 +9,7 @@ function getTopLocations(items: Property[], max = 3): string {
     counts.set(item.location, (counts.get(item.location) ?? 0) + 1);
   }
 
-  return [...counts.entries()]
+  return Array.from(counts.entries())
     .sort((a, b) => b[1] - a[1])
     .slice(0, max)
     .map(([name]) => name)

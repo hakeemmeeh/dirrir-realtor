@@ -299,7 +299,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                   <Button href="/contact" variant="ghost" className="justify-center !text-white hover:!text-accent">
                     {t("talkAgent")}
                   </Button>
-                </div>
+                </motion.div>
               </motion.div>
             </AnimatePresence>
           </div>
