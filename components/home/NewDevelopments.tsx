@@ -12,7 +12,7 @@ export async function NewDevelopments({ properties }: { properties: Property[] }
   return (
     <section id="new-developments" className="bg-background py-20 lg:py-28">
       <Container>
-        <div className="max-w-3xl mb-14 pr-24">
+        <div className="mb-14 max-w-3xl sm:pr-24">
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
             {t("newDevelopmentsEyebrow")}
           </p>

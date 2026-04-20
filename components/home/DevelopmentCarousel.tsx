@@ -61,26 +61,6 @@ export function DevelopmentCarousel({ properties }: Props) {
 
   return (
     <div className="relative group/carousel w-full">
-      {/* Navigation Arrows */}
-      <div className="absolute -top-24 right-4 sm:right-0 flex items-center gap-3">
-        <button
-          onClick={scrollLeft}
-          disabled={!canScrollLeft}
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background text-primary transition-all hover:border-accent hover:bg-accent hover:text-white disabled:opacity-30 disabled:hover:border-border disabled:hover:bg-background disabled:hover:text-primary"
-          aria-label="Previous property"
-        >
-          <ChevronLeft className="h-5 w-5" strokeWidth={1.5} />
-        </button>
-        <button
-          onClick={scrollRight}
-          disabled={!canScrollRight}
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background text-primary transition-all hover:border-accent hover:bg-accent hover:text-white disabled:opacity-30 disabled:hover:border-border disabled:hover:bg-background disabled:hover:text-primary"
-          aria-label="Next property"
-        >
-          <ChevronRight className="h-5 w-5" strokeWidth={1.5} />
-        </button>
-      </div>
-
       <div
         ref={scrollRef}
         onScroll={checkScroll}
@@ -100,6 +80,26 @@ export function DevelopmentCarousel({ properties }: Props) {
             />
           </div>
         ))}
+      </div>
+
+      {/* Navigation Arrows */}
+      <div className="flex items-center justify-end gap-3 pr-4 sm:absolute sm:-top-[112px] sm:right-0 sm:pr-0 lg:-top-[128px]">
+        <button
+          onClick={scrollLeft}
+          disabled={!canScrollLeft}
+          className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-border bg-background text-primary transition-all hover:border-accent hover:bg-accent hover:text-white disabled:opacity-30 disabled:hover:border-border disabled:hover:bg-background disabled:hover:text-primary"
+          aria-label="Previous property"
+        >
+          <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.5} />
+        </button>
+        <button
+          onClick={scrollRight}
+          disabled={!canScrollRight}
+          className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-border bg-background text-primary transition-all hover:border-accent hover:bg-accent hover:text-white disabled:opacity-30 disabled:hover:border-border disabled:hover:bg-background disabled:hover:text-primary"
+          aria-label="Next property"
+        >
+          <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.5} />
+        </button>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ export function CompletedDevelopments({ properties }: Props) {
   return (
     <section id="our-developments" className="bg-background py-20 lg:py-28">
       <Container>
-        <div className="mb-10 max-w-3xl pr-24">
+        <div className="mb-10 max-w-3xl sm:pr-24">
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
             {t("ourDevelopmentsEyebrow")}
           </p>
