@@ -53,31 +53,26 @@ function StaticHero() {
         }}
       />
       <div className="pointer-events-none absolute inset-0 -z-10 premium-hero-vignette" />
-      <Container className="flex min-h-[100svh] flex-col justify-end pb-16 pt-40 lg:pb-24 lg:pt-48">
+      <Container className="relative flex min-h-[100svh] flex-col justify-end pb-12 pt-40 lg:pb-16 lg:pt-48">
         <motion.div
           className="max-w-3xl text-white"
-          initial="hidden"
-          animate="visible"
-          variants={getStaggerContainer(!!reduceMotion)}
+          initial={{ opacity: 1, y: 0 }}
         >
-          <motion.p
-            variants={itemVariants}
+          <p
             className="mb-3 font-mono text-[11px] font-bold uppercase tracking-luxury-widest text-accent"
           >
             Dirrir Realtor Limited
-          </motion.p>
-          <motion.div variants={itemVariants} className="premium-hairline h-px w-44 sm:w-52" />
-          <motion.h1
-            variants={itemVariants}
+          </p>
+          <div className="premium-hairline h-px w-44 sm:w-52" />
+          <h1
             className="mt-7 font-sans text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.25rem]"
           >
             {t("heroTitle")}
-          </motion.h1>
-          <motion.p variants={itemVariants} className="story-editorial mt-7 max-w-2xl text-ivory/92">
+          </h1>
+          <p className="story-editorial mt-7 max-w-2xl text-white/80">
             {t("heroSub")}
-          </motion.p>
-          <motion.div
-            variants={itemVariants}
+          </p>
+          <div
             className="mt-11 flex flex-col gap-4 sm:flex-row sm:items-center"
           >
             <Button href="/properties" variant="primary" className="justify-center">
@@ -86,7 +81,7 @@ function StaticHero() {
             <Button href="/contact" variant="luxury" className="justify-center">
               {t("talkAgent")}
             </Button>
-          </motion.div>
+          </div>
         </motion.div>
       </Container>
     </section>
@@ -207,7 +202,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
       />
       <div className="pointer-events-none absolute inset-0 -z-10 premium-hero-vignette" />
 
-      <Container className="relative flex min-h-[100svh] flex-col justify-end pb-20 pt-40 lg:pb-28 lg:pt-48">
+      <Container className="relative flex min-h-[100svh] flex-col justify-end pb-8 pt-40 lg:pb-12 lg:pt-48">
         <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl text-white">
             <p className="font-mono text-[11px] font-bold uppercase tracking-luxury-widest text-accent">
@@ -215,47 +210,41 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
             </p>
             <div className="premium-hairline mt-4 h-px w-40 sm:w-48" />
 
-            <AnimatePresence mode="wait" initial={false}>
+            <AnimatePresence mode="wait">
               <motion.div
                 key={current.slug}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={{
-                  hidden: { opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 12 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: { staggerChildren: reduceMotion ? 0 : 0.06, delayChildren: 0.05 },
-                  },
-                }}
+                initial={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
-                <motion.p
-                  variants={itemVariants}
-                  className="mt-6 font-mono text-[10px] font-bold uppercase tracking-luxury-widest text-white/70"
+                <p
+                  className="mt-6 font-mono text-[10px] font-bold uppercase tracking-luxury-widest text-white/80"
                   aria-live="polite"
                 >
                   {t("heroSlideOf", { current: index + 1, total: len })}
-                </motion.p>
+                </p>
 
-                <motion.h1
-                  variants={itemVariants}
+                <h1
                   className="mt-5 font-sans text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.5rem]"
                 >
-                  {current.title}
-                </motion.h1>
+                  {t("heroTitle")}
+                </h1>
 
-                <motion.p variants={itemVariants} className="mt-4 text-sm text-white/70">
-                  {current.location}
-                </motion.p>
+                <p className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg max-w-2xl">
+                  {t("heroSub")}
+                </p>
 
-                <motion.p variants={itemVariants} className="mt-5 text-lg font-semibold text-white">
+                <p className="mt-8 text-lg font-semibold text-white">
+                  {current.title} — {current.location}
+                </p>
+
+                <p className="mt-2 text-lg font-semibold text-accent">
                   {priceLabel}
-                </motion.p>
+                </p>
 
-                <motion.div
-                  variants={itemVariants}
-                  className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center"
+                <div
+                  className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center"
                 >
                   <Button
                     href={`/properties/${current.slug}`}
@@ -270,7 +259,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                   <Button href="/contact" variant="ghost" className="justify-center !text-white hover:!text-accent">
                     {t("talkAgent")}
                   </Button>
-                </motion.div>
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -315,12 +304,12 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
           ) : null}
         </div>
 
-        <p className="pointer-events-none absolute bottom-8 left-1/2 hidden -translate-x-1/2 font-mono text-[10px] uppercase tracking-luxury-widest text-white/40 lg:block">
+        <p className="pointer-events-none absolute bottom-8 left-1/2 hidden -translate-x-1/2 font-mono text-[10px] uppercase tracking-luxury-widest text-white/80 lg:block">
           <Link href="/properties" className="pointer-events-auto transition-colors hover:text-accent">
             {t("viewAll")}
           </Link>
-          <span className="mx-3 text-white/25">·</span>
-          <span>{t("heroMixedHint")}</span>
+          <span className="mx-3 text-white/60">·</span>
+          <span className="text-white/90">{t("heroMixedHint")}</span>
         </p>
       </Container>
     </section>

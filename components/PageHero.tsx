@@ -74,12 +74,7 @@ export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Prop
         }}
       />
       <Container className="relative">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl"
-        >
+        <div className="max-w-3xl animate-fade-in-up">
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.28em] text-accent">
             Dirrir Realtor Limited
           </p>
@@ -88,9 +83,9 @@ export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Prop
             {title}
           </h1>
           {subtitle ? (
-            <p className="story-editorial mt-6 max-w-2xl text-ivory/88 sm:text-lg">{subtitle}</p>
+            <p className="story-editorial mt-6 max-w-2xl text-white/90 sm:text-lg">{subtitle}</p>
           ) : null}
-        </motion.div>
+        </div>
       </Container>
     </section>
   );

@@ -47,7 +47,7 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
           src={p.gallery[0] ?? "/images/logo.svg"}
           alt={p.title}
           fill
-          className="object-cover opacity-90 transition-all duration-1000 ease-out group-hover:scale-105 group-hover:opacity-100"
+          className="object-cover opacity-90 scale-105 transition-all duration-[1.5s] ease-out group-hover:scale-100 group-hover:opacity-100"
           sizes="(max-width:768px) 94vw, 560px"
         />
         <div
@@ -114,7 +114,7 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
           src={p.gallery[0] ?? "/images/logo.svg"}
           alt={p.title}
           fill
-          className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
+          className="object-cover scale-110 transition-transform duration-[3s] ease-out group-hover:scale-100"
           sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
         />
         <div className="absolute left-0 top-0 z-[1]">

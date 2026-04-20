@@ -32,15 +32,15 @@ export function DevelopmentCard({ property: p, index = 0, className }: Props) {
         src={p.gallery[0] ?? "/images/logo.svg"}
         alt={p.title}
         fill
-        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        className="object-cover scale-105 transition-transform duration-[1.5s] ease-out group-hover:scale-100"
         sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
       />
 
       {/* Default Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-500 ease-out group-hover:opacity-80" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-500 ease-out group-hover:opacity-90" />
 
       {/* Hover Overlay - Extra Darkening for readability on hover */}
-      <div className="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-100" />
+      <div className="absolute inset-0 bg-black/70 opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-100" />
 
       {/* Completion Status Badge - Top Left */}
       <div className="absolute left-6 top-6 z-10">

@@ -59,14 +59,14 @@ export async function LatestListingsShowcase({ items }: Props) {
         {launchRows.map((property) => (
           <article
             key={property.slug}
-            className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch xl:gap-10"
+            className="group grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch xl:gap-10"
           >
             <div className="relative min-h-[320px] overflow-hidden bg-primary sm:min-h-[420px] lg:min-h-[500px]">
               <Image
                 src={property.gallery[0] ?? "/images/hero-placeholder.jpg"}
                 alt={property.title}
                 fill
-                className="object-cover"
+                className="object-cover scale-105 transition-transform duration-[2.5s] ease-out group-hover:scale-100"
                 sizes="(max-width: 1024px) 100vw, 56vw"
               />
               <span className="absolute left-0 top-0 z-[1] rounded-br-2xl bg-[#e6cf8f] px-4 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-primary">
@@ -78,7 +78,7 @@ export async function LatestListingsShowcase({ items }: Props) {
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-text-light">
                 {property.location}
               </p>
-              <h3 className="mt-3 font-display text-4xl font-normal uppercase leading-[0.95] tracking-[0.02em] text-primary sm:text-5xl lg:text-[3.5rem]">
+              <h3 className="mt-3 font-display text-3xl font-normal uppercase leading-[1.05] tracking-[0.02em] text-primary sm:text-4xl lg:text-5xl">
                 {property.title}
               </h3>
               <p className="mt-2 text-base text-text-light sm:text-lg">

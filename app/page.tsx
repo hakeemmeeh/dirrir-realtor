@@ -3,7 +3,6 @@ import { HomePropertyShowcase } from "@/components/home/HomePropertyShowcase";
 import { HeroSection } from "@/components/home/HeroSection";
 import { IntroBlock } from "@/components/home/IntroBlock";
 import { NewDevelopments } from "@/components/home/NewDevelopments";
-import { Storybeats } from "@/components/home/Storybeats";
 import { ServiceCards } from "@/components/home/ServiceCards";
 import { TrustStrip } from "@/components/home/TrustStrip";
 import { MarketIntelligence } from "@/components/home/MarketIntelligence";
@@ -22,7 +21,6 @@ export default async function HomePage() {
       <HomePropertyShowcase properties={all} />
       <TrustStrip />
       <IntroBlock />
-      <Storybeats />
       <ServiceCards />
       <MarketIntelligence />
     </>
