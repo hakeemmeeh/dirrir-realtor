@@ -699,8 +699,28 @@ export default async function PropertyDetailPage({ params }: Props) {
           </div>
         </Container>
       </section>
-      <div id="similar" className="scroll-mt-32">
+      <div id="similar" className="scroll-mt-32 pb-24 lg:pb-0">
         <SimilarProperties similar={similar} />
+      </div>
+
+      {/* Mobile Sticky Enquire Bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-white/95 p-4 backdrop-blur-md lg:hidden">
+        <div className="flex items-center justify-between gap-4">
+          <div className="min-w-0 flex-shrink-0">
+            <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-text-light">
+              Price
+            </p>
+            <p className="truncate font-serif text-lg font-semibold text-primary">{priceLabel}</p>
+          </div>
+          <a
+            href={`https://wa.me/254700000000?text=Hello%20Dirrir%20Realtor%2C%20I%20am%20interested%20in%20${encodeURIComponent(p.title)}`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full bg-primary px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-colors hover:bg-accent"
+          >
+            {t("whatsAppNow")}
+          </a>
+        </div>
       </div>
     </>
   );

@@ -76,17 +76,17 @@ function CustomDropdown({
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "flex min-w-[160px] items-center justify-between border-b border-border/50 pb-2 transition-colors hover:border-primary focus:outline-none",
+          "flex w-full items-center justify-between border-b border-border/50 pb-2 transition-colors hover:border-primary focus:outline-none md:min-w-[160px]",
           isOpen ? "border-primary" : "border-border/50"
         )}
       >
         <div className="flex flex-col items-start gap-1">
-          <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-text-light/60">
+          <span className="hidden font-mono text-[9px] font-bold uppercase tracking-widest text-text-light/60 md:block">
             {label}
           </span>
           <span
             className={cn(
-              "font-sans text-[13px] font-medium tracking-tight transition-colors",
+              "font-sans text-[12px] font-medium tracking-tight transition-colors md:text-[13px]",
               currentValue !== "all" ? "text-accent" : "text-primary"
             )}
           >
@@ -95,7 +95,7 @@ function CustomDropdown({
         </div>
         <ChevronDown
           className={cn(
-            "h-3.5 w-3.5 text-primary/60 transition-transform duration-300",
+            "ml-2 h-3.5 w-3.5 shrink-0 text-primary/60 transition-transform duration-300",
             isOpen ? "rotate-180" : ""
           )}
         />
@@ -163,16 +163,16 @@ export function FilterBar() {
   return (
     <div className="sticky top-16 z-40 border-b border-border/50 bg-white/95 py-6 backdrop-blur-md lg:top-20">
       <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-6 lg:gap-10">
-          <div className="flex flex-1 flex-wrap items-center gap-6 lg:gap-12">
-            <div className="flex items-center gap-3 pr-4 border-r border-border/40 md:pr-8">
+        <div className="flex flex-col flex-wrap items-start justify-between gap-6 lg:flex-row lg:items-end lg:gap-10">
+          <div className="flex w-full flex-1 flex-col items-start gap-4 lg:w-auto lg:flex-row lg:items-center lg:gap-12">
+            <div className="hidden items-center gap-3 border-r border-border/40 pr-4 lg:flex lg:pr-8">
               <SlidersHorizontal className="h-4 w-4 text-accent" />
               <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary">
                 Filters
               </span>
             </div>
             
-            <div className="flex flex-wrap items-center gap-6 md:gap-10">
+            <div className="grid w-full grid-cols-2 gap-x-4 gap-y-4 lg:flex lg:w-auto lg:flex-wrap lg:items-center lg:gap-10">
               <CustomDropdown
                 label="Location"
                 options={locations}

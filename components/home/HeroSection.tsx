@@ -54,25 +54,41 @@ function StaticHero() {
       />
       <div className="pointer-events-none absolute inset-0 -z-10 premium-hero-vignette" />
       <Container className="relative flex min-h-[100svh] flex-col justify-end pb-12 pt-40 lg:pb-16 lg:pt-48">
-        <motion.div
-          className="max-w-3xl text-white"
-          initial={{ opacity: 1, y: 0 }}
-        >
-          <p
+        <div className="max-w-3xl text-white">
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="mb-3 font-mono text-[11px] font-bold uppercase tracking-luxury-widest text-accent"
           >
             Dirrir Realtor Limited
-          </p>
-          <div className="premium-hairline h-px w-44 sm:w-52" />
-          <h1
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="premium-hairline h-px w-44 origin-left sm:w-52" 
+          />
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="mt-7 font-sans text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.25rem]"
           >
             {t("heroTitle")}
-          </h1>
-          <p className="story-editorial mt-7 max-w-2xl text-white/80">
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="story-editorial mt-7 max-w-2xl text-white/80"
+          >
             {t("heroSub")}
-          </p>
-          <div
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="mt-11 flex flex-col gap-4 sm:flex-row sm:items-center"
           >
             <Button href="/properties" variant="primary" className="justify-center">
@@ -81,8 +97,8 @@ function StaticHero() {
             <Button href="/contact" variant="luxury" className="justify-center">
               {t("talkAgent")}
             </Button>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </Container>
     </section>
   );
@@ -213,37 +229,61 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.slug}
-                initial={{ opacity: 1, y: 0 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 1 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
-                <p
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                   className="mt-6 font-mono text-[10px] font-bold uppercase tracking-luxury-widest text-white/80"
                   aria-live="polite"
                 >
                   {t("heroSlideOf", { current: index + 1, total: len })}
-                </p>
+                </motion.p>
 
-                <h1
+                <motion.h1
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                   className="mt-5 font-sans text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.5rem]"
                 >
                   {t("heroTitle")}
-                </h1>
+                </motion.h1>
 
-                <p className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg max-w-2xl">
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg max-w-2xl"
+                >
                   {t("heroSub")}
-                </p>
+                </motion.p>
 
-                <p className="mt-8 text-lg font-semibold text-white">
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="mt-8 text-lg font-semibold text-white"
+                >
                   {current.title} — {current.location}
-                </p>
+                </motion.p>
 
-                <p className="mt-2 text-lg font-semibold text-accent">
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="mt-2 text-lg font-semibold text-accent"
+                >
                   {priceLabel}
-                </p>
+                </motion.p>
 
-                <div
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
                   className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center"
                 >
                   <Button
