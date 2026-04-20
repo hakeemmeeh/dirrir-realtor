@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { EmptyState } from "@/components/properties/EmptyState";
 import { FilterBar } from "@/components/properties/FilterBar";
-import { PropertyGrid } from "@/components/properties/PropertyGrid";
+import { LatestListingsShowcase } from "@/components/properties/LatestListingsShowcase";
 import { Container } from "@/components/ui/Container";
 import {
   filterProperties,
@@ -54,9 +54,9 @@ export default async function PropertiesPage({ searchParams }: Props) {
             <EmptyState />
           ) : (
             <>
-              <PropertyGrid items={filtered} />
+              <LatestListingsShowcase items={filtered} />
               <div className="mt-10 rounded-sm border border-border bg-background-alt p-6 sm:p-8">
-                <p className="font-serif text-2xl text-primary">{t("journeyTitle")}</p>
+                <p className="font-sans text-2xl font-medium tracking-tight text-primary">{t("journeyTitle")}</p>
                 <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-light sm:text-base">
                   {t("journeyBody")}
                 </p>

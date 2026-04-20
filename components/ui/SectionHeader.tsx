@@ -37,7 +37,7 @@ export function SectionHeader({
       ) : null}
       <h2
         className={cn(
-          "font-serif text-3xl sm:text-4xl text-primary",
+          "font-sans text-3xl font-medium tracking-tight text-primary sm:text-4xl",
           kicker && "mt-4",
           accent && "border-l-4 border-accent pl-4 sm:pl-6",
           align === "center" &&

@@ -32,7 +32,7 @@ export function StorySection({ title }: { title: string }) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-10 font-serif text-4xl font-medium leading-[1.1] text-primary sm:text-5xl lg:text-[4rem]"
+            className="mt-10 font-sans text-4xl font-medium leading-[1.1] tracking-tight text-primary sm:text-5xl lg:text-[4rem]"
           >
             {title}
           </motion.h2>

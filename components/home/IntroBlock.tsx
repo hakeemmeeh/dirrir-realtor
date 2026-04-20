@@ -15,9 +15,9 @@ export function IntroBlock() {
   const itemVariants = reduceMotion ? fadeUpReduced : fadeUp;
 
   return (
-    <section className="relative overflow-hidden bg-background py-28 lg:py-48">
+    <section className="relative overflow-hidden bg-background py-20 lg:py-32">
       <Container>
-        <div className="grid gap-20 lg:grid-cols-12 lg:items-center xl:gap-24">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center xl:gap-16">
           {/* Text Content */}
           <div className="lg:col-span-12 xl:col-span-5">
             <motion.div
@@ -32,10 +32,10 @@ export function IntroBlock() {
                   {t("introKicker")}
                 </p>
               </div>
-              <h2 className="mt-10 font-serif text-[2.25rem] font-medium leading-[1.08] tracking-tight text-primary sm:text-[3rem] lg:text-[3.5rem] xl:text-[4rem]">
+              <h2 className="mt-8 font-sans text-[2.25rem] font-medium leading-[1.08] tracking-tight text-primary sm:text-[3rem] lg:text-[3.35rem] xl:text-[3.75rem]">
                 {t("introTitle")}
               </h2>
-              <div className="mt-14 max-w-xl space-y-9 story-editorial text-lg text-primary/80">
+              <div className="mt-10 max-w-xl space-y-7 story-editorial text-lg text-primary/80">
                 <p>{t("introP1")}</p>
                 <p>{t("introP2")}</p>
               </div>
@@ -79,7 +79,7 @@ export function IntroBlock() {
             </div>
             {/* Decorative background number/Chapter */}
             <span
-              className="pointer-events-none absolute -left-12 top-0 -z-10 font-serif text-[12rem] font-bold text-primary/[0.03]"
+              className="pointer-events-none absolute -left-12 top-0 -z-10 font-sans text-[12rem] font-bold tracking-tight text-primary/[0.03]"
               aria-hidden
             >
               {t("introChapter")}

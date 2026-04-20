@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { DM_Mono, DM_Sans, Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import {
+  Bodoni_Moda,
+  DM_Mono,
+  DM_Sans,
+  Playfair_Display,
+  Plus_Jakarta_Sans,
+} from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import "./globals.css";
@@ -34,6 +40,14 @@ const dmMono = DM_Mono({
   display: "swap",
 });
 
+const bodoniModa = Bodoni_Moda({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-bodoni-moda",
+  display: "swap",
+  adjustFontFallback: false,
+});
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://dirrirrealtor.co.ke";
 
 export const metadata: Metadata = {
@@ -60,7 +74,7 @@ export default async function RootLayout({
   const ga = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
   const fb = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
 
-  const fontVars = `${playfair.variable} ${dmSans.variable} ${plusJakarta.variable} ${dmMono.variable}`;
+  const fontVars = `${playfair.variable} ${dmSans.variable} ${plusJakarta.variable} ${dmMono.variable} ${bodoniModa.variable}`;
 
   return (
     <html lang="en" suppressHydrationWarning className={fontVars}>

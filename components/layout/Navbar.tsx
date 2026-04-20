@@ -11,10 +11,10 @@ import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
 const nav = [
   { href: "/", key: "home" as const },
+  { href: "/developments", key: "developments" as const },
   { href: "/about", key: "about" as const },
   { href: "/services", key: "services" as const },
   { href: "/properties", key: "properties" as const },
-  { href: "/developments", key: "developments" as const },
   { href: "/areas", key: "areas" as const },
   { href: "/contact", key: "contact" as const },
 ];
@@ -62,7 +62,7 @@ export function Navbar() {
             />
             <span
               className={cn(
-                "hidden font-serif text-[1.15rem] font-medium tracking-[0.06em] sm:block",
+                "hidden font-sans text-[1.15rem] font-medium tracking-[0.06em] sm:block",
                 solid ? "text-primary" : "text-white drop-shadow-sm",
               )}
             >
@@ -83,7 +83,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "relative font-serif text-[1rem] font-medium tracking-[0.08em] transition-colors hover:text-accent",
+                    "relative font-sans text-[1rem] font-medium tracking-[0.08em] transition-colors hover:text-accent",
                     active && "text-accent",
                   )}
                 >
@@ -127,7 +127,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="border-b border-border py-3 font-serif text-base font-medium tracking-[0.08em] text-primary"
+                className="border-b border-border py-3 font-sans text-base font-medium tracking-[0.08em] text-primary"
               >
                 {t(item.key)}
               </Link>

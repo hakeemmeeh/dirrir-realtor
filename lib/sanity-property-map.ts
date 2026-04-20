@@ -5,6 +5,7 @@ import type {
   PropertyStatus,
   PropertyType,
 } from "@/lib/properties";
+import { getPlaceholderHeroVideo } from "@/lib/property-hero-videos";
 
 const PLACEHOLDER_IMAGE =
   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80";
@@ -78,6 +79,7 @@ export function sanityRowToProperty(doc: Record<string, unknown>): Property | nu
   const bedrooms = typeof doc.bedrooms === "number" ? doc.bedrooms : 0;
   const bathrooms = typeof doc.bathrooms === "number" ? doc.bathrooms : 0;
   const areaSqft = typeof doc.areaSqft === "number" ? doc.areaSqft : 0;
+  const lotSizeSqft = typeof doc.lotSizeSqft === "number" ? doc.lotSizeSqft : undefined;
 
   const descPlain = blocksToPlain(doc.description);
   const description =
@@ -90,24 +92,67 @@ export function sanityRowToProperty(doc: Record<string, unknown>): Property | nu
 
   const floor =
     typeof doc.floor === "string" && doc.floor.length > 0 ? doc.floor : undefined;
+  const propertyId =
+    typeof doc.propertyId === "string" && doc.propertyId.length > 0 ? doc.propertyId : undefined;
+  const addressLine =
+    typeof doc.addressLine === "string" && doc.addressLine.length > 0 ? doc.addressLine : undefined;
+  const city =
+    typeof doc.city === "string" && doc.city.length > 0 ? doc.city : undefined;
+  const country =
+    typeof doc.country === "string" && doc.country.length > 0 ? doc.country : undefined;
+  const yearBuilt = typeof doc.yearBuilt === "number" ? doc.yearBuilt : undefined;
+  const garages = typeof doc.garages === "number" ? doc.garages : undefined;
+  const garageSizeSqft =
+    typeof doc.garageSizeSqft === "number" ? doc.garageSizeSqft : undefined;
+  const availableFrom =
+    typeof doc.availableFrom === "string" && doc.availableFrom.length > 0
+      ? doc.availableFrom
+      : undefined;
+  const basement =
+    typeof doc.basement === "string" && doc.basement.length > 0 ? doc.basement : undefined;
+  const structureType =
+    typeof doc.structureType === "string" && doc.structureType.length > 0
+      ? doc.structureType
+      : undefined;
+  const exteriorMaterial =
+    typeof doc.exteriorMaterial === "string" && doc.exteriorMaterial.length > 0
+      ? doc.exteriorMaterial
+      : undefined;
+  const extraDetails =
+    typeof doc.extraDetails === "string" && doc.extraDetails.length > 0
+      ? doc.extraDetails
+      : undefined;
   const tagline =
     typeof doc.tagline === "string" && doc.tagline.length > 0 ? doc.tagline : undefined;
   const heroVideoUrl =
     typeof doc.heroVideoUrl === "string" && doc.heroVideoUrl.length > 0
       ? doc.heroVideoUrl
-      : undefined;
+      : getPlaceholderHeroVideo(slug);
 
   return {
     slug,
     title,
     propertyType: asPropertyType(doc.propertyType),
     status: asStatus(doc.status),
+    propertyId,
     price,
     bedrooms,
     bathrooms,
     areaSqft,
+    lotSizeSqft,
     floor,
     location: asLocation(doc.location),
+    addressLine,
+    city,
+    country,
+    yearBuilt,
+    garages,
+    garageSizeSqft,
+    availableFrom,
+    basement,
+    structureType,
+    exteriorMaterial,
+    extraDetails,
     tagline,
     collection: asCollection(doc.collection),
     description,

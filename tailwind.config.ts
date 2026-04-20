@@ -24,6 +24,7 @@ const config: Config = {
       fontFamily: {
         serif: ["var(--font-playfair)", "Georgia", "serif"],
         sans: ["var(--font-plus-jakarta)", "system-ui", "sans-serif"],
+        display: ["var(--font-bodoni-moda)", "Georgia", "serif"],
         editorial: ["var(--font-playfair)", "serif"],
         mono: ["var(--font-dm-mono)", "ui-monospace", "monospace"],
       },

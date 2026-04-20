@@ -84,7 +84,7 @@ export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Prop
             Dirrir Realtor Limited
           </p>
           <div className="premium-hairline mt-4 h-px w-40" />
-          <h1 className="mt-6 font-serif text-4xl font-medium leading-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 font-sans text-4xl font-medium leading-tight tracking-tight sm:text-5xl lg:text-6xl">
             {title}
           </h1>
           {subtitle ? (

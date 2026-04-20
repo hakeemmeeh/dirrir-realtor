@@ -25,8 +25,8 @@ export function MissionVision({
             viewport={{ once: true }}
             className="flex flex-col border-l-2 border-accent/20 pl-8 lg:pl-12"
           >
-            <span className="font-serif text-5xl font-medium italic text-accent/20 lg:text-7xl">01</span>
-            <h3 className="mt-4 font-serif text-3xl font-medium text-primary sm:text-4xl">{missionTitle}</h3>
+            <span className="font-sans text-5xl font-medium italic tracking-tight text-accent/20 lg:text-7xl">01</span>
+            <h3 className="mt-4 font-sans text-3xl font-medium tracking-tight text-primary sm:text-4xl">{missionTitle}</h3>
             <p className="mt-8 text-lg leading-relaxed text-text-light/90 lg:text-xl">{mission}</p>
           </motion.div>
           <motion.div
@@ -36,8 +36,8 @@ export function MissionVision({
             transition={{ delay: 0.1 }}
             className="flex flex-col border-l-2 border-accent/20 pl-8 lg:pl-12"
           >
-            <span className="font-serif text-5xl font-medium italic text-accent/20 lg:text-7xl">02</span>
-            <h3 className="mt-4 font-serif text-3xl font-medium text-primary sm:text-4xl">{visionTitle}</h3>
+            <span className="font-sans text-5xl font-medium italic tracking-tight text-accent/20 lg:text-7xl">02</span>
+            <h3 className="mt-4 font-sans text-3xl font-medium tracking-tight text-primary sm:text-4xl">{visionTitle}</h3>
             <p className="mt-8 text-lg leading-relaxed text-text-light/90 lg:text-xl">{vision}</p>
           </motion.div>
         </div>

@@ -69,7 +69,7 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
           <p className="font-mono text-[10px] font-bold uppercase tracking-luxury-widest text-accent">
             {p.location}
           </p>
-          <h3 className="mt-4 font-serif text-3xl font-medium leading-[1.1] text-white sm:text-4xl lg:text-5xl">
+          <h3 className="mt-4 font-sans text-3xl font-medium leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
             {p.title}
           </h3>
           {tagline !== p.location ? (

@@ -98,7 +98,7 @@ export function PropertyCollectionBand({
         >
           <div className="relative max-w-xl">
             <span
-              className="pointer-events-none absolute -left-2 -top-8 font-serif text-[5rem] font-medium leading-none text-current opacity-[0.07] sm:text-[6.5rem] lg:-left-4 lg:-top-12 lg:text-[8rem]"
+              className="pointer-events-none absolute -left-2 -top-8 font-sans text-[5rem] font-medium leading-none tracking-tight text-current opacity-[0.07] sm:text-[6.5rem] lg:-left-4 lg:-top-12 lg:text-[8rem]"
               aria-hidden
             >
               {chapterNumber}
@@ -109,7 +109,7 @@ export function PropertyCollectionBand({
             </p>
             <h2
               className={cn(
-                "relative mt-6 font-serif text-[2rem] font-medium leading-[1.08] tracking-tight sm:text-4xl lg:text-5xl",
+                "relative mt-6 font-sans text-[2rem] font-medium leading-[1.08] tracking-tight sm:text-4xl lg:text-5xl",
                 textDark ? "text-ivory" : "text-primary",
               )}
             >

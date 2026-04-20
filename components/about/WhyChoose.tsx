@@ -21,7 +21,7 @@ export function WhyChoose({ title }: { title: string }) {
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
               The Dirrir Advantage
             </p>
-            <h2 className="mt-6 font-serif text-4xl font-medium leading-[1.1] sm:text-5xl">
+            <h2 className="mt-6 font-sans text-4xl font-medium leading-[1.1] tracking-tight sm:text-5xl">
               {title}
             </h2>
             <div className="mt-8 h-px w-20 bg-accent/40" />

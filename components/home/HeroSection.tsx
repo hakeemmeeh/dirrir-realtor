@@ -69,7 +69,7 @@ function StaticHero() {
           <motion.div variants={itemVariants} className="premium-hairline h-px w-44 sm:w-52" />
           <motion.h1
             variants={itemVariants}
-            className="mt-7 font-serif text-4xl font-medium leading-[1.08] sm:text-5xl lg:text-6xl xl:text-[4.25rem]"
+            className="mt-7 font-sans text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.25rem]"
           >
             {t("heroTitle")}
           </motion.h1>
@@ -240,7 +240,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
 
                 <motion.h1
                   variants={itemVariants}
-                  className="mt-5 font-serif text-4xl font-medium leading-[1.05] sm:text-5xl lg:text-6xl xl:text-[4.5rem]"
+                  className="mt-5 font-sans text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.5rem]"
                 >
                   {current.title}
                 </motion.h1>

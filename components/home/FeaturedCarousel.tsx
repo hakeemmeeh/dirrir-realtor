@@ -59,38 +59,38 @@ export function FeaturedCarousel({ items }: { items: Property[] }) {
       id="portfolio"
       className="scroll-mt-32 scroll-pt-4 sm:scroll-mt-36"
     >
-      {/* Masthead — dense typography, dominant counter (Hass-style rhythm) */}
-      <div className="bg-primary text-ivory">
+      {/* Masthead — cleaner developer tone with restrained accents */}
+      <div className="border-y border-border bg-background-alt text-primary">
         <Container className="py-16 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-8">
             <div className="lg:col-span-7">
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.38em] text-accent">
                 {t("carouselEyebrow")}
               </p>
-              <h2 className="mt-6 font-serif text-[2.35rem] font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
+              <h2 className="mt-6 font-sans text-[2.35rem] font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
                 {t("portfolioMastheadTitle")}
               </h2>
-              <p className="story-editorial mt-8 max-w-2xl text-base leading-relaxed text-ivory/78 sm:text-lg">
+              <p className="story-editorial mt-8 max-w-2xl text-base leading-relaxed text-text-light sm:text-lg">
                 {t("portfolioMastheadLine")}
               </p>
-              <p className="mt-6 max-w-2xl text-sm leading-relaxed text-ivory/60 sm:text-base">
+              <p className="mt-6 max-w-2xl text-sm leading-relaxed text-text-light sm:text-base">
                 {t("portfolioNarrative")}
               </p>
-              <p className="mt-4 max-w-2xl font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-ivory/55">
+              <p className="mt-4 max-w-2xl font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-text-light">
                 {t("portfolioPreviewNote")}
               </p>
             </div>
             <div className="flex flex-col gap-8 lg:col-span-5 lg:items-end lg:text-right">
-              <div className="flex items-baseline gap-1 font-serif tabular-nums">
-                <span className="text-5xl font-medium text-ivory sm:text-6xl lg:text-7xl xl:text-8xl">
+              <div className="flex items-baseline gap-1 font-sans tabular-nums">
+                <span className="text-5xl font-medium text-primary sm:text-6xl lg:text-7xl xl:text-8xl">
                   {index + 1}
                 </span>
                 <span className="text-3xl text-accent sm:text-4xl lg:text-5xl" aria-hidden>
                   /
                 </span>
-                <span className="text-3xl text-ivory/35 sm:text-4xl lg:text-5xl">{items.length}</span>
+                <span className="text-3xl text-text-light sm:text-4xl lg:text-5xl">{items.length}</span>
               </div>
-              <p className="max-w-xs font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-ivory/45 lg:ml-auto">
+              <p className="max-w-xs font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-text-light lg:ml-auto">
                 {t("featuredSub")}
               </p>
               <div className="flex flex-wrap items-center gap-3 lg:justify-end">
@@ -100,7 +100,7 @@ export function FeaturedCarousel({ items }: { items: Property[] }) {
                       type="button"
                       aria-label="Previous"
                       onClick={() => scrollTo(-1)}
-                      className="rounded-none border border-white/25 bg-white/5 p-2.5 text-ivory transition-colors hover:border-accent hover:text-accent"
+                      className="rounded-none border border-border bg-background p-2.5 text-primary transition-colors hover:border-accent hover:text-accent"
                     >
                       <ChevronLeft className="h-5 w-5" />
                     </button>
@@ -108,7 +108,7 @@ export function FeaturedCarousel({ items }: { items: Property[] }) {
                       type="button"
                       aria-label="Next"
                       onClick={() => scrollTo(1)}
-                      className="rounded-none border border-white/25 bg-white/5 p-2.5 text-ivory transition-colors hover:border-accent hover:text-accent"
+                      className="rounded-none border border-border bg-background p-2.5 text-primary transition-colors hover:border-accent hover:text-accent"
                     >
                       <ChevronRight className="h-5 w-5" />
                     </button>
@@ -123,7 +123,7 @@ export function FeaturedCarousel({ items }: { items: Property[] }) {
                 <a
                   href={brochureHref}
                   download
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-ivory/90 transition-colors hover:text-accent"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary/90 transition-colors hover:text-accent"
                 >
                   <Download className="h-4 w-4 shrink-0" aria-hidden />
                   {t("portfolioBrochure")}

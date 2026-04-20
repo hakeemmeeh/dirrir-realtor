@@ -31,7 +31,7 @@ export function MarketIntelligence() {
             <motion.div variants={fadeUp} className="premium-hairline-accent mx-auto mt-4 h-px w-24 sm:mx-0 sm:w-32" />
             <motion.h2
               variants={fadeUp}
-              className="mt-8 font-serif text-3xl font-medium leading-[1.1] text-primary sm:text-4xl lg:text-5xl"
+              className="mt-8 font-sans text-3xl font-medium leading-[1.1] tracking-tight text-primary sm:text-4xl lg:text-5xl"
             >
               The East Africa Property Report
             </motion.h2>

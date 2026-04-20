@@ -39,7 +39,7 @@ export function Storybeats() {
 
   return (
     <section className="border-y border-border bg-ivory">
-      <Container className="pt-24 lg:pt-36">
+      <Container className="pt-16 lg:pt-22">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -47,7 +47,7 @@ export function Storybeats() {
           variants={getStaggerContainer(!!reduceMotion)}
         >
           <span
-            className="pointer-events-none absolute left-4 top-10 font-serif text-[4.5rem] font-medium leading-none text-primary/[0.04] sm:text-[6rem] lg:left-8 lg:text-[7.5rem]"
+            className="pointer-events-none absolute left-4 top-6 font-sans text-[4rem] font-medium leading-none tracking-tight text-primary/[0.04] sm:text-[5.25rem] lg:left-8 lg:text-[6.5rem]"
             aria-hidden
           >
             PROCESS
@@ -58,17 +58,17 @@ export function Storybeats() {
           >
             {t("storyKicker")}
           </motion.p>
-          <motion.div variants={itemVariants} className="premium-hairline-accent relative mt-4 h-px w-32" />
+          <motion.div variants={itemVariants} className="premium-hairline-accent relative mt-3 h-px w-32" />
           <motion.h2
             variants={itemVariants}
-            className="mt-8 max-w-2xl text-balance font-serif text-2xl font-medium leading-tight text-primary sm:text-3xl lg:text-[2.125rem]"
+            className="mt-6 max-w-2xl text-balance font-serif text-2xl font-medium leading-tight text-primary sm:text-[1.9rem] lg:text-[2rem]"
           >
             {t("storySectionTitle")}
           </motion.h2>
         </motion.div>
       </Container>
 
-      <div className="mt-20 lg:mt-28">
+      <div className="mt-12 lg:mt-16">
         {beats.map((beat, i) => {
           const imageRight = i % 2 === 0;
           return (
@@ -94,7 +94,7 @@ export function Storybeats() {
                   <span className="font-mono text-xs font-bold tabular-nums text-accent/80">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-6 font-serif text-3xl font-medium leading-tight text-primary sm:text-4xl">
+                  <h3 className="mt-6 font-sans text-3xl font-medium leading-tight tracking-tight text-primary sm:text-4xl">
                     {beat.title}
                   </h3>
                   <p className="mt-7 max-w-md text-base leading-relaxed text-text-light sm:text-lg">
@@ -113,7 +113,7 @@ export function Storybeats() {
                 </motion.div>
                 <div
                   className={cn(
-                    "group relative min-h-[340px] overflow-hidden sm:min-h-[460px] lg:min-h-[min(72vh,680px)]",
+                    "group relative min-h-[280px] overflow-hidden sm:min-h-[360px] lg:min-h-[min(56vh,520px)]",
                     imageRight ? "lg:order-2" : "lg:order-1",
                   )}
                 >

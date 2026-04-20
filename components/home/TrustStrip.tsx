@@ -45,7 +45,7 @@ export function TrustStrip() {
             viewport={{ once: true }}
             className="flex flex-col items-center border-b border-white/5 pb-12 text-center last:border-0 sm:border-b-0 sm:pb-0 lg:items-start lg:text-left"
           >
-            <span className="font-serif text-6xl font-medium tracking-tight text-accent lg:text-7xl">
+            <span className="font-sans text-6xl font-medium tracking-tight text-accent lg:text-7xl">
               {clients}+
             </span>
             <span className="mt-4 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ivory/60">
@@ -62,7 +62,7 @@ export function TrustStrip() {
             transition={{ delay: 0.1 }}
             className="flex flex-col items-center border-b border-white/5 pb-12 text-center last:border-0 sm:border-b-0 sm:pb-0 lg:items-start lg:text-left"
           >
-            <span className="font-serif text-6xl font-medium tracking-tight text-white lg:text-7xl">
+            <span className="font-sans text-6xl font-medium tracking-tight text-white lg:text-7xl">
               {sold}+
             </span>
             <span className="mt-4 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ivory/60">
@@ -79,7 +79,7 @@ export function TrustStrip() {
             transition={{ delay: 0.2 }}
             className="flex flex-col items-center border-b border-white/5 pb-12 text-center last:border-0 sm:border-b-0 sm:pb-0 lg:items-start lg:text-left"
           >
-            <span className="font-serif text-6xl font-medium tracking-tight text-accent lg:text-7xl">
+            <span className="font-sans text-6xl font-medium tracking-tight text-accent lg:text-7xl">
               {years}
             </span>
             <span className="mt-4 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ivory/60">
@@ -96,7 +96,7 @@ export function TrustStrip() {
             transition={{ delay: 0.3 }}
             className="flex flex-col items-center text-center lg:items-start lg:text-left"
           >
-            <span className="font-serif text-6xl font-medium tracking-tight text-white lg:text-7xl">
+            <span className="font-sans text-6xl font-medium tracking-tight text-white lg:text-7xl">
               5★
             </span>
             <span className="mt-4 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ivory/60">

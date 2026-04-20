@@ -43,7 +43,7 @@ export function AreaCard({
         <Image src={area.image} alt={area.name} fill className="object-cover" sizes="50vw" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent lg:bg-gradient-to-r" />
         <div className="absolute bottom-4 left-4 right-4 lg:bottom-8 lg:left-8">
-          <h2 className="font-serif text-3xl text-white">{area.name}</h2>
+          <h2 className="font-sans text-3xl font-medium tracking-tight text-white">{area.name}</h2>
         </div>
       </div>
       <div className="flex flex-col justify-center p-8 lg:p-12">

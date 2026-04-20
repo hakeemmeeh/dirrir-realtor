@@ -26,7 +26,7 @@ export function ServiceCards() {
       <div className="bg-primary text-ivory">
         <Container className="relative py-20 lg:py-24">
           <span
-            className="pointer-events-none absolute right-6 top-8 font-serif text-[5rem] font-medium leading-none text-white/[0.06] sm:right-10 sm:text-[7rem] lg:right-12 lg:top-10 lg:text-[9rem]"
+            className="pointer-events-none absolute right-6 top-8 font-sans text-[5rem] font-medium leading-none tracking-tight text-white/[0.06] sm:right-10 sm:text-[7rem] lg:right-12 lg:top-10 lg:text-[9rem]"
             aria-hidden
           >
             {t("servicesChapter")}
@@ -47,7 +47,7 @@ export function ServiceCards() {
             <motion.div variants={itemVariants} className="premium-hairline mt-4 h-px w-40 sm:w-48" />
             <motion.h2
               variants={itemVariants}
-              className="mt-8 font-serif text-2xl font-medium leading-tight sm:text-3xl lg:text-4xl"
+              className="mt-8 font-sans text-2xl font-medium leading-tight tracking-tight sm:text-3xl lg:text-4xl"
             >
               {t("servicesTitle")}
             </motion.h2>
@@ -97,7 +97,7 @@ export function ServiceCards() {
                     <div className="mt-1 h-px flex-1 bg-border transition-colors duration-500 group-hover:bg-accent/20" />
                   </div>
 
-                  <h3 className="relative mt-8 max-w-[14rem] font-serif text-[1.75rem] leading-[1.08] text-primary transition-colors duration-300 group-hover:text-accent sm:text-[1.9rem]">
+                  <h3 className="relative mt-8 max-w-[14rem] font-sans text-[1.75rem] font-medium leading-[1.08] tracking-tight text-primary transition-colors duration-300 group-hover:text-accent sm:text-[1.9rem]">
                     {t(item.title)}
                   </h3>
                   <p className="relative mt-5 flex-1 max-w-[18rem] text-sm leading-7 text-text-light sm:text-[0.95rem]">

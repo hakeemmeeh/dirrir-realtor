@@ -45,7 +45,7 @@ export function CollectionChoiceGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-6 font-serif text-3xl font-medium tracking-tight text-primary sm:text-4xl lg:text-5xl"
+            className="mt-6 font-sans text-3xl font-medium tracking-tight text-primary sm:text-4xl lg:text-5xl"
           >
             {t("portfolioNarrative")}
           </motion.h2>
@@ -76,7 +76,7 @@ export function CollectionChoiceGrid() {
                 <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-accent">
                   Collection {i + 1}
                 </span>
-                <h3 className="mt-4 font-serif text-3xl text-white sm:text-4xl lg:text-5xl">
+                <h3 className="mt-4 font-sans text-3xl font-medium tracking-tight text-white sm:text-4xl lg:text-5xl">
                   {c.title}
                 </h3>
                 <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/80 sm:text-base">

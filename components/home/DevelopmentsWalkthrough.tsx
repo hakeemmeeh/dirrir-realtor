@@ -16,7 +16,7 @@ export function DevelopmentsWalkthrough() {
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-accent">
               {t("devWalkthroughKicker")}
             </p>
-            <h2 className="mt-5 font-serif text-3xl text-primary sm:text-4xl">
+            <h2 className="mt-5 font-sans text-3xl font-medium tracking-tight text-primary sm:text-4xl">
               {t("devWalkthroughTitle")}
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-text-light">

@@ -35,7 +35,7 @@ export function ValuesGrid({ sectionTitle }: { sectionTitle: string }) {
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
             Our DNA
           </p>
-          <h2 className="mt-6 font-serif text-4xl font-medium text-primary sm:text-5xl">
+          <h2 className="mt-6 font-sans text-4xl font-medium tracking-tight text-primary sm:text-5xl">
             {sectionTitle}
           </h2>
           <div className="mt-8 h-px w-24 bg-accent/30" />

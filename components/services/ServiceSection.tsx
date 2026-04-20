@@ -96,7 +96,7 @@ export function ServiceSection({
               <div className="h-px w-12 bg-accent/30" />
             </div>
             
-            <h2 className="mt-8 font-serif text-4xl font-medium leading-[1.1] text-primary sm:text-5xl lg:text-[3.5rem]">
+            <h2 className="mt-8 font-sans text-4xl font-medium leading-[1.1] tracking-tight text-primary sm:text-5xl lg:text-[3.5rem]">
               {item.title}
             </h2>
             

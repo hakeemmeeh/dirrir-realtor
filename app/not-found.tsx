@@ -8,7 +8,7 @@ export default async function NotFound() {
   return (
     <div className="flex min-h-[70vh] items-center bg-background-alt py-24">
       <Container className="text-center">
-        <h1 className="font-serif text-4xl text-primary">{t("title")}</h1>
+        <h1 className="font-sans text-4xl font-medium tracking-tight text-primary">{t("title")}</h1>
         <p className="mx-auto mt-4 max-w-md text-text-light">{t("body")}</p>
         <Link
           href="/"
