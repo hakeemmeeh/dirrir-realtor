@@ -94,7 +94,6 @@ export function Navbar() {
                     <button
                       className="flex items-center gap-1 font-sans text-[0.85rem] font-bold uppercase tracking-[0.15em] transition-colors hover:text-accent focus:outline-none"
                     >
-                      {/* @ts-expect-error next-intl dynamic keys */}
                       {t(item.key)}
                       <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
                     </button>
@@ -110,7 +109,6 @@ export function Navbar() {
                               active && "text-accent bg-gray-50"
                             )}
                           >
-                            {/* @ts-expect-error next-intl dynamic keys */}
                             {t(drop.key)}
                           </Link>
                         );
@@ -130,7 +128,6 @@ export function Navbar() {
                     active && "text-accent"
                   )}
                 >
-                  {/* @ts-expect-error next-intl dynamic keys */}
                   {t(item.key)}
                 </Link>
               );
@@ -173,7 +170,6 @@ export function Navbar() {
                 return (
                   <div key={item.key} className="flex flex-col border-b border-border">
                     <span className="py-3 font-sans text-base font-medium tracking-[0.08em] text-primary/60">
-                      {/* @ts-expect-error next-intl dynamic keys */}
                       {t(item.key)}
                     </span>
                     <div className="flex flex-col pl-4 pb-2">
@@ -188,7 +184,6 @@ export function Navbar() {
                               active ? "text-accent" : "text-primary"
                             )}
                           >
-                            {/* @ts-expect-error next-intl dynamic keys */}
                             {t(drop.key)}
                           </Link>
                         );
@@ -204,7 +199,6 @@ export function Navbar() {
                   href={item.href!}
                   className="border-b border-border py-3 font-sans text-base font-medium tracking-[0.08em] text-primary"
                 >
-                  {/* @ts-expect-error next-intl dynamic keys */}
                   {t(item.key)}
                 </Link>
               );
