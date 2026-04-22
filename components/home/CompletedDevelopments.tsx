@@ -19,24 +19,20 @@ export function CompletedDevelopments({ properties }: Props) {
   return (
     <section id="our-developments" className="bg-background pb-4 pt-10 lg:pb-6 lg:pt-14">
       <Container>
-        <div className="mb-8 max-w-3xl animate-fade-in-up sm:pr-24">
-          <p
-            className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent"
-            style={{ animationDelay: "80ms" }}
-          >
+        <div className="mb-8 max-w-3xl sm:pr-24">
+          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
             {t("ourDevelopmentsEyebrow")}
           </p>
-          <RevealOnScroll delay={0.12}>
+          <RevealOnScroll direction="left" distance={56} duration={1.3}>
             <h2 className="mt-4 font-sans text-3xl font-medium leading-tight tracking-tight text-primary sm:text-4xl">
               {t("ourDevelopmentsTitle")}
             </h2>
           </RevealOnScroll>
-          <p
-            className="mt-4 text-base leading-relaxed text-text-light sm:text-lg"
-            style={{ animationDelay: "240ms" }}
-          >
-            {t("ourDevelopmentsSub")}
-          </p>
+          <RevealOnScroll direction="left" delay={0.22} distance={56} duration={1.4}>
+            <p className="mt-4 text-base leading-relaxed text-text-light sm:text-lg">
+              {t("ourDevelopmentsSub")}
+            </p>
+          </RevealOnScroll>
         </div>
 
         <DevelopmentCarousel properties={properties} />

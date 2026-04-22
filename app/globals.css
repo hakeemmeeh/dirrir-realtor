@@ -125,11 +125,11 @@ body {
   html {
     scroll-behavior: auto;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  main h1,
-  main h2 {
-    animation: slideInReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  .animate-fade-in-up,
+  .animate-slide-in-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

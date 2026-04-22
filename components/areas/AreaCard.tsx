@@ -49,7 +49,12 @@ export function AreaCard({
           alt={area.name}
           fill
           className="object-cover transition-transform duration-[2s] ease-out hover:scale-105"
-          sizes="50vw"
+          sizes="(max-width:1024px) 100vw, 50vw"
+          priority={index === 0}
+          loading={index === 0 ? "eager" : "lazy"}
+          quality={78}
+          placeholder="blur"
+          blurDataURL="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDIwIDE0Ij48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIGZpbGw9IiMxYTIwMjgiLz48L3N2Zz4="
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent lg:bg-gradient-to-r" />
         <div className="absolute bottom-4 left-4 right-4 lg:bottom-8 lg:left-8">

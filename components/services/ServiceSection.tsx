@@ -74,6 +74,11 @@ export function ServiceSection({
                 fill 
                 className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" 
                 sizes="(max-width:1024px) 100vw, 50vw" 
+                priority={index === 0}
+                loading={index === 0 ? "eager" : "lazy"}
+                quality={78}
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDIwIDE1Ij48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMTUiIGZpbGw9IiNmN2Y2ZjIiLz48L3N2Zz4="
               />
               <div className="absolute inset-0 bg-primary/10 transition-opacity duration-500 group-hover:opacity-0" />
             </motion.div>
