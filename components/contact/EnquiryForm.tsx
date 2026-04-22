@@ -46,7 +46,7 @@ export function EnquiryForm() {
               <input
                 name="name"
                 required
-                className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-sm"
+                className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-base sm:text-sm"
               />
             </div>
             <div>
@@ -57,7 +57,7 @@ export function EnquiryForm() {
                 name="email"
                 type="email"
                 required
-                className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-sm"
+                className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-base sm:text-sm"
               />
             </div>
             <div>
@@ -66,8 +66,10 @@ export function EnquiryForm() {
               </label>
               <input
                 name="phone"
+                type="tel"
+                inputMode="tel"
                 required
-                className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-sm"
+                className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-base sm:text-sm"
               />
             </div>
             <div>
@@ -76,7 +78,7 @@ export function EnquiryForm() {
               </label>
               <select
                 name="interest"
-                className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-3 text-sm"
+                className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-3 text-base sm:text-sm"
                 defaultValue="buying"
               >
                 <option value="buying">{t("interestBuying")}</option>
@@ -92,7 +94,7 @@ export function EnquiryForm() {
               </label>
               <select
                 name="preferredLocation"
-                className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-3 text-sm"
+                className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-3 text-base sm:text-sm"
               >
                 <option value="parklands">Parklands</option>
                 <option value="kilimani">Kilimani</option>
@@ -107,7 +109,7 @@ export function EnquiryForm() {
               </label>
               <input
                 name="budget"
-                className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-sm"
+                className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-base sm:text-sm"
                 placeholder="e.g. USD 120,000 or USD 1,000/mo"
               />
             </div>
@@ -118,7 +120,7 @@ export function EnquiryForm() {
               <textarea
                 name="message"
                 rows={4}
-                className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-sm"
+                className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-base sm:text-sm"
               />
             </div>
           </div>

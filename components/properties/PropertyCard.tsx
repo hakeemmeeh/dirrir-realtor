@@ -176,19 +176,20 @@ export function PropertyCard({ property: p, index = 0, variant = "default", clas
           </div>
         </div>
 
-        <div className="mt-6 flex items-center justify-between">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <Link
             href={`/properties/${p.slug}`}
-            className="inline-flex items-center rounded-full border border-primary/30 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-primary transition-colors hover:border-black hover:bg-black hover:text-white"
+            className="inline-flex min-h-11 items-center justify-center rounded-full border border-primary/30 px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.2em] text-primary transition-colors hover:border-black hover:bg-black hover:text-white"
           >
             {t("viewDetails")}
           </Link>
           <div className="flex items-center gap-4">
-            <div className="h-px w-12 bg-border" />
-            <Link href="/contact" className="text-[11px] font-bold uppercase tracking-[0.25em] text-text-light transition-colors hover:text-accent">
-              <span className="inline-flex items-center rounded-full border border-border px-4 py-2 transition-colors hover:border-accent hover:bg-accent hover:text-white">
-                {t("enquireNow")}
-              </span>
+            <div className="hidden h-px w-12 bg-border sm:block" />
+            <Link
+              href="/contact"
+              className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-border px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.25em] text-text-light transition-colors hover:border-accent hover:bg-accent hover:text-white sm:w-auto"
+            >
+              {t("enquireNow")}
             </Link>
           </div>
         </div>

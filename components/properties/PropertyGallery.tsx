@@ -28,7 +28,7 @@ export function PropertyGallery({ images, title }: Props) {
           <button
             type="button"
             onClick={() => setIdx(active)}
-            className="relative block aspect-[21/9] w-full overflow-hidden bg-background-alt focus:outline-none focus:ring-2 focus:ring-accent"
+            className="relative block aspect-[4/3] w-full overflow-hidden bg-background-alt focus:outline-none focus:ring-2 focus:ring-accent sm:aspect-[16/10] lg:aspect-[21/9]"
           >
             <Image
               src={srcAt(active)}
@@ -50,7 +50,7 @@ export function PropertyGallery({ images, title }: Props) {
                 type="button"
                 aria-label="Previous image"
                 onClick={() => go(-1)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 rounded-sm bg-black/45 p-2 text-white transition-colors hover:bg-black/65"
+                className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-sm bg-black/50 text-white transition-colors hover:bg-black/70 sm:left-4"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -58,7 +58,7 @@ export function PropertyGallery({ images, title }: Props) {
                 type="button"
                 aria-label="Next image"
                 onClick={() => go(1)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 rounded-sm bg-black/45 p-2 text-white transition-colors hover:bg-black/65"
+                className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-sm bg-black/50 text-white transition-colors hover:bg-black/70 sm:right-4"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>

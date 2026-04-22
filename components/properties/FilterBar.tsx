@@ -75,17 +75,17 @@ function CustomDropdown({
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "flex w-full items-center justify-between border-b border-border/50 pb-2 transition-colors hover:border-primary focus:outline-none md:min-w-[160px]",
+          "flex min-h-[52px] w-full items-center justify-between border-b border-border/50 py-2 transition-colors hover:border-primary focus:outline-none md:min-w-[160px]",
           isOpen ? "border-primary" : "border-border/50"
         )}
       >
-        <div className="flex flex-col items-start gap-1">
-          <span className="hidden font-mono text-[9px] font-bold uppercase tracking-widest text-text-light/60 md:block">
+        <div className="flex min-w-0 flex-col items-start gap-1">
+          <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-text-light/60">
             {label}
           </span>
           <span
             className={cn(
-              "font-sans text-[12px] font-medium tracking-tight transition-colors md:text-[13px]",
+              "max-w-full truncate font-sans text-[13px] font-medium tracking-tight transition-colors",
               currentValue !== "all" ? "text-accent" : "text-primary"
             )}
           >
@@ -159,7 +159,7 @@ export function FilterBar() {
   const hasFilters = loc !== "all" || type !== "all" || bed !== "all" || maxPrice !== "all";
 
   return (
-    <div className="sticky top-16 z-40 border-b border-border/50 bg-white/95 py-6 backdrop-blur-md lg:top-20">
+    <div className="sticky top-16 z-40 border-b border-border/50 bg-white/95 py-4 backdrop-blur-md sm:py-6 lg:top-20">
       <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col flex-wrap items-start justify-between gap-6 lg:flex-row lg:items-end lg:gap-10">
           <div className="flex w-full flex-1 flex-col items-start gap-4 lg:w-auto lg:flex-row lg:items-center lg:gap-12">
