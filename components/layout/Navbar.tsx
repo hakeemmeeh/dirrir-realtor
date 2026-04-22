@@ -62,8 +62,8 @@ export function Navbar() {
     >
       <div
         className={cn(
-          "mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 transition-all duration-500 lg:px-10",
-          solid ? "h-[5.5rem] lg:h-24" : "h-[7.5rem] lg:h-32"
+          "mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 transition-all duration-500 sm:px-6 lg:px-10",
+          solid ? "h-16 sm:h-[4.75rem] lg:h-24" : "h-20 sm:h-[5.5rem] lg:h-32"
         )}
       >
         <Link href="/" className="relative z-10 flex items-center">
@@ -74,7 +74,7 @@ export function Navbar() {
               height={104}
               className={cn(
                 "w-auto object-contain object-left transition-all duration-500",
-                solid ? "h-16 lg:h-[4.5rem]" : "h-20 lg:h-28"
+                solid ? "h-11 sm:h-14 lg:h-[4.5rem]" : "h-14 sm:h-16 lg:h-28"
               )}
               priority
             />
@@ -146,33 +146,34 @@ export function Navbar() {
         <button
           type="button"
           className={cn(
-            "relative z-10 inline-flex p-2 lg:hidden",
+            "relative z-10 inline-flex h-11 w-11 items-center justify-center lg:hidden",
             "text-primary"
           )}
-          aria-label="Menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
-      {/* Soft blend into hero instead of hard separation */}
-      <div className="px-4">
+      {/* Mobile drawer — soft blend, full-width, touch-friendly */}
+      <div className="px-4 sm:px-6">
         <div
           className={cn(
-            "mt-2 rounded-sm border border-border bg-background px-4 pb-6 pt-2 shadow-xl lg:hidden",
+            "rounded-sm border border-border bg-background px-5 pb-5 pt-3 shadow-xl lg:hidden",
             open ? "block" : "hidden"
           )}
         >
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-1">
             {nav.map((item) => {
               if (item.dropdown) {
                 return (
                   <div key={item.key} className="flex flex-col border-b border-border">
-                    <span className="py-3 font-sans text-base font-medium tracking-[0.08em] text-primary/60">
+                    <span className="py-2.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/55">
                       {t(item.key)}
                     </span>
-                    <div className="flex flex-col pl-4 pb-2">
+                    <div className="flex flex-col">
                       {item.dropdown.map((drop) => {
                         const active = pathname === drop.href;
                         return (
@@ -180,7 +181,7 @@ export function Navbar() {
                             key={drop.href}
                             href={drop.href}
                             className={cn(
-                              "py-2 font-sans text-[0.9rem] font-medium tracking-[0.05em] transition-colors hover:text-accent",
+                              "min-h-11 py-3 font-sans text-[0.95rem] font-medium tracking-[0.03em] transition-colors hover:text-accent",
                               active ? "text-accent" : "text-primary"
                             )}
                           >
@@ -193,18 +194,22 @@ export function Navbar() {
                 );
               }
 
+              const active = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href!}
-                  className="border-b border-border py-3 font-sans text-base font-medium tracking-[0.08em] text-primary"
+                  className={cn(
+                    "flex min-h-12 items-center border-b border-border font-sans text-[0.95rem] font-medium tracking-[0.03em] transition-colors hover:text-accent",
+                    active ? "text-accent" : "text-primary"
+                  )}
                 >
                   {t(item.key)}
                 </Link>
               );
             })}
-            <div className="flex justify-end pt-2">
-              <Button href="/contact" variant="primary" className="!px-4 !py-2 text-xs">
+            <div className="flex pt-4">
+              <Button href="/contact" variant="primary" className="w-full justify-center !px-4 !py-3 text-xs">
                 {t("cta")}
               </Button>
             </div>

@@ -49,7 +49,7 @@ function StaticHero() {
         }}
       />
       <div className="pointer-events-none absolute inset-0 -z-10 premium-hero-vignette" />
-      <Container className="relative flex min-h-[100svh] flex-col justify-end pb-12 pt-40 lg:pb-16 lg:pt-48">
+      <Container className="relative flex min-h-[100svh] flex-col justify-end pb-10 pt-32 sm:pb-12 sm:pt-40 lg:pb-16 lg:pt-48">
         <div className="max-w-3xl text-white">
           <motion.p
             initial={{ opacity: 0, y: 15 }}
@@ -69,7 +69,7 @@ function StaticHero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-7 font-sans text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.25rem]"
+            className="mt-6 font-sans text-[2rem] font-medium leading-[1.1] tracking-tight sm:mt-7 sm:text-5xl lg:text-6xl xl:text-[4.25rem]"
           >
             {t("heroTitle")}
           </motion.h1>
@@ -212,7 +212,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
       />
       <div className="pointer-events-none absolute inset-0 -z-10 premium-hero-vignette" />
 
-      <Container className="relative flex min-h-[100svh] flex-col justify-end pb-8 pt-40 lg:pb-12 lg:pt-48">
+      <Container className="relative flex min-h-[100svh] flex-col justify-end pb-8 pt-32 sm:pt-40 lg:pb-12 lg:pt-48">
         <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl text-white">
             <p className="font-mono text-[11px] font-bold uppercase tracking-luxury-widest text-accent">
@@ -242,7 +242,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-5 font-sans text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.5rem]"
+                  className="mt-5 font-sans text-[2rem] font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.5rem]"
                 >
                   {t("heroTitle")}
                 </motion.h1>

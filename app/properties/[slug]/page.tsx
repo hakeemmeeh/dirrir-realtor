@@ -36,11 +36,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const all = await getAllProperties();
   const p = getPropertyBySlugFrom(all, params.slug);
   if (!p) return { title: "Property" };
+  const path = `/properties/${p.slug}`;
+  const canonical = `${siteUrl.replace(/\/$/, "")}${path}`;
+  const image = p.gallery[0];
+  const description = p.description.slice(0, 160);
   return {
-    title: p.title,
-    description: p.description.slice(0, 160),
+    title: `${p.title} · ${p.location}`,
+    description,
+    alternates: { canonical },
+    keywords: [
+      p.title,
+      p.location,
+      p.propertyType,
+      p.status,
+      "Nairobi real estate",
+      "Dirrir Realtor",
+    ],
     openGraph: {
-      images: p.gallery[0] ? [p.gallery[0]] : undefined,
+      type: "article",
+      url: canonical,
+      title: `${p.title} · ${p.location}`,
+      description,
+      images: image ? [{ url: image, width: 1200, height: 630, alt: p.title }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${p.title} · ${p.location}`,
+      description,
+      images: image ? [image] : undefined,
     },
   };
 }

@@ -7,12 +7,20 @@ import { ContactInfoSection } from "@/components/contact/ContactInfo";
 import { EnquiryForm } from "@/components/contact/EnquiryForm";
 import { MapEmbed } from "@/components/contact/MapEmbed";
 import { Container } from "@/components/ui/Container";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Contact Dirrir Realtor | Get in Touch for Property Enquiries",
   description:
     "Reach Dirrir Realtor Limited in Nairobi for property sales, rentals, and investment advisory. Call, WhatsApp, or fill out our enquiry form.",
-};
+  path: "/contact",
+  keywords: [
+    "contact Dirrir Realtor",
+    "Nairobi real estate contact",
+    "book property viewing Nairobi",
+    "WhatsApp realtor Kenya",
+  ],
+});
 
 export default async function ContactPage() {
   const t = await getTranslations("ContactPage");

@@ -14,15 +14,15 @@ export async function Footer() {
 
   return (
     <footer className="border-t border-white/10 bg-charcoal text-ivory">
-      <Container className="py-16">
-        <div className="grid gap-12 md:grid-cols-3">
+      <Container className="py-12 sm:py-14 lg:py-16">
+        <div className="grid gap-10 sm:gap-12 md:grid-cols-3">
           <div>
             <Image
               src="/images/logo-light-transparent.png"
               alt="Dirrir Realtor Limited"
               width={240}
               height={96}
-              className="mb-4 h-20 w-auto object-contain"
+              className="mb-4 h-16 w-auto object-contain sm:h-20"
             />
             <p className="mt-2 text-sm text-ivory/75">{t("tagline")}</p>
             <p className="mt-4 text-sm text-ivory/75">{t("location")}</p>

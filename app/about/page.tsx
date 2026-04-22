@@ -1,17 +1,28 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { AboutTestimonials } from "@/components/about/AboutTestimonials";
+import { AwardsPartners } from "@/components/about/AwardsPartners";
 import { MissionVision } from "@/components/about/MissionVision";
 import { StorySection } from "@/components/about/StorySection";
+import { TeamSection } from "@/components/about/TeamSection";
 import { ValuesGrid } from "@/components/about/ValuesGrid";
 import { WhyChoose } from "@/components/about/WhyChoose";
 import { PageHero } from "@/components/PageHero";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "About Dirrir Realtor Limited | Nairobi Real Estate Agency",
   description:
     "Learn about Dirrir Realtor Limited, a trusted Nairobi real estate company serving local buyers, families, and diaspora investors across Kenya.",
-};
+  path: "/about",
+  keywords: [
+    "About Dirrir Realtor",
+    "Nairobi real estate agency",
+    "Rabat Properties Limited",
+    "trusted realtor Nairobi",
+    "diaspora real estate Kenya",
+  ],
+});
 
 export default async function AboutPage() {
   const t = await getTranslations("About");
@@ -26,7 +37,9 @@ export default async function AboutPage() {
       <StorySection title={t("storyTitle")} />
       <MissionVision missionTitle={t("missionTitle")} visionTitle={t("visionTitle")} />
       <ValuesGrid sectionTitle={t("valuesTitle")} />
+      <TeamSection />
       <AboutTestimonials />
+      <AwardsPartners />
       <WhyChoose title={t("whyTitle")} />
     </>
   );

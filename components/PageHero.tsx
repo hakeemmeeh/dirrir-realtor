@@ -30,7 +30,7 @@ export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Prop
 
   return (
     <section
-      className={`relative min-h-[220px] overflow-hidden text-ivory ${compact ? "py-24 lg:py-28" : "py-28 lg:py-36"} ${
+      className={`relative min-h-[220px] overflow-hidden text-ivory ${compact ? "pt-28 pb-20 sm:py-24 lg:py-28" : "pt-32 pb-20 sm:pt-32 sm:pb-24 lg:py-36"} ${
         videoSrc ? "bg-primary" : "bg-gradient-to-br from-charcoal via-primary to-primary"
       }`}
     >
@@ -75,15 +75,17 @@ export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Prop
       />
       <Container className="relative">
         <div className="max-w-3xl animate-fade-in-up">
-          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.28em] text-accent">
+          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-accent sm:text-[11px]">
             Dirrir Realtor Limited
           </p>
-          <div className="premium-hairline mt-4 h-px w-40" />
-          <h1 className="mt-6 font-sans text-4xl font-medium leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+          <div className="premium-hairline mt-4 h-px w-32 sm:w-40" />
+          <h1 className="mt-5 font-sans text-[2rem] font-medium leading-[1.1] tracking-tight sm:mt-6 sm:text-5xl lg:text-6xl">
             {title}
           </h1>
           {subtitle ? (
-            <p className="story-editorial mt-6 max-w-2xl text-white/90 sm:text-lg">{subtitle}</p>
+            <p className="story-editorial mt-5 max-w-2xl text-[1rem] leading-relaxed text-white/90 sm:mt-6 sm:text-lg">
+              {subtitle}
+            </p>
           ) : null}
         </div>
       </Container>

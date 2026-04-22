@@ -10,12 +10,22 @@ import {
   type PropertyFilters,
 } from "@/lib/properties";
 import { getTranslations } from "next-intl/server";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Properties for Sale & Rent in Nairobi | Dirrir Realtor Listings",
   description:
-    "Browse verified properties for sale and rent in Parklands, Kilimani, Westlands, and more. Premium Nairobi real estate listings.",
-};
+    "Browse verified properties for sale and rent in Parklands, Kilimani, Westlands, Lavington, and Riverside — premium Nairobi real estate listings.",
+  path: "/properties",
+  keywords: [
+    "properties for sale Nairobi",
+    "apartments for rent Nairobi",
+    "houses for sale Parklands",
+    "apartments Kilimani",
+    "homes Westlands",
+    "property listings Kenya",
+  ],
+});
 
 type Props = {
   searchParams: Record<string, string | string[] | undefined>;

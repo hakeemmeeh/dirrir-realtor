@@ -73,7 +73,7 @@ export function LatestListingsShowcase({ items }: Props) {
             key={property.slug}
             className="group grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch xl:gap-14"
           >
-            <div className="relative min-h-[320px] overflow-hidden bg-primary sm:min-h-[420px] lg:min-h-[500px]">
+            <div className="relative min-h-[260px] overflow-hidden bg-primary sm:min-h-[380px] lg:min-h-[500px]">
               <Image
                 src={property.gallery[0] ?? "/images/hero-placeholder.jpg"}
                 alt={property.title}

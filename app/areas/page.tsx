@@ -4,12 +4,22 @@ import { AreaCard } from "@/components/areas/AreaCard";
 import { PageHero } from "@/components/PageHero";
 import { Container } from "@/components/ui/Container";
 import { AREAS } from "@/lib/areas-data";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Areas We Serve | Nairobi Neighbourhoods | Dirrir Realtor",
   description:
-    "Parklands, Kilimani, Westlands, Lavington, and more — explore Nairobi neighbourhoods with Dirrir Realtor.",
-};
+    "Parklands, Kilimani, Westlands, Lavington, Riverside — explore Nairobi neighbourhood guides with price ranges, highlights, and verified listings.",
+  path: "/areas",
+  keywords: [
+    "Nairobi neighbourhoods",
+    "Parklands property guide",
+    "Kilimani area guide",
+    "Westlands houses",
+    "Lavington property",
+    "Riverside apartments Nairobi",
+  ],
+});
 
 export default async function AreasPage() {
   const t = await getTranslations("AreasPage");

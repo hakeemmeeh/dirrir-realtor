@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import {
   Bodoni_Moda,
   DM_Mono,
@@ -13,6 +13,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { LocalBusinessJsonLd } from "@/components/JsonLd";
+import { BASE_KEYWORDS, SITE_NAME, SITE_URL } from "@/lib/seo";
 import Script from "next/script";
 
 const playfair = Playfair_Display({
@@ -48,21 +49,63 @@ const bodoniModa = Bodoni_Moda({
   adjustFontFallback: false,
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://dirrirrealtor.co.ke";
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#1C2833" },
+  ],
+};
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Dirrir Realtor Limited | Premium Homes & Apartments in Nairobi, Kenya",
     template: "%s | Dirrir Realtor Limited",
   },
   description:
     "Find premium apartments and houses for sale or rent in Parklands, Kilimani, and Westlands. Dirrir Realtor — trusted real estate services in Nairobi.",
+  applicationName: SITE_NAME,
+  keywords: BASE_KEYWORDS,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "Real Estate",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     type: "website",
     locale: "en_KE",
-    siteName: "Dirrir Realtor Limited",
+    siteName: SITE_NAME,
+    url: SITE_URL,
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@dirrirrealtor",
+    creator: "@dirrirrealtor",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/images/logo-light-transparent.png",
+  },
+  manifest: undefined,
 };
 
 export default async function RootLayout({

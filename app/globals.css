@@ -17,11 +17,25 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  overflow-x: clip;
 }
 
 body {
   @apply bg-background text-text font-sans antialiased;
   text-rendering: optimizeLegibility;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    word-break: break-word;
+    hyphens: auto;
+  }
 }
 
 ::selection {

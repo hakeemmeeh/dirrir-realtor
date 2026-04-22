@@ -3,12 +3,23 @@ import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/PageHero";
 import { ServiceSection } from "@/components/services/ServiceSection";
 import { SERVICES } from "@/lib/services-data";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Real Estate Services | Sales, Rentals & Diaspora Investment | Dirrir Realtor",
   description:
     "Property sales, rentals, advisory, and diaspora investment services in Nairobi. Dirrir Realtor offers end-to-end real estate support.",
-};
+  path: "/services",
+  image: "/images/services-hero.png",
+  keywords: [
+    "real estate services Nairobi",
+    "property sales Kenya",
+    "rental management Nairobi",
+    "property advisory",
+    "diaspora investment Kenya",
+    "property management Parklands",
+  ],
+});
 
 export default async function ServicesPage() {
   const t = await getTranslations("ServicesPage");

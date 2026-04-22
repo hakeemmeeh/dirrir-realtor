@@ -10,12 +10,21 @@ import { Container } from "@/components/ui/Container";
 import { TrustStrip } from "@/components/home/TrustStrip";
 import { getAllProperties } from "@/lib/properties";
 import { getTranslations } from "next-intl/server";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Developments & Portfolio",
+export const metadata: Metadata = buildMetadata({
+  title: "Developments & Portfolio | Dirrir Realtor Nairobi",
   description:
     "Browse our Living and Investment collections — premium Nairobi homes and apartments for sale and rent, with full details on every listing.",
-};
+  path: "/developments",
+  keywords: [
+    "new developments Nairobi",
+    "Dirrir Realtor portfolio",
+    "Nairobi property collections",
+    "Living collection Nairobi",
+    "Investment collection Nairobi",
+  ],
+});
 
 export default async function DevelopmentsPage() {
   const t = await getTranslations("Home");
