@@ -1,14 +1,12 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useTranslations } from "next-intl";
 import { fadeUp, getStaggerContainer } from "@/lib/motion";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { FileText, ArrowRight } from "lucide-react";
 
 export function MarketIntelligence() {
-  const t = useTranslations("Home");
   const reduceMotion = useReducedMotion();
 
   return (

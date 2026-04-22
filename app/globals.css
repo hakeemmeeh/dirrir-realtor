@@ -90,10 +90,32 @@ body {
   .animate-fade-in-up {
     animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
+
+  @keyframes slideInReveal {
+    from {
+      opacity: 0;
+      transform: translateX(-42px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-reveal {
+    animation: slideInReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  main h1,
+  main h2 {
+    animation: slideInReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 }

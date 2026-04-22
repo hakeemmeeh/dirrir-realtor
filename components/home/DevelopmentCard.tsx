@@ -4,7 +4,6 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { Bed, Bath, Maximize2, MapPin } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
 import { cn, formatUsd } from "@/lib/utils";
 import type { Property } from "@/lib/properties";
 
@@ -23,9 +22,10 @@ export function DevelopmentCard({ property: p, index = 0, className }: Props) {
     <Link
       href={`/properties/${p.slug}`}
       className={cn(
-        "group relative flex h-[480px] w-full flex-col justify-end overflow-hidden bg-black sm:h-[560px]",
+        "group relative flex h-[480px] w-full flex-col justify-end overflow-hidden bg-black opacity-0 animate-fade-in-up sm:h-[560px]",
         className
       )}
+      style={{ animationDelay: `${Math.min(index, 6) * 110}ms` }}
     >
       {/* Background Image with Slow Zoom */}
       <Image
@@ -94,7 +94,7 @@ export function DevelopmentCard({ property: p, index = 0, className }: Props) {
                   {priceLabel}
                 </span>
                 <span className="inline-flex items-center gap-2 border-b border-accent pb-1 text-[11px] font-bold uppercase tracking-widest text-accent transition-all duration-300 hover:border-white hover:text-white">
-                  View Details
+                  {t("viewDetails")}
                   <span className="text-lg leading-none transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>

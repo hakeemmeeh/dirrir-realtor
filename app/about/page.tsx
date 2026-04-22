@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { AboutTestimonials } from "@/components/about/AboutTestimonials";
 import { MissionVision } from "@/components/about/MissionVision";
 import { StorySection } from "@/components/about/StorySection";
 import { ValuesGrid } from "@/components/about/ValuesGrid";
 import { WhyChoose } from "@/components/about/WhyChoose";
-import { Storybeats } from "@/components/home/Storybeats";
 import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
@@ -24,9 +24,9 @@ export default async function AboutPage() {
         posterSrc="/images/about-hero.png"
       />
       <StorySection title={t("storyTitle")} />
-      <Storybeats />
       <MissionVision missionTitle={t("missionTitle")} visionTitle={t("visionTitle")} />
       <ValuesGrid sectionTitle={t("valuesTitle")} />
+      <AboutTestimonials />
       <WhyChoose title={t("whyTitle")} />
     </>
   );

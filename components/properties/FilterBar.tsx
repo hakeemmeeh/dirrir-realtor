@@ -1,6 +1,5 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState, useRef, useEffect } from "react";
 import { ChevronDown, SlidersHorizontal, X } from "lucide-react";
@@ -139,7 +138,6 @@ function CustomDropdown({
 }
 
 export function FilterBar() {
-  const t = useTranslations("PropertiesPage.filters");
   const router = useRouter();
   const sp = useSearchParams();
 

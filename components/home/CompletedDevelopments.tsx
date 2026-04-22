@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { DevelopmentCarousel } from "@/components/home/DevelopmentCarousel";
 import { Container } from "@/components/ui/Container";
 import type { Property } from "@/lib/properties";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 type Props = {
   properties: Property[];
@@ -16,16 +17,24 @@ export function CompletedDevelopments({ properties }: Props) {
   if (properties.length === 0) return null;
 
   return (
-    <section id="our-developments" className="bg-background py-20 lg:py-28">
+    <section id="our-developments" className="bg-background pb-4 pt-10 lg:pb-6 lg:pt-14">
       <Container>
-        <div className="mb-10 max-w-3xl sm:pr-24">
-          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+        <div className="mb-8 max-w-3xl animate-fade-in-up sm:pr-24">
+          <p
+            className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent"
+            style={{ animationDelay: "80ms" }}
+          >
             {t("ourDevelopmentsEyebrow")}
           </p>
-          <h2 className="mt-5 font-sans text-4xl font-medium leading-tight tracking-tight text-primary sm:text-5xl">
-            {t("ourDevelopmentsTitle")}
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-text-light sm:text-lg">
+          <RevealOnScroll delay={0.12}>
+            <h2 className="mt-4 font-sans text-3xl font-medium leading-tight tracking-tight text-primary sm:text-4xl">
+              {t("ourDevelopmentsTitle")}
+            </h2>
+          </RevealOnScroll>
+          <p
+            className="mt-4 text-base leading-relaxed text-text-light sm:text-lg"
+            style={{ animationDelay: "240ms" }}
+          >
             {t("ourDevelopmentsSub")}
           </p>
         </div>

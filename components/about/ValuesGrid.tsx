@@ -51,9 +51,16 @@ export function ValuesGrid({ sectionTitle }: { sectionTitle: string }) {
               transition={{ delay: i * 0.1 }}
               className="group flex flex-col items-center text-center"
             >
-              <div className="flex h-16 w-16 items-center justify-center rounded-none bg-accent/5 transition-colors group-hover:bg-accent/10">
-                <v.Icon className="h-7 w-7 text-accent" strokeWidth={1} />
-              </div>
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 + 0.1 }}
+                whileHover={{ y: -4, scale: 1.05 }}
+                className="flex h-20 w-20 items-center justify-center rounded-none bg-accent/5 transition-colors group-hover:bg-accent/10"
+              >
+                <v.Icon className="h-9 w-9 text-accent transition-transform duration-300 group-hover:scale-110" strokeWidth={1.2} />
+              </motion.div>
               <h3 className="mt-8 font-serif text-2xl font-medium text-primary">{v.title}</h3>
               <p className="mt-4 text-sm leading-relaxed text-text-light/80">{v.body}</p>
             </motion.article>

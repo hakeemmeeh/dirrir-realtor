@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { MessageCircle } from "lucide-react";
@@ -16,7 +17,13 @@ export async function Footer() {
       <Container className="py-16">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
-            <p className="font-serif text-xl font-semibold text-ivory">Dirrir Realtor Limited (DRL)</p>
+            <Image
+              src="/images/logo-light-transparent.png"
+              alt="Dirrir Realtor Limited"
+              width={240}
+              height={96}
+              className="mb-4 h-20 w-auto object-contain"
+            />
             <p className="mt-2 text-sm text-ivory/75">{t("tagline")}</p>
             <p className="mt-4 text-sm text-ivory/75">{t("location")}</p>
             <p className="mt-2 text-sm">

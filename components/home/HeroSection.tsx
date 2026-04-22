@@ -14,7 +14,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { fadeUp, fadeUpReduced, getStaggerContainer } from "@/lib/motion";
 import type { Property } from "@/lib/properties";
 import { cn, formatUsd } from "@/lib/utils";
 
@@ -25,14 +24,11 @@ const AUTO_MS = 8200;
 function StaticHero() {
   const t = useTranslations("Home");
   const ref = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const itemVariants = reduceMotion ? fadeUpReduced : fadeUp;
-
   return (
     <section ref={ref} className="relative min-h-[100svh] overflow-hidden">
       <motion.div style={{ y }} className="absolute inset-0 -z-10">
@@ -147,8 +143,6 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
     current.status === "For Sale"
       ? formatUsd(current.price)
       : `${formatUsd(current.price)}/mo`;
-
-  const itemVariants = reduceMotion ? fadeUpReduced : fadeUp;
 
   return (
     <section

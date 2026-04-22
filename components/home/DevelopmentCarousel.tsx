@@ -4,7 +4,6 @@ import { useRef, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { DevelopmentCard } from "@/components/home/DevelopmentCard";
 import type { Property } from "@/lib/properties";
-import { cn } from "@/lib/utils";
 
 type Props = {
   properties: Property[];

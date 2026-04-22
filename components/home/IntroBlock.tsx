@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { fadeUp, fadeUpReduced, getStaggerContainer } from "@/lib/motion";
 import { Container } from "@/components/ui/Container";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 const INTRO_IMAGE_1 = "/images/hero-1.png";
 const INTRO_IMAGE_2 = "/images/intro-detail.png";
@@ -32,9 +33,11 @@ export function IntroBlock() {
                   {t("introKicker")}
                 </p>
               </div>
-              <h2 className="mt-8 font-sans text-[2.25rem] font-medium leading-[1.08] tracking-tight text-primary sm:text-[3rem] lg:text-[3.35rem] xl:text-[3.75rem]">
-                {t("introTitle")}
-              </h2>
+              <RevealOnScroll delay={0.1} duration={1.25} distance={80} direction="up">
+                <h2 className="mt-8 font-sans text-[2.25rem] font-medium leading-[1.08] tracking-tight text-primary sm:text-[3rem] lg:text-[3.35rem] xl:text-[3.75rem]">
+                  {t("introTitle")}
+                </h2>
+              </RevealOnScroll>
               <div className="mt-10 max-w-xl space-y-7 story-editorial text-lg text-primary/80">
                 <p>{t("introP1")}</p>
                 <p>{t("introP2")}</p>

@@ -4,8 +4,10 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { MapEmbed } from "@/components/contact/MapEmbed";
 import { RealEstateListingJsonLd } from "@/components/JsonLd";
+import { AnimatedOverview } from "@/components/properties/AnimatedOverview";
 import { PropertyEnquiryCta } from "@/components/properties/PropertyEnquiryCta";
 import { PropertyGallery } from "@/components/properties/PropertyGallery";
+import { AnimatedDescription } from "@/components/properties/AnimatedDescription";
 import { SimilarProperties } from "@/components/properties/SimilarProperties";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
@@ -171,36 +173,27 @@ export default async function PropertyDetailPage({ params }: Props) {
 
       <section id="overview" className="scroll-mt-32 bg-background py-10 lg:py-14">
         <Container>
-          <div className="mb-10 grid gap-6 border border-border bg-background-alt p-6 sm:p-8 lg:grid-cols-[1.3fr_1fr]">
-            <div>
-              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-accent">
-                {t("projectOverview")}
-              </p>
-              <h2 className="mt-4 font-sans text-3xl font-medium leading-[1.08] tracking-tight text-primary sm:text-4xl">
-                {p.title}
-              </h2>
-              <p className="mt-4 max-w-3xl text-sm leading-relaxed text-text-light sm:text-base">
-                {t("projectOverviewBody")}
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-3 lg:justify-end">
-              <a
-                href={brochureHref}
-                download
-                className="inline-flex min-h-11 items-center rounded-full border border-primary/70 px-6 py-3 text-sm font-semibold tracking-[0.08em] text-primary transition-colors hover:border-accent hover:bg-accent hover:text-white"
-              >
-                {t("downloadBrochure")}
-              </a>
-              <a
-                href={`https://wa.me/254700000000?text=Hello%20Dirrir%20Realtor%2C%20I%20am%20interested%20in%20${encodeURIComponent(p.title)}`}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-11 items-center rounded-full bg-primary px-6 py-3 text-sm font-semibold tracking-[0.08em] text-white transition-colors hover:bg-accent"
-              >
-                {t("enquire")}
-              </a>
-            </div>
-          </div>
+          <AnimatedOverview 
+            kicker={t("projectOverview")}
+            title={p.title}
+            body={t("projectOverviewBody")}
+          >
+            <a
+              href={brochureHref}
+              download
+              className="inline-flex min-h-11 items-center rounded-full border border-primary/70 px-6 py-3 text-sm font-semibold tracking-[0.08em] text-primary transition-colors hover:border-accent hover:bg-accent hover:text-white"
+            >
+              {t("downloadBrochure")}
+            </a>
+            <a
+              href={`https://wa.me/254700000000?text=Hello%20Dirrir%20Realtor%2C%20I%20am%20interested%20in%20${encodeURIComponent(p.title)}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center rounded-full bg-primary px-6 py-3 text-sm font-semibold tracking-[0.08em] text-white transition-colors hover:bg-accent"
+            >
+              {t("enquire")}
+            </a>
+          </AnimatedOverview>
 
           <div className="mb-10 grid gap-4 border-y border-border py-6 sm:grid-cols-2 lg:grid-cols-4">
             <article className="space-y-1">
@@ -433,11 +426,7 @@ export default async function PropertyDetailPage({ params }: Props) {
         <Container>
           <div className="grid gap-16 lg:grid-cols-[1fr_360px]">
             <div className="space-y-16">
-              <div id="description" className="scroll-mt-32 prose prose-lg max-w-none">
-                <h2 className="font-sans text-3xl font-medium tracking-tight text-primary">{t("description")}</h2>
-                <div className="premium-hairline-accent mt-4 h-px w-24" />
-                <p className="story-editorial mt-8 whitespace-pre-line">{p.description}</p>
-              </div>
+              <AnimatedDescription title={t("description")} description={p.description} />
 
               <div id="features" className="scroll-mt-32">
                 <h2 className="font-serif text-2xl font-medium text-primary">{t("conveniences")}</h2>
@@ -667,7 +656,7 @@ export default async function PropertyDetailPage({ params }: Props) {
 
             <aside className="relative">
               <div className="sticky top-32 space-y-8">
-                <div className="glass-panel rounded-none border border-border bg-background-alt p-8 shadow-xl">
+                <div className="glass-panel animate-fade-in-up rounded-none border border-border bg-background-alt p-8 shadow-xl" style={{ animationDelay: "0.2s" }}>
                   <h3 className="font-serif text-xl font-medium leading-tight tracking-[-0.01em] text-primary">
                     {t("enquire")}
                   </h3>

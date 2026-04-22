@@ -1,9 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
-import { Badge } from "@/components/ui/Badge";
+import { useTranslations } from "next-intl";
 import { formatUsd } from "@/lib/utils";
 import type { Property } from "@/lib/properties";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 type Props = {
   items: Property[];
@@ -15,7 +18,10 @@ function getPriceLabel(property: Property) {
     : `${formatUsd(property.price)}/mo`;
 }
 
-function getCompletionLabel(property: Property, t: Awaited<ReturnType<typeof getTranslations>>) {
+function getCompletionLabel(
+  property: Property,
+  t: (key: string) => string,
+) {
   if (property.availableFrom) {
     const match = property.availableFrom.match(/\b(20\d{2})\b/);
     if (match) return `${t("completionLabel")} ${match[1]}`;
@@ -33,8 +39,8 @@ function getBedroomLabel(property: Property) {
   return property.bedrooms === 0 ? "Studio" : String(property.bedrooms);
 }
 
-export async function LatestListingsShowcase({ items }: Props) {
-  const t = await getTranslations("PropertiesPage");
+export function LatestListingsShowcase({ items }: Props) {
+  const t = useTranslations("PropertiesPage");
   if (items.length === 0) return null;
 
   const launchItems = items.filter((item) => item.isNewDevelopment);
@@ -44,22 +50,28 @@ export async function LatestListingsShowcase({ items }: Props) {
   return (
     <section className="space-y-8">
       <div className="max-w-3xl">
-        <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
-          {t("latestLaunchesEyebrow")}
-        </p>
-        <h2 className="mt-4 font-sans text-3xl font-medium tracking-tight text-primary sm:text-4xl">
-          {t("latestLaunchesTitle")}
-        </h2>
-        <p className="mt-3 text-sm leading-relaxed text-text-light sm:text-base">
-          {t("latestLaunchesSub")}
-        </p>
+        <RevealOnScroll duration={1.35} distance={90}>
+          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+            {t("latestLaunchesEyebrow")}
+          </p>
+        </RevealOnScroll>
+        <RevealOnScroll delay={0.14} duration={1.45} distance={95}>
+          <h2 className="mt-4 font-sans text-3xl font-medium tracking-tight text-primary sm:text-4xl">
+            {t("latestLaunchesTitle")}
+          </h2>
+        </RevealOnScroll>
+        <RevealOnScroll delay={0.24} duration={1.45} distance={95}>
+          <p className="mt-3 text-sm leading-relaxed text-text-light sm:text-base">
+            {t("latestLaunchesSub")}
+          </p>
+        </RevealOnScroll>
       </div>
 
       <div className="space-y-14">
         {launchRows.map((property) => (
           <article
             key={property.slug}
-            className="group grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch xl:gap-10"
+            className="group grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch xl:gap-14"
           >
             <div className="relative min-h-[320px] overflow-hidden bg-primary sm:min-h-[420px] lg:min-h-[500px]">
               <Image
@@ -78,30 +90,38 @@ export async function LatestListingsShowcase({ items }: Props) {
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-text-light">
                 {property.location}
               </p>
-              <h3 className="mt-3 font-display text-3xl font-normal uppercase leading-[1.05] tracking-[0.02em] text-primary sm:text-4xl lg:text-5xl">
-                {property.title}
-              </h3>
-              <p className="mt-2 text-base text-text-light sm:text-lg">
-                {property.addressLine ?? property.location}
-              </p>
+              <RevealOnScroll delay={0.04} duration={1.55} distance={95} direction="up">
+                <h3 className="mt-3 font-display text-3xl font-normal uppercase leading-[1.05] tracking-[0.02em] text-primary sm:text-4xl lg:text-5xl">
+                  {property.title}
+                </h3>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.1} duration={1.75} distance={110} direction="up">
+                <p className="mt-2 text-base text-text-light sm:text-lg">
+                  {property.addressLine ?? property.location}
+                </p>
+              </RevealOnScroll>
 
               <div className="mt-8 space-y-3">
-                <div className="flex items-center justify-between gap-4 pt-3">
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-text-light">
-                    {t("launchBedrooms")}
-                  </p>
-                  <p className="text-sm font-semibold tracking-[0.08em] text-primary sm:text-base">
-                    {getBedroomLabel(property)}
-                  </p>
-                </div>
-                <div className="flex items-center justify-between gap-4 pt-3">
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-text-light">
-                    {t("launchPrice")}
-                  </p>
-                  <p className="text-sm font-semibold tracking-[0.08em] text-primary sm:text-base">
-                    {t("launchFrom")} {getPriceLabel(property)}
-                  </p>
-                </div>
+                <RevealOnScroll delay={0.14} duration={1.55} distance={95} direction="up">
+                  <div className="flex items-center justify-between gap-4 pt-3">
+                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-text-light">
+                      {t("launchBedrooms")}
+                    </p>
+                    <p className="text-sm font-semibold tracking-[0.08em] text-primary sm:text-base">
+                      {getBedroomLabel(property)}
+                    </p>
+                  </div>
+                </RevealOnScroll>
+                <RevealOnScroll delay={0.18} duration={1.6} distance={100} direction="up">
+                  <div className="flex items-center justify-between gap-4 pt-3">
+                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-text-light">
+                      {t("launchPrice")}
+                    </p>
+                    <p className="text-sm font-semibold tracking-[0.08em] text-primary sm:text-base">
+                      {t("launchFrom")} {getPriceLabel(property)}
+                    </p>
+                  </div>
+                </RevealOnScroll>
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">

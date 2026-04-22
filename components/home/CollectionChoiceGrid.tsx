@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { useTranslations } from "next-intl";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 export function CollectionChoiceGrid() {
   const t = useTranslations("Home");
@@ -40,15 +41,11 @@ export function CollectionChoiceGrid() {
           >
             {t("introKicker")}
           </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="mt-6 font-sans text-3xl font-medium tracking-tight text-primary sm:text-4xl lg:text-5xl"
-          >
-            {t("portfolioNarrative")}
-          </motion.h2>
+          <RevealOnScroll delay={0.1} duration={1.35} distance={90} direction="up">
+            <h2 className="mt-6 font-sans text-3xl font-medium tracking-tight text-primary sm:text-4xl lg:text-5xl">
+              {t("portfolioNarrative")}
+            </h2>
+          </RevealOnScroll>
         </div>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:mt-24 lg:gap-12">
