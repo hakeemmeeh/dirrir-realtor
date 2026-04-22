@@ -58,14 +58,41 @@ export type Property = {
   heroVideoUrl?: string;
 };
 
-const u = (id: string, w = 1600, h = 1000) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
+// Branded DRL imagery — split by role so development cards (homepage carousels)
+// always lead with a building/project shot, while interior & amenity shots
+// appear inside the property detail gallery.
+const P = {
+  // Exteriors / project shots — SAFE for card heroes / carousels
+  buildingWhite: "/images/properties/building-white-modern.png",
+  towerTwilight: "/images/properties/tower-twilight.png",
+  towersDusk: "/images/properties/towers-dusk-compound.png",
+  heritageHero1: "/images/hero-1.png",
+  heritageHero2: "/images/hero-2.png",
+  heritageHero3: "/images/hero-3.png",
+  heritagePenthouse: "/images/penthouse-lavington.png",
+  // Interiors — only used AFTER the exterior in galleries, never as card hero
+  livingDoubleHeight: "/images/properties/living-double-height.png",
+  livingWarmCity: "/images/properties/living-warm-city.png",
+  diningSkyline: "/images/properties/dining-skyline.png",
+  diningWarm: "/images/properties/dining-warm.png",
+  // Amenities — supporting gallery shots only
+  amenityLounge: "/images/properties/amenity-lounge.png",
+  amenityPool: "/images/properties/amenity-rooftop-pool.png",
+  amenityGym: "/images/properties/amenity-gym.png",
+} as const;
 
 const INTERIOR_FALLBACK_IMAGES = [
-  "/images/intro-detail.png",
+  P.livingDoubleHeight,
+  P.diningSkyline,
+  P.amenityLounge,
+  P.amenityPool,
+  P.amenityGym,
+  P.diningWarm,
+  P.livingWarmCity,
   "/images/story-1.png",
   "/images/story-2.png",
   "/images/story-3.png",
+  "/images/intro-detail.png",
 ] as const;
 
 const withInteriorFallbacks = (images: string[]) => {
@@ -187,12 +214,13 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Mini market",
     ],
     gallery: withInteriorFallbacks([
-      "/images/hero-1.png",
-      u("photo-1600585154340-be6161a56a0c"),
-      u("photo-1600607687939-ce8a6c25118c"),
-      u("photo-1600566753376-12c8ab7fb75b"),
-      u("photo-1600607687920-4e2a09cf159d"),
-      u("photo-1600607688969-a5bfcd646154"),
+      P.buildingWhite,
+      P.livingDoubleHeight,
+      P.diningSkyline,
+      P.amenityLounge,
+      P.amenityPool,
+      P.amenityGym,
+      P.diningWarm,
     ]),
   },
   {
@@ -229,11 +257,13 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Fully furnished executive apartment steps from Yaya Centre. Floor-to-ceiling windows, high-speed fibre, and a rooftop pool. Perfect for young professionals and expatriates.",
     amenities: ["Furnished", "Rooftop pool", "Fibre ready", "DSTV ready", "Ample parking"],
     gallery: withInteriorFallbacks([
-      "/images/hero-2.png",
-      u("photo-1600210492486-724fe5c67fb0"),
-      u("photo-1600566752734-6c5250b0f55a"),
-      u("photo-1600566753052-3f7ea31d52d0"),
-      u("photo-1600210491369-e753d80a41f3"),
+      P.towerTwilight,
+      P.livingDoubleHeight,
+      P.amenityPool,
+      P.diningSkyline,
+      P.amenityGym,
+      P.livingWarmCity,
+      P.amenityLounge,
     ]),
     heroVideoUrl: getPlaceholderHeroVideo("2-bed-kilimani-yaya-corridor"),
   },
@@ -270,11 +300,12 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Private gated compound with mature garden, staff quarters, and double-volume living room. Quiet leafy street with easy access to international schools and Valley Arcade.",
     amenities: ["Staff quarters", "Garden", "Solar water", "Electric fence", "Two carports"],
     gallery: withInteriorFallbacks([
-      "/images/hero-3.png",
-      u("photo-1600585154526-990dced4db0d"),
-      u("photo-1600607687644-aac4c3eac7f4"),
-      u("photo-1600607688969-a5bfcd646154"),
-      u("photo-1600573472591-ee6b68d14c68"),
+      P.heritageHero3,
+      P.livingWarmCity,
+      P.diningWarm,
+      P.livingDoubleHeight,
+      P.amenityPool,
+      P.diningSkyline,
     ]),
   },
   {
@@ -304,10 +335,12 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Compact studio with quality finishes, ideal for consultants and short stays. Walking distance to Sarit Centre and expressway access.",
     amenities: ["Gym", "Rooftop lounge", "High security", "Water storage"],
     gallery: withInteriorFallbacks([
-      u("photo-1600607687644-c7171b42498f"),
-      u("photo-1600566753190-17f0baa2a6c3"),
-      u("photo-1600566753376-12c8ab7fb75b"),
-      u("photo-1600210492486-724fe5c67fb0"),
+      P.heritageHero2,
+      P.diningSkyline,
+      P.amenityGym,
+      P.amenityLounge,
+      P.livingDoubleHeight,
+      P.amenityPool,
     ]),
   },
   {
@@ -339,11 +372,12 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Ambassadorial residence with guest cottage, heated pool, and chef's kitchen. Mature trees, full backup power, and smart-home lighting.",
     amenities: ["Guest cottage", "Pool", "Smart home", "Full backup", "Staff block"],
     gallery: withInteriorFallbacks([
-      u("photo-1613490493576-7fde63acd811"),
-      u("photo-1600585154084-4e5fe7c39198"),
-      u("photo-1600607687920-4e2a09cf159d"),
-      u("photo-1600607688969-a5bfcd646154"),
-      u("photo-1600566753086-00f18fb6b3ea"),
+      P.heritagePenthouse,
+      P.livingWarmCity,
+      P.amenityPool,
+      P.diningWarm,
+      P.livingDoubleHeight,
+      P.diningSkyline,
     ]),
   },
   {
@@ -373,10 +407,12 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Family-friendly layout with separate dining, utility area, and two parking slots. Close to Aga Khan institutions and Karura Forest trails.",
     amenities: ["Two parking", "Utility area", "Intercom", "CCTV"],
     gallery: withInteriorFallbacks([
-      u("photo-1600573472592-401b489a3cdc"),
-      u("photo-1600566752355-35792bedcfea"),
-      u("photo-1600607687939-ce8a6c25118c"),
-      u("photo-1600566753052-3f7ea31d52d0"),
+      P.heritageHero1,
+      P.diningWarm,
+      P.livingDoubleHeight,
+      P.amenityLounge,
+      P.diningSkyline,
+      P.livingWarmCity,
     ]),
   },
   {
@@ -403,7 +439,11 @@ export const FALLBACK_PROPERTIES: Property[] = [
     description:
       "Red-soil corner plot with approved building plans available. Excellent for boutique apartments or a private residence with room for a pool.",
     amenities: ["Corner plot", "Red soil", "Plans available"],
-    gallery: withInteriorFallbacks([u("photo-1500382017468-9049fed747ef")]),
+    gallery: withInteriorFallbacks([
+      P.towersDusk,
+      P.buildingWhite,
+      P.towerTwilight,
+    ]),
   },
   {
     slug: "arqam-project-parklands",
@@ -445,11 +485,13 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Playground area",
     ],
     gallery: withInteriorFallbacks([
-      "/images/penthouse-lavington.png",
-      u("photo-1600566752355-35792bedcfea"),
-      u("photo-1600566752227-8f3b5f97f31a"),
-      u("photo-1600607687644-aac4c3eac7f4"),
-      u("photo-1600566753086-00f18fb6b3ea"),
+      P.towersDusk,
+      P.livingDoubleHeight,
+      P.amenityGym,
+      P.amenityPool,
+      P.diningSkyline,
+      P.amenityLounge,
+      P.diningWarm,
     ]),
     heroVideoUrl: getPlaceholderHeroVideo("arqam-project-parklands"),
   },
