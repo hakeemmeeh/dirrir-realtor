@@ -9,7 +9,8 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   images: {
     formats: ["image/avif", "image/webp"],
-    deviceSizes: [360, 414, 640, 750, 828, 1080, 1200, 1440, 1920, 2048],
+    /* Include 2560/3840 so full-bleed heroes request sharper src on large / HiDPI viewports. */
+    deviceSizes: [360, 414, 640, 750, 828, 1080, 1200, 1440, 1920, 2048, 2560, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [

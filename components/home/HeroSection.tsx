@@ -21,6 +21,11 @@ const HERO_IMAGE = "/images/hero-fallback.png";
 
 const AUTO_MS = 8200;
 
+/** Next/image default is 75; 92 keeps files reasonable while looking clearly sharper on hero. */
+const HERO_IMAGE_QUALITY = 92;
+/** Full-bleed; with extended `deviceSizes` in next.config, srcset can go up to 3840w on large screens. */
+const HERO_SIZES = "100vw";
+
 function StaticHero() {
   const t = useTranslations("Home");
   const ref = useRef<HTMLDivElement>(null);
@@ -31,14 +36,19 @@ function StaticHero() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
   return (
     <section ref={ref} className="relative min-h-[100svh] overflow-hidden">
-      <motion.div style={{ y }} className="absolute inset-0 -z-10">
+      <motion.div
+        style={{ y }}
+        className="absolute inset-0 -z-10 will-change-transform [transform:translateZ(0)]"
+      >
         <Image
           src={HERO_IMAGE}
           alt="Nairobi skyline"
           fill
           priority
-          className="scale-105 object-cover"
-          sizes="100vw"
+          quality={HERO_IMAGE_QUALITY}
+          sizes={HERO_SIZES}
+          fetchPriority="high"
+          className="object-cover [transform:translateZ(0)] scale-[1.02]"
         />
       </motion.div>
       <div
@@ -49,48 +59,50 @@ function StaticHero() {
         }}
       />
       <div className="pointer-events-none absolute inset-0 -z-10 premium-hero-vignette" />
-      <Container className="relative flex min-h-[100svh] flex-col justify-end pb-10 pt-32 sm:pb-12 sm:pt-40 lg:pb-16 lg:pt-48">
-        <div className="max-w-3xl text-white">
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-3 font-mono text-[11px] font-bold uppercase tracking-luxury-widest text-accent"
-          >
-            Dirrir Realtor Limited
-          </motion.p>
-          <motion.div 
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="premium-hairline h-px w-44 origin-left sm:w-52" 
-          />
+      <Container className="relative flex min-h-[100svh] flex-col justify-end pb-16 pt-32 sm:pb-20 sm:pt-40 lg:pb-28 lg:pt-48">
+        <div className="max-w-2xl text-white [text-rendering:optimizeLegibility] antialiased [text-shadow:0_1px_40px_rgba(0,0,0,0.45)]">
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 font-sans text-[2rem] font-medium leading-[1.1] tracking-tight sm:mt-7 sm:text-5xl lg:text-6xl xl:text-[4.25rem]"
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-sans text-[1.75rem] font-medium leading-[1.12] tracking-tight sm:text-4xl lg:text-5xl"
           >
-            {t("heroTitle")}
+            {t("heroBrandName")}
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="story-editorial mt-7 max-w-2xl text-white/80"
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-3 font-mono text-[10px] font-bold uppercase tracking-luxury-widest text-white/70"
           >
-            {t("heroSub")}
+            {t("heroBrandLocation")}
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-4 text-lg font-medium text-accent sm:text-xl"
+          >
+            {t("heroBrandValue")}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-11 flex flex-col gap-4 sm:flex-row sm:items-center"
+            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-9 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:items-center"
           >
-            <Button href="/properties" variant="primary" className="justify-center">
+            <Button
+              href="/properties"
+              variant="heroPrimary"
+              className="w-full justify-center sm:w-auto sm:min-w-[200px]"
+            >
               {t("browse")}
             </Button>
-            <Button href="/contact" variant="luxury" className="justify-center">
+            <Button
+              href="/contact"
+              variant="heroLuxury"
+              className="w-full justify-center sm:w-auto sm:min-w-[200px]"
+            >
               {t("talkAgent")}
             </Button>
           </motion.div>
@@ -155,11 +167,14 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
         if (!e.currentTarget.contains(e.relatedTarget as Node)) setPaused(false);
       }}
     >
-      <motion.div style={{ y }} className="absolute inset-0 -z-10">
+      <motion.div
+        style={{ y }}
+        className="absolute inset-0 -z-10 will-change-transform [transform:translateZ(0)]"
+      >
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={current.slug}
-            className="absolute inset-0"
+            className="absolute inset-0 will-change-[opacity] [transform:translateZ(0)]"
             initial={{ opacity: reduceMotion ? 1 : 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: reduceMotion ? 1 : 0 }}
@@ -172,19 +187,21 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                   alt={current.title}
                   fill
                   priority={index === 0}
-                  className="object-cover"
-                  sizes="100vw"
+                  quality={HERO_IMAGE_QUALITY}
+                  sizes={HERO_SIZES}
+                  fetchPriority={index === 0 ? "high" : "low"}
+                  className="object-cover [transform:translateZ(0)]"
                 />
                 {videoReady ? (
                   <video
-                    className="absolute inset-0 h-full w-full scale-105 object-cover"
+                    className="absolute inset-0 h-full w-full object-cover [transform:translateZ(0)] scale-[1.01]"
                     src={current.heroVideoUrl}
                     poster={current.gallery[0]}
                     autoPlay
                     muted
                     loop
                     playsInline
-                    preload="metadata"
+                    preload="auto"
                     aria-hidden
                   />
                 ) : null}
@@ -195,8 +212,10 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                 alt={current.title}
                 fill
                 priority={index === 0}
-                className="object-cover"
-                sizes="100vw"
+                quality={HERO_IMAGE_QUALITY}
+                sizes={HERO_SIZES}
+                fetchPriority={index === 0 ? "high" : "low"}
+                className="object-cover [transform:translateZ(0)]"
               />
             )}
           </motion.div>
@@ -212,14 +231,9 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
       />
       <div className="pointer-events-none absolute inset-0 -z-10 premium-hero-vignette" />
 
-      <Container className="relative flex min-h-[100svh] flex-col justify-end pb-8 pt-32 sm:pt-40 lg:pb-12 lg:pt-48">
+      <Container className="relative flex min-h-[100svh] flex-col justify-end pb-16 pt-32 sm:pb-18 sm:pt-40 lg:pb-24 lg:pt-48">
         <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-3xl text-white">
-            <p className="font-mono text-[11px] font-bold uppercase tracking-luxury-widest text-accent">
-              {t("carouselEyebrow")}
-            </p>
-            <div className="premium-hairline mt-4 h-px w-40 sm:w-48" />
-
+          <div className="max-w-2xl text-white [text-rendering:optimizeLegibility] antialiased [text-shadow:0_1px_40px_rgba(0,0,0,0.45)]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.slug}
@@ -228,48 +242,44 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-6 font-mono text-[10px] font-bold uppercase tracking-luxury-widest text-white/80"
-                  aria-live="polite"
-                >
-                  {t("heroSlideOf", { current: index + 1, total: len })}
-                </motion.p>
+                {len > 1 ? (
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-mono text-[10px] font-bold uppercase tracking-luxury-widest text-white/65"
+                    aria-live="polite"
+                  >
+                    {t("heroSlideOf", { current: index + 1, total: len })}
+                  </motion.p>
+                ) : null}
 
                 <motion.h1
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-5 hidden font-sans font-medium leading-[1.08] tracking-tight sm:block sm:text-5xl lg:text-6xl xl:text-[4.5rem]"
+                  transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  className={cn(
+                    "font-sans text-[1.65rem] font-medium leading-[1.12] tracking-tight sm:text-4xl lg:text-5xl",
+                    len > 1 ? "mt-3 sm:mt-4" : "mt-0",
+                  )}
                 >
-                  {t("heroTitle")}
+                  {current.title}
                 </motion.h1>
 
-                <motion.p 
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                  className="mt-3 font-mono text-[10px] font-bold uppercase tracking-luxury-widest text-white/70"
+                >
+                  {current.location} · {current.city?.trim() || "Nairobi"}
+                </motion.p>
+
+                <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-4 hidden leading-relaxed text-white/80 sm:block sm:text-lg max-w-2xl"
-                >
-                  {t("heroSub")}
-                </motion.p>
-
-                <motion.p 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-4 text-base font-semibold text-white sm:mt-8 sm:text-lg"
-                >
-                  {current.title} — {current.location}
-                </motion.p>
-
-                <motion.p 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-1.5 text-base font-semibold text-accent sm:mt-2 sm:text-lg"
+                  className="mt-4 text-lg font-semibold text-accent sm:text-xl"
                 >
                   {priceLabel}
                 </motion.p>
@@ -277,20 +287,28 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
+                  transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
                 >
                   <Button
                     href={`/properties/${current.slug}`}
-                    variant="primary"
-                    className="justify-center"
+                    variant="heroPrimary"
+                    className="w-full justify-center sm:w-auto sm:min-w-[180px]"
                   >
                     {t("heroViewListing")}
                   </Button>
-                  <Button href="/properties" variant="luxury" className="justify-center">
+                  <Button
+                    href="/properties"
+                    variant="heroLuxury"
+                    className="w-full justify-center sm:w-auto sm:min-w-[180px]"
+                  >
                     {t("browse")}
                   </Button>
-                  <Button href="/contact" variant="ghost" className="justify-center !text-white hover:!text-accent">
+                  <Button
+                    href="/contact"
+                    variant="heroGhost"
+                    className="w-full justify-center sm:w-auto sm:min-w-[180px]"
+                  >
                     {t("talkAgent")}
                   </Button>
                 </motion.div>

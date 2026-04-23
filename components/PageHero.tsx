@@ -41,9 +41,11 @@ export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Prop
               src={posterSrc}
               alt=""
               fill
-              className="object-cover"
+              className="object-cover [transform:translateZ(0)]"
               sizes="100vw"
+              quality={92}
               priority
+              fetchPriority="high"
               aria-hidden
             />
           ) : null}
@@ -56,7 +58,7 @@ export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Prop
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
               aria-hidden
             />
           ) : null}

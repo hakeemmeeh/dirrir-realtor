@@ -78,8 +78,9 @@ body {
     );
   }
 
+  /* Slightly lighter than before so background photography reads crisper (more “HD”). */
   .premium-hero-vignette {
-    box-shadow: inset 0 0 160px rgba(0, 0, 0, 0.55);
+    box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.38);
   }
 
   .glass-panel {
