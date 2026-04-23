@@ -56,7 +56,7 @@ export function CollectionChoiceGrid() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.5 }}
-              className="group relative aspect-[4/5] overflow-hidden rounded-none bg-charcoal shadow-2xl transition-all duration-500 hover:-translate-y-2 lg:aspect-[3/4]"
+              className="group relative aspect-[3/4] overflow-hidden rounded-none bg-charcoal shadow-2xl transition-all duration-500 hover:-translate-y-2 lg:aspect-[2/3]"
             >
               <Link href={c.href} className="absolute inset-0 z-10 block">
                 <span className="sr-only">Explore {c.title}</span>
@@ -69,17 +69,17 @@ export function CollectionChoiceGrid() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/20 to-transparent" />
               
-              <div className="absolute inset-x-0 bottom-0 p-8 lg:p-12">
+              <div className="absolute inset-x-0 bottom-0 px-8 pb-8 pt-10 lg:px-12 lg:pb-10 lg:pt-14">
                 <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-accent">
                   Collection {i + 1}
                 </span>
-                <h3 className="mt-4 font-sans text-3xl font-medium tracking-tight text-white sm:text-4xl lg:text-5xl">
+                <h3 className="mt-3 font-sans text-3xl font-medium tracking-tight text-white sm:text-4xl lg:text-5xl">
                   {c.title}
                 </h3>
-                <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/80 sm:text-base">
+                <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/80 sm:text-base">
                   {c.lead}
                 </p>
-                <div className="mt-10">
+                <div className="mt-8">
                   <div className="inline-flex items-center justify-center rounded-none border border-accent bg-accent/10 px-8 py-4 text-[11px] font-bold uppercase tracking-[0.25em] text-white backdrop-blur-sm transition-all duration-300 group-hover:bg-accent group-hover:text-primary">
                     Explore {c.label}
                   </div>

@@ -75,7 +75,7 @@ export function DevelopmentCarousel({ properties }: Props) {
             <DevelopmentCard 
               property={property} 
               index={index} 
-              className="h-[380px] sm:h-[440px]" 
+              className="h-[480px] sm:h-[560px] lg:h-[600px]" 
             />
           </div>
         ))}
