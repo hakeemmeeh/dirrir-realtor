@@ -10,8 +10,12 @@ export function MarketIntelligence() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="border-t border-border bg-background py-24 lg:py-36">
-      <Container>
+    <section className="relative overflow-hidden bg-charcoal py-24 text-ivory lg:py-36">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-sand via-sand/55 to-transparent lg:h-32"
+      />
+      <Container className="relative">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -29,13 +33,13 @@ export function MarketIntelligence() {
             <motion.div variants={fadeUp} className="premium-hairline-accent mx-auto mt-4 h-px w-24 sm:mx-0 sm:w-32" />
             <motion.h2
               variants={fadeUp}
-              className="mt-8 font-sans text-3xl font-medium leading-[1.1] tracking-tight text-primary sm:text-4xl lg:text-5xl"
+              className="mt-8 font-sans text-3xl font-medium leading-[1.1] tracking-tight text-ivory sm:text-4xl lg:text-5xl"
             >
               The East Africa Property Report
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="mt-6 max-w-lg text-sm leading-relaxed text-text-light sm:text-base lg:text-lg"
+              className="mt-6 max-w-lg text-sm leading-relaxed text-ivory/75 sm:text-base lg:text-lg"
             >
               Access our proprietary data and quarterly insights on Nairobi’s highest performing real estate sectors. Make your next move with total clarity.
             </motion.p>

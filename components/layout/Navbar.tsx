@@ -57,7 +57,7 @@ export function Navbar() {
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         solid
           ? "bg-white shadow-lg"
-          : "bg-white/95 backdrop-blur-md shadow-sm"
+          : "bg-white backdrop-blur-md shadow-sm"
       )}
     >
       <div
@@ -68,13 +68,13 @@ export function Navbar() {
       >
         <Link href="/" className="relative z-10 flex items-center">
             <Image
-              src="/images/logo-light-transparent.png"
+              src="/images/logo-official.png"
               alt="Dirrir Realtor Limited"
-              width={280}
-              height={104}
+              width={560}
+              height={280}
               className={cn(
-                "w-auto object-contain object-left transition-all duration-500",
-                solid ? "h-11 sm:h-14 lg:h-[4.5rem]" : "h-14 sm:h-16 lg:h-28"
+                "w-auto object-contain object-left mix-blend-multiply transition-all duration-500",
+                solid ? "h-[3.75rem] sm:h-[4.15rem] lg:h-[5.1rem]" : "h-[4.5rem] sm:h-[5rem] lg:h-[7rem]"
               )}
               priority
             />
