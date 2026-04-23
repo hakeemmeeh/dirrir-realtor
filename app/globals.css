@@ -119,6 +119,20 @@ body {
   .animate-slide-in-reveal {
     animation: slideInReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
+
+  @keyframes logoMarquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-logo-marquee {
+    animation: logoMarquee 26s linear infinite;
+    will-change: transform;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -127,7 +141,8 @@ body {
   }
 
   .animate-fade-in-up,
-  .animate-slide-in-reveal {
+  .animate-slide-in-reveal,
+  .animate-logo-marquee {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;

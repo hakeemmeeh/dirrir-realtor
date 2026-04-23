@@ -83,15 +83,28 @@ export function AboutTestimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.9, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -4 }}
-              className="group relative flex flex-col border border-border bg-background p-7 transition-shadow duration-500 hover:shadow-[0_24px_60px_-24px_rgba(28,40,51,0.25)]"
+              whileHover={{ y: 0 }}
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.995)_0%,rgba(247,246,242,0.86)_100%)] p-8 ring-1 ring-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_12px_44px_rgba(21,31,40,0.08)] transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-[0_28px_70px_rgba(26,26,26,0.08)] sm:p-9"
             >
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/40 via-transparent to-primary/[0.04]" />
+              <div
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(196,30,36,0.07),transparent_38%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                aria-hidden
+              />
+              <span
+                className="absolute left-0 top-0 h-px w-16 bg-accent transition-all duration-500 group-hover:w-full"
+                aria-hidden
+              />
+              <div className="pointer-events-none absolute left-0 top-0 h-32 w-32 bg-accent/7 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
               <Quote
-                className="pointer-events-none absolute right-5 top-5 h-10 w-10 text-accent/15"
+                className="pointer-events-none absolute right-5 top-5 h-10 w-10 text-accent/15 transition-colors duration-500 group-hover:text-accent/25"
                 aria-hidden
               />
 
-              <div className="flex items-center gap-1" aria-label={`${item.rating} out of 5 stars`}>
+              <div
+                className="inline-flex w-max items-center gap-1 rounded-full border border-border/60 bg-white/60 px-2 py-1 backdrop-blur-sm"
+                aria-label={`${item.rating} out of 5 stars`}
+              >
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
@@ -104,13 +117,13 @@ export function AboutTestimonials() {
                 ))}
               </div>
 
-              <p className="mt-5 flex-1 text-[0.95rem] leading-relaxed text-text">
+              <p className="mt-6 flex-1 font-editorial text-[1.04rem] leading-[1.75] text-text sm:text-[1.06rem]">
                 &ldquo;{item.quote}&rdquo;
               </p>
 
-              <div className="mt-7 flex items-center gap-4 border-t border-border pt-5">
+              <div className="mt-7 flex items-center gap-4 border-t border-border/70 pt-5">
                 <div
-                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${item.accent} text-white shadow-md`}
+                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${item.accent} text-white shadow-[0_12px_28px_rgba(21,31,40,0.16)] ring-4 ring-white`}
                   aria-hidden
                 >
                   <span className="font-serif text-sm font-semibold tracking-wider">
@@ -118,7 +131,7 @@ export function AboutTestimonials() {
                   </span>
                 </div>
                 <div className="min-w-0">
-                  <p className="truncate font-sans text-sm font-semibold text-primary">
+                  <p className="truncate font-sans text-sm font-semibold text-primary transition-colors duration-500 group-hover:text-accent">
                     {item.name}
                   </p>
                   <p className="mt-0.5 truncate text-xs text-text-light">

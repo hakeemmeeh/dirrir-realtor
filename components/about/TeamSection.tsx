@@ -74,19 +74,29 @@ export function TeamSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.9, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -4 }}
-              className="group flex flex-col border border-border bg-background p-7 transition-shadow duration-500 hover:shadow-[0_24px_60px_-24px_rgba(28,40,51,0.25)]"
+              whileHover={{ y: 0 }}
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.99)_0%,rgba(247,246,242,0.86)_100%)] p-8 ring-1 ring-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_12px_44px_rgba(21,31,40,0.08)] transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-[0_28px_70px_rgba(26,26,26,0.08)] sm:p-9"
             >
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/35 via-transparent to-primary/[0.04]" />
+              <div
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(196,30,36,0.07),transparent_38%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                aria-hidden
+              />
+              <span
+                className="absolute left-0 top-0 h-px w-16 bg-accent transition-all duration-500 group-hover:w-full"
+                aria-hidden
+              />
+              <div className="pointer-events-none absolute right-0 top-0 h-28 w-28 bg-accent/7 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="flex items-center gap-4">
                 <div
-                  className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${member.accent} text-white shadow-lg`}
+                  className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${member.accent} text-white shadow-[0_14px_30px_rgba(21,31,40,0.18)] ring-4 ring-white transition-shadow duration-500 group-hover:ring-accent/20`}
                 >
                   <span className="font-serif text-lg font-semibold tracking-wider">
                     {member.initials}
                   </span>
                 </div>
                 <div className="min-w-0">
-                  <p className="truncate font-sans text-base font-semibold text-primary sm:text-lg">
+                  <p className="truncate font-sans text-base font-semibold text-primary transition-colors duration-500 group-hover:text-accent sm:text-lg">
                     {member.name}
                   </p>
                   <p className="mt-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-accent">
@@ -95,13 +105,13 @@ export function TeamSection() {
                 </div>
               </div>
 
-              <p className="mt-6 text-sm leading-relaxed text-text-light">{member.bio}</p>
+              <p className="mt-6 flex-1 text-sm leading-relaxed text-text-light">{member.bio}</p>
 
-              <div className="mt-auto flex items-center gap-3 pt-6">
+              <div className="mt-6 flex items-center gap-2 border-t border-border/70 pt-5">
                 {member.email ? (
                   <a
                     href={`mailto:${member.email}`}
-                    className="inline-flex h-10 w-10 items-center justify-center border border-border text-text-light transition-colors hover:border-accent hover:text-accent"
+                    className="inline-flex h-10 w-10 items-center justify-center border border-border bg-white/80 text-text-light transition-colors hover:border-accent hover:text-accent"
                     aria-label={`Email ${member.name}`}
                   >
                     <Mail className="h-4 w-4" />
@@ -112,7 +122,7 @@ export function TeamSection() {
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-10 w-10 items-center justify-center border border-border text-text-light transition-colors hover:border-accent hover:text-accent"
+                    className="inline-flex h-10 w-10 items-center justify-center border border-border bg-white/80 text-text-light transition-colors hover:border-accent hover:text-accent"
                     aria-label={`LinkedIn — ${member.name}`}
                   >
                     <svg
