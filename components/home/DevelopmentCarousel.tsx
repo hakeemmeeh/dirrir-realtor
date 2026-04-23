@@ -69,7 +69,7 @@ export function DevelopmentCarousel({ properties }: Props) {
           <div
             key={property.slug}
             // Fit ~4 cards on XL screens, 3 on LG, 2 on MD, 1 on Mobile
-            className="w-[85vw] shrink-0 snap-center sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(25%-15px)]"
+            className="w-[calc(100vw-2rem)] shrink-0 snap-center sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(25%-15px)]"
           >
             {/* Override the default tall height so they fit better when smaller */}
             <DevelopmentCard 

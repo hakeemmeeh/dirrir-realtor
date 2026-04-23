@@ -57,7 +57,7 @@ export function Navbar() {
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         solid
           ? "bg-white shadow-lg"
-          : "bg-[linear-gradient(to_bottom,rgba(255,255,255,0.98)_0%,rgba(255,255,255,0.94)_58%,rgba(255,255,255,0)_100%)] backdrop-blur-md"
+          : "bg-white/95 backdrop-blur-md shadow-sm"
       )}
     >
       <div

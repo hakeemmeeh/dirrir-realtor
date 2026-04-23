@@ -242,7 +242,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-5 font-sans text-[2rem] font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl xl:text-[4.5rem]"
+                  className="mt-5 hidden font-sans font-medium leading-[1.08] tracking-tight sm:block sm:text-5xl lg:text-6xl xl:text-[4.5rem]"
                 >
                   {t("heroTitle")}
                 </motion.h1>
@@ -251,7 +251,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg max-w-2xl"
+                  className="mt-4 hidden leading-relaxed text-white/80 sm:block sm:text-lg max-w-2xl"
                 >
                   {t("heroSub")}
                 </motion.p>
@@ -260,7 +260,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-8 text-lg font-semibold text-white"
+                  className="mt-4 text-base font-semibold text-white sm:mt-8 sm:text-lg"
                 >
                   {current.title} — {current.location}
                 </motion.p>
@@ -269,7 +269,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-2 text-lg font-semibold text-accent"
+                  className="mt-1.5 text-base font-semibold text-accent sm:mt-2 sm:text-lg"
                 >
                   {priceLabel}
                 </motion.p>
@@ -278,7 +278,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center"
+                  className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
                 >
                   <Button
                     href={`/properties/${current.slug}`}

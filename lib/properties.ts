@@ -79,6 +79,11 @@ const P = {
   amenityLounge: "/images/properties/amenity-lounge.png",
   amenityPool: "/images/properties/amenity-rooftop-pool.png",
   amenityGym: "/images/properties/amenity-gym.png",
+  // Land / plot imagery
+  landPlotAerial:
+    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&h=1000&q=80",
+  landPlotCorner:
+    "https://images.unsplash.com/photo-1542889601-399c4f3a8402?auto=format&fit=crop&w=1600&h=1000&q=80",
 } as const;
 
 const INTERIOR_FALLBACK_IMAGES = [
@@ -439,11 +444,12 @@ export const FALLBACK_PROPERTIES: Property[] = [
     description:
       "Red-soil corner plot with approved building plans available. Excellent for boutique apartments or a private residence with room for a pool.",
     amenities: ["Corner plot", "Red soil", "Plans available"],
-    gallery: withInteriorFallbacks([
-      P.towersDusk,
+    gallery: [
+      P.landPlotAerial,
+      P.landPlotCorner,
       P.buildingWhite,
       P.towerTwilight,
-    ]),
+    ],
   },
   {
     slug: "arqam-project-parklands",
