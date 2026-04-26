@@ -1,7 +1,5 @@
 import type { AreaData } from "@/components/areas/AreaCard";
 
-const img = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1600&q=80`;
 
 export const AREAS: AreaData[] = [
   {
