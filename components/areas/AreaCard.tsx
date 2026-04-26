@@ -102,7 +102,7 @@ export function AreaCard({
           <div className="mt-4">
             <Button 
               href={`/properties?location=${filterLoc}`} 
-              variant="outline"
+              variant="secondary"
               className="px-8 border-primary/20 hover:border-primary hover:bg-primary hover:text-white transition-all duration-500"
             >
               {ctaLabel}
