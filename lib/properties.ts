@@ -63,10 +63,10 @@ export type Property = {
 // appear inside the property detail gallery.
 const P = {
   // Exteriors / project shots — SAFE for card heroes / carousels
-  buildingWhite: "/images/properties/building-white-modern.png",
-  towerTwilight: "/images/properties/tower-twilight.png",
+  buildingWhite: "/images/second_parklands_apartment.png",
+  towerTwilight: "/images/kilimani_residence_hd.png",
   towersDusk: "/images/properties/towers-dusk-compound.png",
-  heritageHero1: "/images/hero-1.png",
+  heritageHero1: "/images/urban_residence.png",
   heritageHero2: "/images/hero-2.png",
   heritageHero3: "/images/hero-3.png",
   heritagePenthouse: "/images/penthouse-lavington.png",
@@ -84,6 +84,10 @@ const P = {
     "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&h=1000&q=80",
   landPlotCorner:
     "https://images.unsplash.com/photo-1542889601-399c4f3a8402?auto=format&fit=crop&w=1600&h=1000&q=80",
+  // AI-generated premium high-rises
+  arqamHero: "/images/arqam_project.png",
+  heightsHero: "/images/highrise_exterior.png",
+  riversideHero: "/images/nairobi_riverside_ultra.png",
 } as const;
 
 const INTERIOR_FALLBACK_IMAGES = [
@@ -274,8 +278,8 @@ export const FALLBACK_PROPERTIES: Property[] = [
   },
   {
     slug: "4-bed-lavington-mansionette",
-    title: "Dirrir Gardens Lavington",
-    propertyType: "Townhouse",
+    title: "Dirrir Lavington",
+    propertyType: "Apartment",
     status: "For Sale",
     propertyId: "DRL-003",
     price: 42000000,
@@ -302,7 +306,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
     portfolioPriority: 3,
     featured: true,
     description:
-      "Private gated compound with mature garden, staff quarters, and double-volume living room. Quiet leafy street with easy access to international schools and Valley Arcade.",
+      "A premium residential apartment development in Lavington. Floor-to-ceiling windows, high-speed fibre, and a rooftop pool. Perfect for professionals and established families seeking urban luxury.",
     amenities: ["Staff quarters", "Garden", "Solar water", "Electric fence", "Two carports"],
     gallery: withInteriorFallbacks([
       P.heritageHero3,
@@ -315,7 +319,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
   },
   {
     slug: "studio-westlands-sarit",
-    title: "Dirrir Heights Westlands",
+    title: "Dirrir Heights",
     propertyType: "Apartment",
     status: "For Rent",
     propertyId: "DRL-004",
@@ -335,12 +339,12 @@ export const FALLBACK_PROPERTIES: Property[] = [
     exteriorMaterial: "Concrete frame with glazed balcony lines",
     tagline: "Westlands · Investor-ready studios",
     collection: "investment",
-    featured: false,
+    featured: true,
     description:
       "Compact studio with quality finishes, ideal for consultants and short stays. Walking distance to Sarit Centre and expressway access.",
     amenities: ["Gym", "Rooftop lounge", "High security", "Water storage"],
     gallery: withInteriorFallbacks([
-      P.heritageHero2,
+      P.heightsHero,
       P.diningSkyline,
       P.amenityGym,
       P.amenityLounge,
@@ -350,8 +354,8 @@ export const FALLBACK_PROPERTIES: Property[] = [
   },
   {
     slug: "5-bed-riverside-garden",
-    title: "Dirrir Riverside Villas",
-    propertyType: "House",
+    title: "Dirrir Riverside",
+    propertyType: "Apartment",
     status: "For Sale",
     propertyId: "DRL-005",
     price: 89000000,
@@ -374,10 +378,10 @@ export const FALLBACK_PROPERTIES: Property[] = [
     collection: "living",
     featured: true,
     description:
-      "Ambassadorial residence with guest cottage, heated pool, and chef's kitchen. Mature trees, full backup power, and smart-home lighting.",
+      "Exclusive riverside apartment tower with panoramic views, heated pool, and bespoke interiors. Mature trees surround the development, offering full backup power and smart-home features.",
     amenities: ["Guest cottage", "Pool", "Smart home", "Full backup", "Staff block"],
     gallery: withInteriorFallbacks([
-      P.heritagePenthouse,
+      P.riversideHero,
       P.livingWarmCity,
       P.amenityPool,
       P.diningWarm,
@@ -387,7 +391,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
   },
   {
     slug: "3-bed-parklands-family",
-    title: "Dirrir Parklands Court",
+    title: "Dirrir Parklands",
     propertyType: "Apartment",
     status: "For Sale",
     propertyId: "DRL-006",
@@ -453,7 +457,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
   },
   {
     slug: "arqam-project-parklands",
-    title: "Arqam Projects",
+    title: "Arqam Project",
     propertyType: "Apartment",
     status: "For Sale",
     propertyId: "DRL-008",
@@ -491,7 +495,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Playground area",
     ],
     gallery: withInteriorFallbacks([
-      P.towersDusk,
+      P.arqamHero,
       P.livingDoubleHeight,
       P.amenityGym,
       P.amenityPool,

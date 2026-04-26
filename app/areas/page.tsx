@@ -27,18 +27,27 @@ export default async function AreasPage() {
   return (
     <>
       <PageHero title={t("heroTitle")} subtitle={t("heroSub")} />
-      <section className="bg-background py-12 lg:py-20">
-        <Container className="flex flex-col gap-16 lg:gap-24">
-          {AREAS.map((area, index) => (
-            <AreaCard
-              key={area.slug}
-              area={area}
-              index={index}
-              highlightsLabel={t("highlights")}
-              priceLabel={t("priceRange")}
-              ctaLabel={t("viewProps", { area: area.name })}
-            />
-          ))}
+      <section className="bg-background py-20 lg:py-32">
+        <Container>
+          <div className="mb-20 max-w-2xl lg:mb-32">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Curated Portfolio</span>
+            <h2 className="mt-4 font-serif text-3xl font-light text-text lg:text-4xl">
+              Discover the most prestigious residential environments in Nairobi.
+            </h2>
+          </div>
+          
+          <div className="flex flex-col gap-32 lg:gap-48">
+            {AREAS.map((area, index) => (
+              <AreaCard
+                key={area.slug}
+                area={area}
+                index={index}
+                highlightsLabel={t("highlights")}
+                priceLabel={t("priceRange")}
+                ctaLabel={t("viewProps", { area: area.name })}
+              />
+            ))}
+          </div>
         </Container>
       </section>
     </>

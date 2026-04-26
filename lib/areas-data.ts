@@ -12,7 +12,7 @@ export const AREAS: AreaData[] = [
     highlights: ["Aga Khan Academy", "Sarit Centre", "City Park", "Karura Forest nearby"],
     priceSale: "KES 10M – 25M+",
     priceRent: "KES 40K – 200K",
-    image: img("photo-1600585154526-990dced4db0d"),
+    image: "/images/urban_residence.png",
   },
   {
     name: "Kilimani",
@@ -22,7 +22,7 @@ export const AREAS: AreaData[] = [
     highlights: ["Yaya Centre", "Prestige Plaza", "Adams Arcade", "Nightlife and dining"],
     priceSale: "KES 8M – 35M+",
     priceRent: "KES 50K – 250K",
-    image: img("photo-1600566753190-17f0baa2a6c3"),
+    image: "/images/villa_facade.png",
   },
   {
     name: "Westlands",
@@ -32,7 +32,7 @@ export const AREAS: AreaData[] = [
     highlights: ["Sarit Centre", "The Village Market", "Waiyaki Way", "UN offices nearby"],
     priceSale: "KES 12M – 40M+",
     priceRent: "KES 45K – 280K",
-    image: img("photo-1480714378408-67cf0d13bc1b"),
+    image: "/images/highrise_exterior.png",
   },
   {
     name: "Lavington",
@@ -47,7 +47,7 @@ export const AREAS: AreaData[] = [
     ],
     priceSale: "KES 25M – 90M+",
     priceRent: "KES 80K – 350K",
-    image: img("photo-1600047509807-ba8f99d2cdde"),
+    image: "/images/luxury_villa.png",
   },
   {
     name: "Other Areas",
@@ -57,6 +57,6 @@ export const AREAS: AreaData[] = [
     highlights: ["Riverside", "South B & C", "Ngong Road", "Kileleshwa"],
     priceSale: "On request",
     priceRent: "On request",
-    image: img("photo-1600607687939-ce8a6c25118c"),
+    image: "/images/waterfront_development.png",
   },
 ];

@@ -36,60 +36,78 @@ export function AreaCard({
   const reduceMotion = useReducedMotion();
 
   return (
-    <article className="grid overflow-hidden rounded-sm border border-border bg-background shadow-sm lg:grid-cols-2">
+    <article className="group relative grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
       <motion.div
         variants={reduceMotion ? fadeUpReduced : imageLeft ? slideInLeft : slideInRight}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className={`relative min-h-[240px] lg:min-h-[360px] ${imageLeft ? "lg:order-1" : "lg:order-2"}`}
+        className={`relative aspect-[4/3] overflow-hidden rounded-sm lg:aspect-[16/11] ${
+          imageLeft ? "lg:order-1" : "lg:order-2"
+        }`}
       >
         <Image
           src={area.image}
           alt={area.name}
           fill
-          className="object-cover transition-transform duration-[2s] ease-out hover:scale-105"
+          className="object-cover transition-transform duration-[3s] ease-out group-hover:scale-105"
           sizes="(max-width:1024px) 100vw, 50vw"
           priority={index === 0}
-          loading={index === 0 ? "eager" : "lazy"}
-          quality={78}
-          placeholder="blur"
-          blurDataURL="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDIwIDE0Ij48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIGZpbGw9IiMxYTIwMjgiLz48L3N2Zz4="
+          quality={85}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent lg:bg-gradient-to-r" />
-        <div className="absolute bottom-4 left-4 right-4 lg:bottom-8 lg:left-8">
-          <h2 className="font-sans text-3xl font-medium tracking-tight text-white">{area.name}</h2>
-        </div>
+        <div className="absolute inset-0 bg-black/10 transition-colors duration-700 group-hover:bg-transparent" />
       </motion.div>
+
       <motion.div
         variants={reduceMotion ? fadeUpReduced : imageLeft ? slideInRight : slideInLeft}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className={`flex flex-col justify-center p-8 lg:p-12 ${imageLeft ? "lg:order-2" : "lg:order-1"}`}
+        className={`flex flex-col ${imageLeft ? "lg:order-2" : "lg:order-1 lg:text-right lg:items-end"}`}
       >
-        <p className="leading-relaxed text-text">{area.description}</p>
-        <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-text-light">
-          {highlightsLabel}
+        <div className="mb-4 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+          <span className="h-px w-8 bg-primary/30" />
+          {area.slug === "other" ? "Nairobi & Beyond" : "Premium Neighbourhood"}
+        </div>
+        
+        <h2 className="mb-6 font-serif text-4xl font-light tracking-tight text-text lg:text-6xl">
+          {area.name}
+        </h2>
+        
+        <p className={`max-w-xl text-lg leading-relaxed text-text-light/90 ${!imageLeft && "lg:text-right"}`}>
+          {area.description}
         </p>
-        <ul className="mt-2 flex flex-wrap gap-2">
-          {area.highlights.map((h) => (
-            <li
-              key={h}
-              className="rounded-full bg-background-alt px-3 py-1 text-xs font-medium text-text"
+
+        <div className={`mt-8 space-y-6 ${!imageLeft && "lg:items-end flex flex-col"}`}>
+          <div>
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.1em] text-text-light/60">
+              {highlightsLabel}
+            </p>
+            <ul className={`flex flex-wrap gap-x-4 gap-y-2 ${!imageLeft && "lg:justify-end"}`}>
+              {area.highlights.map((h) => (
+                <li key={h} className="text-sm font-medium text-text border-b border-border/50 pb-1">
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="pt-4">
+            <p className="text-sm italic text-text-light/80">
+              <span className="not-italic font-bold text-primary mr-2">{priceLabel}</span>
+              {area.priceSale} (Sales) &middot; {area.priceRent} (Rentals)
+            </p>
+          </div>
+
+          <div className="mt-4">
+            <Button 
+              href={`/properties?location=${filterLoc}`} 
+              variant="outline"
+              className="px-8 border-primary/20 hover:border-primary hover:bg-primary hover:text-white transition-all duration-500"
             >
-              {h}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-6 text-sm text-text-light">
-          <span className="font-semibold text-primary">{priceLabel}: </span>
-          Sales {area.priceSale} · Rentals {area.priceRent}
-        </p>
-        <div className="mt-8">
-          <Button href={`/properties?location=${filterLoc}`} variant="primary">
-            {ctaLabel}
-          </Button>
+              {ctaLabel}
+            </Button>
+          </div>
         </div>
       </motion.div>
     </article>
