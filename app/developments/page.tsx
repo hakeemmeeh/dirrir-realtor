@@ -30,7 +30,8 @@ export default async function DevelopmentsPage() {
   const t = await getTranslations("Home");
   const all = await getAllProperties();
   const listingPaths = all.map((p) => `/properties/${p.slug}`);
-  const showcaseMedia = all.find((p) => p.heroVideoUrl);
+  const heroPoster =
+    all.find((p) => p.gallery[0])?.gallery[0] ?? "/images/hero-fallback.png";
   const completedDevelopments = all
     .filter((p) => !p.isNewDevelopment)
     .slice(0, 6);
@@ -42,8 +43,7 @@ export default async function DevelopmentsPage() {
         title={t("devHeroTitle")}
         subtitle={t("devHeroSub")}
         compact
-        videoSrc={showcaseMedia?.heroVideoUrl}
-        posterSrc={showcaseMedia?.gallery[0]}
+        posterSrc={heroPoster}
       />
       <CompletedDevelopments properties={completedDevelopments} />
       <NewDevelopments properties={all} />

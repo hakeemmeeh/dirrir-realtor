@@ -10,14 +10,17 @@ type Props = {
   title: string;
   subtitle?: string;
   compact?: boolean;
-  /** Optional background video (e.g. property tour). Falls back to gradient only when omitted. */
+  /** Optional background video layered over posterSrc (omit on listings heroes that should stay image-only). */
   videoSrc?: string;
+  /** Full-bleed hero photo — shown alone without videoSrc, or as poster under video when videoSrc is set. */
   posterSrc?: string;
 };
 
 export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Props) {
   const reduceMotion = useReducedMotion();
   const [mountVideo, setMountVideo] = useState(false);
+
+  const hasBackgroundMedia = Boolean(posterSrc || videoSrc);
 
   useEffect(() => {
     if (!videoSrc || reduceMotion) {
@@ -32,10 +35,10 @@ export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Prop
   return (
     <section
       className={`relative min-h-[220px] overflow-hidden text-ivory ${compact ? "pt-28 pb-20 sm:py-24 lg:py-28" : "pt-32 pb-20 sm:pt-32 sm:pb-24 lg:py-36"} ${
-        videoSrc ? "bg-primary" : "bg-gradient-to-br from-charcoal via-primary to-primary"
+        hasBackgroundMedia ? "bg-primary" : "bg-gradient-to-br from-charcoal via-primary to-primary"
       }`}
     >
-      {videoSrc ? (
+      {hasBackgroundMedia ? (
         <>
           {posterSrc ? (
             <Image
@@ -50,7 +53,7 @@ export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Prop
               aria-hidden
             />
           ) : null}
-          {mountVideo ? (
+          {videoSrc && mountVideo ? (
             <MutedAutoplayVideo
               className="absolute inset-0 h-full min-h-[320px] w-full object-cover"
               src={videoSrc}

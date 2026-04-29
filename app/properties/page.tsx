@@ -46,7 +46,8 @@ export default async function PropertiesPage({ searchParams }: Props) {
 
   const all = await getAllProperties();
   const filtered = filterProperties(all, filters);
-  const heroMedia = all.find((p) => p.heroVideoUrl);
+  const heroPoster =
+    all.find((p) => p.gallery[0])?.gallery[0] ?? "/images/hero-fallback.png";
 
   return (
     <>
@@ -54,8 +55,7 @@ export default async function PropertiesPage({ searchParams }: Props) {
         title={t("heroTitle")}
         subtitle={t("heroSub")}
         compact
-        videoSrc={heroMedia?.heroVideoUrl}
-        posterSrc={heroMedia?.gallery[0]}
+        posterSrc={heroPoster}
       />
       <FilterBar />
       <section className="py-12 lg:py-16">
