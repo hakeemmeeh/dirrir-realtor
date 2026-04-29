@@ -104,6 +104,19 @@ const INTERIOR_FALLBACK_IMAGES = [
   "/images/intro-detail.png",
 ] as const;
 
+const SECOND_PARKLANDS_REAL_GALLERY = [
+  "/images/properties/second-parklands-real/second-parklands-real-01.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-02.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-03.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-04.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-05.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-06.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-07.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-08.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-09.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-10.jpeg",
+] as const;
+
 const withInteriorFallbacks = (images: string[]) => {
   const merged = [...images];
   for (const src of INTERIOR_FALLBACK_IMAGES) {
@@ -178,7 +191,7 @@ export function categorizeAmenities(
 export const FALLBACK_PROPERTIES: Property[] = [
   {
     slug: "3-bed-second-avenue-parklands",
-    title: "Dirrir Second Parklands",
+    title: "Dirrir Relators Second Parklands",
     propertyType: "Apartment",
     status: "For Sale",
     propertyId: "DRL-001",
@@ -222,15 +235,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Cafeteria",
       "Mini market",
     ],
-    gallery: withInteriorFallbacks([
-      P.buildingWhite,
-      P.livingDoubleHeight,
-      P.diningSkyline,
-      P.amenityLounge,
-      P.amenityPool,
-      P.amenityGym,
-      P.diningWarm,
-    ]),
+    gallery: withInteriorFallbacks([...SECOND_PARKLANDS_REAL_GALLERY]),
   },
   {
     slug: "2-bed-kilimani-yaya-corridor",
