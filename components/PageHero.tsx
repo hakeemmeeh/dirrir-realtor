@@ -10,13 +10,15 @@ type Props = {
   title: string;
   subtitle?: string;
   compact?: boolean;
+  /** Taller hero — shows more of the background photo (e.g. signage or detail in image). */
+  tall?: boolean;
   /** Optional background video layered over posterSrc (omit on listings heroes that should stay image-only). */
   videoSrc?: string;
   /** Full-bleed hero photo — shown alone without videoSrc, or as poster under video when videoSrc is set. */
   posterSrc?: string;
 };
 
-export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Props) {
+export function PageHero({ title, subtitle, compact, tall, videoSrc, posterSrc }: Props) {
   const reduceMotion = useReducedMotion();
   const [mountVideo, setMountVideo] = useState(false);
 
@@ -34,7 +36,11 @@ export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Prop
 
   return (
     <section
-      className={`relative min-h-[220px] overflow-hidden text-ivory ${compact ? "pt-28 pb-20 sm:py-24 lg:py-28" : "pt-32 pb-20 sm:pt-32 sm:pb-24 lg:py-36"} ${
+      className={`relative overflow-hidden text-ivory ${
+        tall
+          ? "min-h-[min(520px,58svh)] sm:min-h-[560px] lg:min-h-[600px]"
+          : "min-h-[220px]"
+      } ${compact ? "pt-28 pb-20 sm:py-24 lg:py-28" : "pt-32 pb-20 sm:pt-32 sm:pb-24 lg:py-36"} ${
         hasBackgroundMedia ? "bg-primary" : "bg-gradient-to-br from-charcoal via-primary to-primary"
       }`}
     >
@@ -45,7 +51,7 @@ export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Prop
               src={posterSrc}
               alt=""
               fill
-              className="object-cover [transform:translateZ(0)]"
+              className={`object-cover [transform:translateZ(0)] ${tall ? "object-[center_42%]" : ""}`}
               sizes="100vw"
               quality={92}
               priority

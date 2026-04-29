@@ -26,9 +26,10 @@ export default async function ServicesPage() {
 
   return (
     <>
-      <PageHero 
-        title={t("heroTitle")} 
-        subtitle={t("heroSub")} 
+      <PageHero
+        tall
+        title={t("heroTitle")}
+        subtitle={t("heroSub")}
         posterSrc="/images/services-hero.png"
       />
       <div className="bg-background">
