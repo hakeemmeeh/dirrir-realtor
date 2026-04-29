@@ -30,6 +30,7 @@ export const allPropertiesQuery = `*[_type == "property"] | order(coalesce(_upda
   amenities,
   featured,
   heroVideoUrl,
+  heroVideoWithSound,
   "mainUrl": mainImage.asset->url,
   "galleryUrls": gallery[].asset->url
 }`;
@@ -66,6 +67,7 @@ export const propertyBySlugQuery = `*[_type == "property" && slug.current == $sl
   amenities,
   featured,
   heroVideoUrl,
+  heroVideoWithSound,
   "mainUrl": mainImage.asset->url,
   "galleryUrls": gallery[].asset->url
 }`;

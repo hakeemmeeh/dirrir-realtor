@@ -22,6 +22,8 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],
+    /** Avoid flaky vendor chunks like `./vendor-chunks/@sanity.js` missing at runtime (dev worker / stale .next). */
+    serverComponentsExternalPackages: ["@sanity/client"],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error", "warn"] } : false,

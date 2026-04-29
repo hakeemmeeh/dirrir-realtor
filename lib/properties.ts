@@ -56,6 +56,8 @@ export type Property = {
   featured: boolean;
   /** Optional full-bleed hero video (MP4/WebM). Replace with your own tours or AI-generated walkthroughs. */
   heroVideoUrl?: string;
+  /** When true, hero shows an unmute control so visitors can hear audio (autoplay stays muted until tap). */
+  heroVideoWithSound?: boolean;
 };
 
 // Branded DRL imagery — split by role so development cards (homepage carousels)
@@ -85,7 +87,6 @@ const P = {
   landPlotCorner:
     "https://images.unsplash.com/photo-1542889601-399c4f3a8402?auto=format&fit=crop&w=1600&h=1000&q=80",
   // AI-generated premium high-rises
-  arqamHero: "/images/arqam_project.png",
   heightsHero: "/images/highrise_exterior.png",
   riversideHero: "/images/nairobi_riverside_ultra.png",
 } as const;
@@ -115,6 +116,21 @@ const SECOND_PARKLANDS_REAL_GALLERY = [
   "/images/properties/second-parklands-real/second-parklands-real-08.jpeg",
   "/images/properties/second-parklands-real/second-parklands-real-09.jpeg",
   "/images/properties/second-parklands-real/second-parklands-real-10.jpeg",
+] as const;
+
+const ARQAM_REAL_GALLERY = [
+  "/images/properties/arqam-real/arqam-real-01-exterior-main.png",
+  "/images/properties/arqam-real/arqam-real-11-exterior-entrance.png",
+  "/images/properties/arqam-real/arqam-real-04-living-main.png",
+  "/images/properties/arqam-real/arqam-real-05-living-alt.png",
+  "/images/properties/arqam-real/arqam-real-06-master-bedroom.png",
+  "/images/properties/arqam-real/arqam-real-07-kitchen.png",
+  "/images/properties/arqam-real/arqam-real-08-bathroom.png",
+  "/images/properties/arqam-real/arqam-real-09-reception.png",
+  "/images/properties/arqam-real/arqam-real-10-gym.png",
+  "/images/properties/arqam-real/arqam-real-12-rooftop-lounge.png",
+  "/images/properties/arqam-real/arqam-real-02-floorplan-type-01.png",
+  "/images/properties/arqam-real/arqam-real-03-floorplan-type-02.png",
 ] as const;
 
 const withInteriorFallbacks = (images: string[]) => {
@@ -236,6 +252,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Mini market",
     ],
     gallery: withInteriorFallbacks([...SECOND_PARKLANDS_REAL_GALLERY]),
+    heroVideoUrl: getPlaceholderHeroVideo("3-bed-second-avenue-parklands"),
   },
   {
     slug: "2-bed-kilimani-yaya-corridor",
@@ -283,7 +300,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
   },
   {
     slug: "4-bed-lavington-mansionette",
-    title: "Dirrir Lavington",
+    title: "DC Realtors",
     propertyType: "Apartment",
     status: "For Sale",
     propertyId: "DRL-003",
@@ -293,7 +310,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
     areaSqft: 3200,
     floor: "GF + 1",
     location: "Lavington",
-    addressLine: "Valley Arcade Drive",
+    addressLine: "Peponi Road · Lavington",
     city: "Nairobi",
     country: "Kenya",
     yearBuilt: 2019,
@@ -301,26 +318,30 @@ export const FALLBACK_PROPERTIES: Property[] = [
     garageSizeSqft: 280,
     availableFrom: "2026-06-01",
     basement: "None",
-    structureType: "Gated townhouse",
-    exteriorMaterial: "Stone, timber accents, and plaster",
-    extraDetails: "Private end-unit garden",
-    tagline: "Lavington · Gated townhouse collection",
+    structureType: "Contemporary residential tower",
+    exteriorMaterial: "Glass curtain wall, stone, and textured render",
+    extraDetails: "Landscaped arrival and secure vehicular gate",
+    tagline: "Lavington · Peponi corridor",
     collection: "living",
     isNewDevelopment: true,
     launchLabel: "New Release",
     portfolioPriority: 3,
     featured: true,
     description:
-      "A premium residential apartment development in Lavington. Floor-to-ceiling windows, high-speed fibre, and a rooftop pool. Perfect for professionals and established families seeking urban luxury.",
-    amenities: ["Staff quarters", "Garden", "Solar water", "Electric fence", "Two carports"],
+      "DC Realtors presents a striking contemporary residence along Peponi Road — signature wavy balconies, full-height glazing at the podium, and warm architectural lighting designed for upscale city living. Ideal for professionals and established families seeking Lavington presence with strong access to Valley Arcade and the wider Westlands corridor.",
+    amenities: [
+      "Staff quarters",
+      "Landscaped grounds",
+      "Solar water",
+      "Perimeter security",
+      "Allocated parking",
+    ],
     gallery: withInteriorFallbacks([
-      P.heritageHero3,
-      P.livingWarmCity,
-      P.diningWarm,
-      P.livingDoubleHeight,
-      P.amenityPool,
-      P.diningSkyline,
+      "/images/properties/dc-realtors-lavington/dc-realtors-01-tower-twilight.png",
+      "/images/properties/dc-realtors-lavington/dc-realtors-02-peponi-street.png",
     ]),
+    heroVideoUrl: "/videos/dc-realtors-lavington-hero.mp4",
+    heroVideoWithSound: true,
   },
   {
     slug: "studio-westlands-sarit",
@@ -499,15 +520,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Small mosque",
       "Playground area",
     ],
-    gallery: withInteriorFallbacks([
-      P.arqamHero,
-      P.livingDoubleHeight,
-      P.amenityGym,
-      P.amenityPool,
-      P.diningSkyline,
-      P.amenityLounge,
-      P.diningWarm,
-    ]),
+    gallery: [...ARQAM_REAL_GALLERY],
     heroVideoUrl: getPlaceholderHeroVideo("arqam-project-parklands"),
   },
 ];

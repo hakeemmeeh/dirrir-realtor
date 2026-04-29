@@ -64,6 +64,14 @@ export const propertySchema = {
       title: "Hero video (MP4)",
       description: "Optional full-bleed loop for homepage / listing hero (tours, AI walkthrough).",
     },
+    {
+      name: "heroVideoWithSound",
+      type: "boolean",
+      title: "Hero video: offer sound toggle",
+      description:
+        "When on, visitors can tap to hear audio (autoplay stays muted until they unmute — required for browser policy).",
+      initialValue: false,
+    },
     { name: "mainImage", type: "image", options: { hotspot: true } },
   ],
 };

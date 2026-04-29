@@ -128,6 +128,8 @@ export function sanityRowToProperty(doc: Record<string, unknown>): Property | nu
     typeof doc.heroVideoUrl === "string" && doc.heroVideoUrl.length > 0
       ? doc.heroVideoUrl
       : getPlaceholderHeroVideo(slug);
+  const heroVideoWithSound =
+    typeof doc.heroVideoWithSound === "boolean" ? doc.heroVideoWithSound : undefined;
 
   return {
     slug,
@@ -160,6 +162,7 @@ export function sanityRowToProperty(doc: Record<string, unknown>): Property | nu
     gallery,
     featured: Boolean(doc.featured),
     heroVideoUrl,
+    heroVideoWithSound,
   };
 }
 

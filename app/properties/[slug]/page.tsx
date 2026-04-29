@@ -11,6 +11,8 @@ import { AnimatedDescription } from "@/components/properties/AnimatedDescription
 import { SimilarProperties } from "@/components/properties/SimilarProperties";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
+import { HeroSoundVideo } from "@/components/ui/HeroSoundVideo";
+import { MutedAutoplayVideo } from "@/components/ui/MutedAutoplayVideo";
 import { formatUsd } from "@/lib/utils";
 import Link from "next/link";
 import {
@@ -26,6 +28,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://dirrirrealtor.co.ke
 const FLOOR_PLAN_A_SRC = "https://main.wpresidence.net/wp-content/uploads/2016/11/floor-plan-4.webp";
 const FLOOR_PLAN_B_SRC = "https://main.wpresidence.net/wp-content/uploads/2016/11/floor-plan-3.webp";
 const SECOND_PARKLANDS_SLUG = "3-bed-second-avenue-parklands";
+const ARQAM_SLUG = "arqam-project-parklands";
+const DC_REALTORS_SLUG = "4-bed-lavington-mansionette";
 
 export async function generateStaticParams() {
   const all = await getAllProperties();
@@ -81,7 +85,18 @@ export default async function PropertyDetailPage({ params }: Props) {
   const pageUrl = `${siteUrl}/properties/${p.slug}`;
   const sizeSqm = Math.round(p.areaSqft * 0.092903);
   const isSecondParklands = p.slug === SECOND_PARKLANDS_SLUG;
-  const amenityHighlights = p.amenities.slice(0, 6);
+  const isArqam = p.slug === ARQAM_SLUG;
+  const isDcRealtors = p.slug === DC_REALTORS_SLUG;
+  const floorPlanASrc = isArqam
+    ? "/images/properties/arqam-real/arqam-real-02-floorplan-type-01.png"
+    : isDcRealtors
+      ? "/images/properties/dc-realtors-lavington/floor-plan-a.webp"
+    : FLOOR_PLAN_A_SRC;
+  const floorPlanBSrc = isArqam
+    ? "/images/properties/arqam-real/arqam-real-03-floorplan-type-02.png"
+    : isDcRealtors
+      ? "/images/properties/dc-realtors-lavington/floor-plan-b.webp"
+    : FLOOR_PLAN_B_SRC;
   const amenityGroups = categorizeAmenities(p.amenities);
   const floorPlanUnits = isSecondParklands
     ? [
@@ -103,7 +118,6 @@ export default async function PropertyDetailPage({ params }: Props) {
     { id: "overview", label: t("navOverview") },
     { id: "gallery", label: t("navGallery") },
     { id: "details", label: t("navDetails") },
-    ...(p.heroVideoUrl ? [{ id: "video", label: t("navVideo") }] : []),
     { id: "features", label: t("navFeatures") },
     { id: "map", label: t("navMap") },
     { id: "viewing", label: t("navViewing") },
@@ -121,28 +135,46 @@ export default async function PropertyDetailPage({ params }: Props) {
         url={pageUrl}
         image={p.gallery[0] ?? ""}
       />
-      <section className="relative h-[85vh] min-h-[600px] w-full overflow-hidden">
+      <section className="relative h-[96svh] min-h-[760px] w-full overflow-hidden lg:min-h-[880px]">
         {p.heroVideoUrl ? (
           <>
             <Image
               src={p.gallery[0] ?? "/images/logo.svg"}
-              alt={p.title}
+              alt=""
               fill
               className="object-cover"
               priority
+              aria-hidden
             />
-            <video
-              className="absolute inset-0 h-full w-full object-cover"
-              poster={p.gallery[0]}
-              autoPlay
-              muted
-              loop
-              playsInline
-              controls={false}
-              preload="metadata"
-            >
-              <source src={p.heroVideoUrl} type="video/mp4" />
-            </video>
+            {p.heroVideoWithSound ? (
+              <HeroSoundVideo
+                className="absolute inset-0 h-full w-full object-cover"
+                poster={typeof p.gallery[0] === "string" ? p.gallery[0] : undefined}
+                autoPlay
+                loop
+                playsInline
+                controls={false}
+                preload="metadata"
+                aria-label={`${p.title} walkthrough video`}
+                tapForSoundLabel={t("heroTapForSound")}
+                muteLabel={t("heroMuteSound")}
+              >
+                <source src={p.heroVideoUrl} type="video/mp4" />
+              </HeroSoundVideo>
+            ) : (
+              <MutedAutoplayVideo
+                className="absolute inset-0 h-full w-full object-cover"
+                poster={typeof p.gallery[0] === "string" ? p.gallery[0] : undefined}
+                autoPlay
+                loop
+                playsInline
+                controls={false}
+                preload="metadata"
+                aria-label={`${p.title} walkthrough video`}
+              >
+                <source src={p.heroVideoUrl} type="video/mp4" />
+              </MutedAutoplayVideo>
+            )}
           </>
         ) : (
           <Image
@@ -153,8 +185,8 @@ export default async function PropertyDetailPage({ params }: Props) {
             priority
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />
-        <Container className="relative flex h-full flex-col justify-end pb-16 lg:pb-24">
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />
+        <Container className="relative z-[2] flex h-full flex-col justify-end pb-16 lg:pb-24">
           <div className="max-w-4xl animate-fade-in-up">
             <div className="flex items-center gap-3">
               <Badge
@@ -418,33 +450,6 @@ export default async function PropertyDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      {p.heroVideoUrl ? (
-        <section id="video" className="scroll-mt-32 border-t border-border bg-background py-14 lg:py-20">
-          <Container>
-            <div className="mb-6 flex items-end justify-between gap-4">
-              <h2 className="font-serif text-2xl font-medium leading-[1.12] tracking-[-0.01em] text-primary sm:text-3xl">
-                {t("videoWalkthrough")}
-              </h2>
-              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-text-light">
-                {t("videoCaption")}
-              </p>
-            </div>
-            <div className="relative overflow-hidden border border-border bg-primary">
-              <video
-                className="aspect-[16/9] w-full object-cover"
-                poster={p.gallery[0]}
-                controls
-                muted
-                playsInline
-                preload="metadata"
-              >
-                <source src={p.heroVideoUrl} type="video/mp4" />
-              </video>
-            </div>
-          </Container>
-        </section>
-      ) : null}
-
       <section className="bg-background py-16 lg:py-24">
         <Container>
           <div className="grid gap-16 lg:grid-cols-[1fr_360px]">
@@ -452,23 +457,8 @@ export default async function PropertyDetailPage({ params }: Props) {
               <AnimatedDescription title={t("description")} description={p.description} />
 
               <div id="features" className="scroll-mt-32">
-                <h2 className="font-serif text-2xl font-medium text-primary">{t("conveniences")}</h2>
-                {amenityHighlights.length > 0 ? (
-                  <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                    {amenityHighlights.map((a) => (
-                      <article key={a} className="border border-border bg-background p-5">
-                        <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-accent">
-                          {t("amenityHighlight")}
-                        </p>
-                        <h3 className="mt-4 font-serif text-xl text-primary">{a}</h3>
-                        <p className="mt-2 text-sm leading-relaxed text-text-light">
-                          {t("amenitySupport")}
-                        </p>
-                      </article>
-                    ))}
-                  </div>
-                ) : null}
-                <div className="mt-10 grid gap-6 lg:grid-cols-2">
+                <h2 className="font-serif text-2xl font-medium text-primary">{t("amenities")}</h2>
+                <div className="mt-8 grid gap-6 lg:grid-cols-2">
                   {amenityGroups.map((group) => (
                     <article key={group.category} className="border border-border bg-background-alt p-6">
                       <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-accent">
@@ -616,7 +606,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                   <article className="overflow-hidden border border-border bg-background">
                     <div className="grid gap-4 bg-background-alt px-5 py-4 text-sm font-semibold text-primary sm:grid-cols-[1.3fr_repeat(4,minmax(0,1fr))] sm:items-center sm:px-6">
                       <p className="font-serif text-2xl leading-none text-primary">
-                        {isSecondParklands ? "2 Bedroom + DSQ" : t("floorPlanA")}
+                        {isSecondParklands ? "2 Bedroom + DSQ" : isArqam ? "4 Bedroom floorplan type 01" : t("floorPlanA")}
                       </p>
                       <p>{t("priceLabelShort")}: {isSecondParklands ? "From USD 75,000" : priceLabel}</p>
                       <p>{t("bathsLabel")}: {isSecondParklands ? 2 : p.bathrooms}</p>
@@ -627,7 +617,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                       <div className="mx-auto max-w-4xl">
                         <div className="relative mx-auto aspect-[700/506] w-full max-w-3xl">
                           <Image
-                            src={FLOOR_PLAN_A_SRC}
+                            src={floorPlanASrc}
                             alt={t("floorPlanA")}
                             fill
                             className="object-contain"
@@ -638,7 +628,11 @@ export default async function PropertyDetailPage({ params }: Props) {
                       <p className="mt-8 text-base leading-relaxed text-text-light sm:text-lg">
                         {isSecondParklands
                           ? "Representative 2 bedroom + DSQ layout within the Second Parklands development, planned for efficient circulation, practical living zones, and day-to-day family comfort."
-                          : t("floorPlanABody")}
+                          : isArqam
+                            ? "Representative 4 bedroom layout type 01 for the Arqam development."
+                            : isDcRealtors
+                              ? "Indicative layout for DC Realtors — proportions and finishes vary by stack and floor."
+                              : t("floorPlanABody")}
                       </p>
                     </div>
                   </article>
@@ -646,7 +640,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                   <article className="overflow-hidden border border-border bg-background">
                     <div className="grid gap-4 bg-background-alt px-5 py-4 text-sm font-semibold text-primary sm:grid-cols-[1.3fr_repeat(4,minmax(0,1fr))] sm:items-center sm:px-6">
                       <p className="font-serif text-2xl leading-none text-primary">
-                        {isSecondParklands ? "3 Bedroom + DSQ" : t("floorPlanB")}
+                        {isSecondParklands ? "3 Bedroom + DSQ" : isArqam ? "4 Bedroom floorplan type 02" : t("floorPlanB")}
                       </p>
                       <p>{t("priceLabelShort")}: {isSecondParklands ? "From USD 100,000" : priceLabel}</p>
                       <p>{t("bathsLabel")}: {isSecondParklands ? 3 : Math.max(p.bathrooms - 1, 1)}</p>
@@ -657,7 +651,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                       <div className="mx-auto max-w-4xl">
                         <div className="relative mx-auto aspect-[700/506] w-full max-w-3xl">
                           <Image
-                            src={FLOOR_PLAN_B_SRC}
+                            src={floorPlanBSrc}
                             alt={t("floorPlanB")}
                             fill
                             className="object-contain"
@@ -668,7 +662,11 @@ export default async function PropertyDetailPage({ params }: Props) {
                       <p className="mt-8 text-base leading-relaxed text-text-light sm:text-lg">
                         {isSecondParklands
                           ? "Representative 3 bedroom + DSQ layout for buyers seeking a larger footprint, stronger hosting capacity, and a more expansive family-oriented arrangement."
-                          : t("floorPlanBBody")}
+                          : isArqam
+                            ? "Representative 4 bedroom layout type 02 for the Arqam development."
+                            : isDcRealtors
+                              ? "Alternative indicative layout for DC Realtors — verify final areas and specification with the sales team."
+                              : t("floorPlanBBody")}
                       </p>
                     </div>
                   </article>

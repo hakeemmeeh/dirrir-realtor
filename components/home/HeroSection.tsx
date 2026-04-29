@@ -118,7 +118,6 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
   const reduceMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
   const len = slides.length;
   const current = slides[index];
 
@@ -136,16 +135,6 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
     }, AUTO_MS);
     return () => window.clearInterval(id);
   }, [len, reduceMotion, paused]);
-
-  useEffect(() => {
-    if (!current.heroVideoUrl || reduceMotion) {
-      setVideoReady(false);
-      return;
-    }
-    setVideoReady(false);
-    const t = window.setTimeout(() => setVideoReady(true), 380);
-    return () => window.clearTimeout(t);
-  }, [current.slug, current.heroVideoUrl, reduceMotion]);
 
   const go = (dir: -1 | 1) => {
     setIndex((i) => (i + dir + len) % len);
@@ -180,44 +169,16 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
             exit={{ opacity: reduceMotion ? 1 : 0 }}
             transition={{ duration: reduceMotion ? 0 : 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
-            {current.heroVideoUrl ? (
-              <div className="relative h-full w-full">
-                <Image
-                  src={current.gallery[0] ?? HERO_IMAGE}
-                  alt={current.title}
-                  fill
-                  priority={index === 0}
-                  quality={HERO_IMAGE_QUALITY}
-                  sizes={HERO_SIZES}
-                  fetchPriority={index === 0 ? "high" : "low"}
-                  className="object-cover [transform:translateZ(0)]"
-                />
-                {videoReady ? (
-                  <video
-                    className="absolute inset-0 h-full w-full object-cover [transform:translateZ(0)] scale-[1.01]"
-                    src={current.heroVideoUrl}
-                    poster={current.gallery[0]}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
-                    aria-hidden
-                  />
-                ) : null}
-              </div>
-            ) : (
-              <Image
-                src={current.gallery[0] ?? HERO_IMAGE}
-                alt={current.title}
-                fill
-                priority={index === 0}
-                quality={HERO_IMAGE_QUALITY}
-                sizes={HERO_SIZES}
-                fetchPriority={index === 0 ? "high" : "low"}
-                className="object-cover [transform:translateZ(0)]"
-              />
-            )}
+            <Image
+              src={current.gallery[0] ?? HERO_IMAGE}
+              alt={current.title}
+              fill
+              priority={index === 0}
+              quality={HERO_IMAGE_QUALITY}
+              sizes={HERO_SIZES}
+              fetchPriority={index === 0 ? "high" : "low"}
+              className="object-cover [transform:translateZ(0)]"
+            />
           </motion.div>
         </AnimatePresence>
       </motion.div>

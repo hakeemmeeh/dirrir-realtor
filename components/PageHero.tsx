@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/Container";
+import { MutedAutoplayVideo } from "@/components/ui/MutedAutoplayVideo";
 
 type Props = {
   title: string;
@@ -50,12 +51,11 @@ export function PageHero({ title, subtitle, compact, videoSrc, posterSrc }: Prop
             />
           ) : null}
           {mountVideo ? (
-            <video
+            <MutedAutoplayVideo
               className="absolute inset-0 h-full min-h-[320px] w-full object-cover"
               src={videoSrc}
               poster={posterSrc}
               autoPlay
-              muted
               loop
               playsInline
               preload="auto"
