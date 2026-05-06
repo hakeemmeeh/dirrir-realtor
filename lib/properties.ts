@@ -107,8 +107,14 @@ const INTERIOR_FALLBACK_IMAGES = [
 
 const SECOND_PARKLANDS_CURATED_GALLERY = [
   "/images/second-parklands-cover.png",
+  "/images/properties/second-parklands-real/second-parklands-real-01.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-02.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-03.jpeg",
   "/images/properties/second-parklands-real/second-parklands-real-04.jpeg",
   "/images/properties/second-parklands-real/second-parklands-real-05.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-06.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-07.jpeg",
+  "/images/properties/second-parklands-real/second-parklands-real-08.jpeg",
   "/images/properties/second-parklands-real/second-parklands-real-09.jpeg",
   "/images/properties/second-parklands-real/second-parklands-real-10.jpeg",
 ] as const;
@@ -570,7 +576,7 @@ export function filterProperties(
   });
 }
 
-/** Second Parklands: force curated Visual Showcase (Sanity often ships a long gallery). */
+/** Second Parklands: fixed Visual Showcase (real project + interiors only; no generic stock fallbacks). */
 function applySecondParklandsGalleryOverride(list: Property[]): Property[] {
   return list.map((p) =>
     p.slug === SECOND_PARKLANDS_SLUG
