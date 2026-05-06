@@ -119,11 +119,25 @@ const SECOND_PARKLANDS_CURATED_GALLERY = [
   "/images/properties/second-parklands-real/second-parklands-real-10.jpeg",
 ] as const;
 
-/** Canonical slug for Dirrir Second Parklands (Sanity + fallback). */
+/** Canonical slug for Dirrir Second Parklands (fallback + typical route). */
 export const SECOND_PARKLANDS_SLUG = "3-bed-second-avenue-parklands";
 
+/** Matches Sanity/local listing whenever the slug or title refers to this development. */
+export function isSecondParklandsListing(p: Pick<Property, "slug" | "title">): boolean {
+  if (p.slug === SECOND_PARKLANDS_SLUG) return true;
+  const s = p.slug.toLowerCase().trim();
+  if (s.includes("second-avenue-parklands")) return true;
+  if (s.includes("second-parklands")) return true;
+  return p.title.toLowerCase().includes("second parklands");
+}
+
+function secondParklandsShowcaseGallery(): string[] {
+  /* Real project line-up first (cover + on-site JPEGs), then representative interiors
+   * so “Visual Showcase” includes finished-room shots, not only façade/progress photos. */
+  return withInteriorFallbacks([...SECOND_PARKLANDS_CURATED_GALLERY]);
+}
+
 const ARQAM_REAL_GALLERY = [
-  "/images/properties/arqam-real/arqam-real-01-exterior-main.png",
   "/images/properties/arqam-real/arqam-real-11-exterior-entrance.png",
   "/images/properties/arqam-real/arqam-real-04-living-main.png",
   "/images/properties/arqam-real/arqam-real-05-living-alt.png",
@@ -255,7 +269,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Cafeteria",
       "Mini market",
     ],
-    gallery: [...SECOND_PARKLANDS_CURATED_GALLERY],
+    gallery: secondParklandsShowcaseGallery(),
     heroVideoUrl: getPlaceholderHeroVideo("3-bed-second-avenue-parklands"),
   },
   {
@@ -579,9 +593,7 @@ export function filterProperties(
 /** Second Parklands: fixed Visual Showcase (real project + interiors only; no generic stock fallbacks). */
 function applySecondParklandsGalleryOverride(list: Property[]): Property[] {
   return list.map((p) =>
-    p.slug === SECOND_PARKLANDS_SLUG
-      ? { ...p, gallery: [...SECOND_PARKLANDS_CURATED_GALLERY] }
-      : p,
+    isSecondParklandsListing(p) ? { ...p, gallery: secondParklandsShowcaseGallery() } : p,
   );
 }
 
@@ -608,7 +620,7 @@ export function getFeaturedFrom(list: Property[]): Property[] {
 
 /** Hero poster for /properties and /developments: flagship Second Parklands render when listed. */
 export function getPortfolioHeroPoster(list: Property[]): string {
-  const flagship = list.find((p) => p.slug === SECOND_PARKLANDS_SLUG);
+  const flagship = list.find((p) => isSecondParklandsListing(p));
   if (flagship?.gallery[0]) return flagship.gallery[0];
   return list.find((p) => p.gallery[0])?.gallery[0] ?? "/images/hero-fallback.png";
 }

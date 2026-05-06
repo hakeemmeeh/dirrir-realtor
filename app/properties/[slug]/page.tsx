@@ -20,7 +20,7 @@ import {
   getAllProperties,
   getPropertyBySlugFrom,
   getSimilarPropertiesFrom,
-  SECOND_PARKLANDS_SLUG,
+  isSecondParklandsListing,
 } from "@/lib/properties";
 import { whatsappHref, WHATSAPP_PRIMARY_E164 } from "@/lib/contact-details";
 
@@ -85,7 +85,7 @@ export default async function PropertyDetailPage({ params }: Props) {
     p.status === "For Sale" ? formatUsd(p.price) : `${formatUsd(p.price)}/mo`;
   const pageUrl = `${siteUrl}/properties/${p.slug}`;
   const sizeSqm = Math.round(p.areaSqft * 0.092903);
-  const isSecondParklands = p.slug === SECOND_PARKLANDS_SLUG;
+  const isSecondParklands = isSecondParklandsListing(p);
   const isArqam = p.slug === ARQAM_SLUG;
   const isDcRealtors = p.slug === DC_REALTORS_SLUG;
   const floorPlanASrc = isArqam
