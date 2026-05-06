@@ -20,14 +20,15 @@ import {
   getAllProperties,
   getPropertyBySlugFrom,
   getSimilarPropertiesFrom,
+  SECOND_PARKLANDS_SLUG,
 } from "@/lib/properties";
+import { whatsappHref, WHATSAPP_PRIMARY_E164 } from "@/lib/contact-details";
 
 type Props = { params: { slug: string } };
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://dirrirrealtor.co.ke";
 const FLOOR_PLAN_A_SRC = "https://main.wpresidence.net/wp-content/uploads/2016/11/floor-plan-4.webp";
 const FLOOR_PLAN_B_SRC = "https://main.wpresidence.net/wp-content/uploads/2016/11/floor-plan-3.webp";
-const SECOND_PARKLANDS_SLUG = "3-bed-second-avenue-parklands";
 const ARQAM_SLUG = "arqam-project-parklands";
 const DC_REALTORS_SLUG = "4-bed-lavington-mansionette";
 
@@ -241,7 +242,10 @@ export default async function PropertyDetailPage({ params }: Props) {
               {t("downloadBrochure")}
             </a>
             <a
-              href={`https://wa.me/254700000000?text=Hello%20Dirrir%20Realtor%2C%20I%20am%20interested%20in%20${encodeURIComponent(p.title)}`}
+              href={whatsappHref(
+                WHATSAPP_PRIMARY_E164,
+                `Hello Dirrir Realtor, I am interested in ${p.title}`,
+              )}
               target="_blank"
               rel="noreferrer"
               className="inline-flex min-h-11 items-center rounded-full bg-primary px-6 py-3 text-sm font-semibold tracking-[0.08em] text-white transition-colors hover:bg-accent"
@@ -542,7 +546,10 @@ export default async function PropertyDetailPage({ params }: Props) {
                         {t("bookViewing")}
                       </Link>
                       <a
-                        href={`https://wa.me/254700000000?text=${encodeURIComponent(`Hello Dirrir Realtor, I would like to schedule a viewing for ${p.title}.`)}`}
+                        href={whatsappHref(
+                          WHATSAPP_PRIMARY_E164,
+                          `Hello Dirrir Realtor, I would like to schedule a viewing for ${p.title}.`,
+                        )}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex min-h-11 items-center rounded-full border border-primary/70 px-6 py-3 text-sm font-semibold tracking-[0.08em] text-primary transition-colors hover:border-accent hover:bg-accent hover:text-white"
@@ -689,7 +696,10 @@ export default async function PropertyDetailPage({ params }: Props) {
                   </div>
                   <div className="mt-6 space-y-4 border-t border-border pt-6">
                     <a
-                      href={`https://wa.me/254700000000?text=Hello%20Dirrir%20Realtor%2C%20I%20am%20interested%20in%20${encodeURIComponent(p.title)}`}
+                      href={whatsappHref(
+                WHATSAPP_PRIMARY_E164,
+                `Hello Dirrir Realtor, I am interested in ${p.title}`,
+              )}
                       target="_blank"
                       rel="noreferrer"
                       className="flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-[11px] font-bold uppercase tracking-luxury-widest text-white transition-all hover:bg-accent"
@@ -723,7 +733,10 @@ export default async function PropertyDetailPage({ params }: Props) {
             <p className="truncate font-serif text-lg font-semibold text-primary">{priceLabel}</p>
           </div>
           <a
-            href={`https://wa.me/254700000000?text=Hello%20Dirrir%20Realtor%2C%20I%20am%20interested%20in%20${encodeURIComponent(p.title)}`}
+            href={whatsappHref(
+              WHATSAPP_PRIMARY_E164,
+              `Hello Dirrir Realtor, I am interested in ${p.title}`,
+            )}
             target="_blank"
             rel="noreferrer"
             className="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full bg-primary px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white transition-colors hover:bg-accent"

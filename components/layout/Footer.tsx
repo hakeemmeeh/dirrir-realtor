@@ -4,8 +4,8 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { MessageCircle } from "lucide-react";
 import { IconFacebook, IconInstagram } from "@/components/ui/SocialIcons";
+import { CONTACT_PHONES_E164, formatKeDisplay, telHref } from "@/lib/contact-details";
 
-const phone = "[Primary phone]";
 const email = "info@dirrirrealtor.co.ke";
 
 export async function Footer() {
@@ -26,9 +26,25 @@ export async function Footer() {
             />
             <p className="mt-2 text-sm text-text-light">{t("tagline")}</p>
             <p className="mt-4 text-sm text-text-light">{t("location")}</p>
-            <p className="mt-2 text-sm">
-              <span className="text-text-light">{phone}</span>
-              <span className="mx-2 text-border">|</span>
+            <p className="mt-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-text-light">
+              {t("primaryPhone")}
+            </p>
+            <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-text-light">
+              {CONTACT_PHONES_E164.map((n, i) => (
+                <span key={n} className="inline-flex items-center gap-x-2">
+                  {i > 0 ? (
+                    <span className="text-border" aria-hidden>
+                      |
+                    </span>
+                  ) : null}
+                  <a href={telHref(n)} className="transition-colors hover:text-accent">
+                    {formatKeDisplay(n)}
+                  </a>
+                </span>
+              ))}
+              <span className="text-border" aria-hidden>
+                |
+              </span>
               <a href={`mailto:${email}`} className="transition-colors hover:text-accent">
                 {email}
               </a>

@@ -22,6 +22,7 @@ export function EnquiryForm() {
   const t = useTranslations("Form");
   const tc = useTranslations("ContactPage");
   const [status, setStatus] = useState<"idle" | "ok" | "err">("idle");
+  const [errMsg, setErrMsg] = useState<string | null>(null);
 
   return (
     <section className="py-12">
@@ -29,8 +30,14 @@ export function EnquiryForm() {
         <form
           action={async (fd) => {
             setStatus("idle");
+            setErrMsg(null);
             const r = await submitContactForm(fd);
-            setStatus(r.ok ? "ok" : "err");
+            if (r.ok) {
+              setStatus("ok");
+            } else {
+              setStatus("err");
+              setErrMsg(r.error);
+            }
           }}
           className="rounded-sm border border-border bg-background p-6 shadow-sm sm:p-10"
         >
@@ -39,6 +46,9 @@ export function EnquiryForm() {
             <p className="mt-1">{tc("expectBody")}</p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
+            <div className="sr-only" aria-hidden>
+              <input type="text" name="_company" tabIndex={-1} autoComplete="off" />
+            </div>
             <div className="sm:col-span-2">
               <label className="text-xs font-semibold uppercase tracking-wide text-text-light">
                 {t("name")} *
@@ -46,6 +56,8 @@ export function EnquiryForm() {
               <input
                 name="name"
                 required
+                maxLength={120}
+                autoComplete="name"
                 className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-base sm:text-sm"
               />
             </div>
@@ -57,6 +69,8 @@ export function EnquiryForm() {
                 name="email"
                 type="email"
                 required
+                maxLength={254}
+                autoComplete="email"
                 className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-base sm:text-sm"
               />
             </div>
@@ -69,6 +83,8 @@ export function EnquiryForm() {
                 type="tel"
                 inputMode="tel"
                 required
+                maxLength={48}
+                autoComplete="tel"
                 className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-base sm:text-sm"
               />
             </div>
@@ -109,6 +125,7 @@ export function EnquiryForm() {
               </label>
               <input
                 name="budget"
+                maxLength={120}
                 className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-base sm:text-sm"
                 placeholder="e.g. USD 120,000 or USD 1,000/mo"
               />
@@ -120,6 +137,7 @@ export function EnquiryForm() {
               <textarea
                 name="message"
                 rows={4}
+                maxLength={8000}
                 className="mt-2 w-full rounded-sm border border-border px-4 py-3 text-base sm:text-sm"
               />
             </div>
@@ -127,7 +145,11 @@ export function EnquiryForm() {
           {status === "ok" ? (
             <p className="mt-6 text-sm font-medium text-primary">{tc("success")}</p>
           ) : null}
-          {status === "err" ? <p className="mt-6 text-sm text-accent">{tc("error")}</p> : null}
+          {status === "err" ? (
+            <p className="mt-6 text-sm text-accent" role="alert">
+              {errMsg ?? tc("error")}
+            </p>
+          ) : null}
           <div className="mt-8">
             <SubmitButton label={tc("submit")} pendingLabel={tc("sending")} />
           </div>

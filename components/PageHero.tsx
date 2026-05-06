@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/Container";
@@ -19,20 +18,23 @@ type Props = {
 };
 
 export function PageHero({ title, subtitle, compact, tall, videoSrc, posterSrc }: Props) {
-  const reduceMotion = useReducedMotion();
   const [mountVideo, setMountVideo] = useState(false);
 
   const hasBackgroundMedia = Boolean(posterSrc || videoSrc);
 
   useEffect(() => {
-    if (!videoSrc || reduceMotion) {
+    if (!videoSrc) {
+      setMountVideo(false);
+      return;
+    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setMountVideo(false);
       return;
     }
     setMountVideo(false);
     const t = window.setTimeout(() => setMountVideo(true), 400);
     return () => window.clearTimeout(t);
-  }, [videoSrc, posterSrc, reduceMotion]);
+  }, [videoSrc, posterSrc]);
 
   return (
     <section
@@ -90,23 +92,13 @@ export function PageHero({ title, subtitle, compact, tall, videoSrc, posterSrc }
             Dirrir Realtor Limited
           </p>
           <div className="premium-hairline mt-4 h-px w-32 sm:w-40" />
-          <motion.h1
-            initial={{ opacity: 0, x: -56 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.3, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-5 font-sans text-[2rem] font-medium leading-[1.1] tracking-tight sm:mt-6 sm:text-5xl lg:text-6xl"
-          >
+          <h1 className="mt-5 font-sans text-[2rem] font-medium leading-[1.1] tracking-tight sm:mt-6 sm:text-5xl lg:text-6xl">
             {title}
-          </motion.h1>
+          </h1>
           {subtitle ? (
-            <motion.p
-              initial={{ opacity: 0, x: -56 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.4, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="story-editorial mt-5 max-w-2xl text-[1rem] leading-relaxed text-white/90 sm:mt-6 sm:text-lg"
-            >
+            <p className="story-editorial mt-5 max-w-2xl text-[1rem] leading-relaxed text-white/90 sm:mt-6 sm:text-lg">
               {subtitle}
-            </motion.p>
+            </p>
           ) : null}
         </div>
       </Container>

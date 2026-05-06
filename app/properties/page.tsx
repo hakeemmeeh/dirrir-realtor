@@ -7,10 +7,12 @@ import { Container } from "@/components/ui/Container";
 import {
   filterProperties,
   getAllProperties,
+  getPortfolioHeroPoster,
   type PropertyFilters,
 } from "@/lib/properties";
 import { getTranslations } from "next-intl/server";
 import { buildMetadata } from "@/lib/seo";
+import { whatsappHref, WHATSAPP_PRIMARY_E164 } from "@/lib/contact-details";
 
 export const metadata: Metadata = buildMetadata({
   title: "Properties for Sale & Rent in Nairobi | Dirrir Realtor Listings",
@@ -46,8 +48,7 @@ export default async function PropertiesPage({ searchParams }: Props) {
 
   const all = await getAllProperties();
   const filtered = filterProperties(all, filters);
-  const heroPoster =
-    all.find((p) => p.gallery[0])?.gallery[0] ?? "/images/hero-fallback.png";
+  const heroPoster = getPortfolioHeroPoster(all);
 
   return (
     <>
@@ -72,7 +73,10 @@ export default async function PropertiesPage({ searchParams }: Props) {
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <a
-                    href="https://wa.me/254700000000?text=Hello%20Dirrir%20Realtor%2C%20please%20help%20me%20shortlist%20properties."
+                    href={whatsappHref(
+                      WHATSAPP_PRIMARY_E164,
+                      "Hello Dirrir Realtor, please help me shortlist properties.",
+                    )}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex min-h-11 items-center rounded-sm bg-accent px-5 py-2.5 text-sm font-semibold tracking-[0.06em] text-white transition-colors hover:bg-accent-dark"

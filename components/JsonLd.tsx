@@ -1,3 +1,6 @@
+import { jsonLdContent } from "@/lib/json-ld";
+import { CONTACT_PHONES_E164, formatKeDisplay } from "@/lib/contact-details";
+
 export function LocalBusinessJsonLd() {
   const data = {
     "@context": "https://schema.org",
@@ -6,7 +9,7 @@ export function LocalBusinessJsonLd() {
     description:
       "Premium homes and apartments for sale and rent in Nairobi — Parklands, Kilimani, Westlands, and beyond.",
     url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://dirrirrealtor.co.ke",
-    telephone: "[Primary phone]",
+    telephone: CONTACT_PHONES_E164.map(formatKeDisplay).join(", "),
     email: "info@dirrirrealtor.co.ke",
     address: {
       "@type": "PostalAddress",
@@ -22,7 +25,7 @@ export function LocalBusinessJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: jsonLdContent(data) }}
     />
   );
 }
@@ -59,7 +62,7 @@ export function RealEstateListingJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: jsonLdContent(data) }}
     />
   );
 }
@@ -104,7 +107,7 @@ export function DevelopmentsPortfolioJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: jsonLdContent(data) }}
     />
   );
 }

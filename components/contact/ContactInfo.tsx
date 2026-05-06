@@ -1,8 +1,12 @@
 import { Container } from "@/components/ui/Container";
+import {
+  CONTACT_PHONES_E164,
+  formatKeDisplay,
+  telHref,
+  whatsappHref,
+} from "@/lib/contact-details";
 import { Mail, MapPin, Phone } from "lucide-react";
 
-const phone = "[Primary phone]";
-const whatsapp = "[WhatsApp number]";
 const email = "info@dirrirrealtor.co.ke";
 
 export function ContactInfo() {
@@ -15,9 +19,31 @@ export function ContactInfo() {
       </div>
       <div className="rounded-sm border border-border bg-background-alt p-6">
         <Phone className="h-6 w-6 text-accent" />
-        <p className="mt-4 text-sm font-semibold text-primary">Phone & WhatsApp</p>
-        <p className="mt-2 text-sm text-text-light">{phone}</p>
-        <p className="mt-1 text-sm text-text-light">WhatsApp: {whatsapp}</p>
+        <p className="mt-4 text-sm font-semibold text-primary">Phone</p>
+        <ul className="mt-2 space-y-1.5 text-sm">
+          {CONTACT_PHONES_E164.map((n) => (
+            <li key={n}>
+              <a href={telHref(n)} className="text-accent hover:underline">
+                {formatKeDisplay(n)}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-sm font-semibold text-primary">WhatsApp</p>
+        <ul className="mt-2 space-y-1.5 text-sm">
+          {CONTACT_PHONES_E164.map((n) => (
+            <li key={`wa-${n}`}>
+              <a
+                href={whatsappHref(n)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline"
+              >
+                {formatKeDisplay(n)}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
       <div className="rounded-sm border border-border bg-background-alt p-6">
         <Mail className="h-6 w-6 text-accent" />

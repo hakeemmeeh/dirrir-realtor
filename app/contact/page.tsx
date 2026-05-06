@@ -7,6 +7,11 @@ import { ContactInfoSection } from "@/components/contact/ContactInfo";
 import { EnquiryForm } from "@/components/contact/EnquiryForm";
 import { MapEmbed } from "@/components/contact/MapEmbed";
 import { Container } from "@/components/ui/Container";
+import {
+  CONTACT_PHONES_E164,
+  formatKeDisplay,
+  whatsappHref,
+} from "@/lib/contact-details";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -63,15 +68,18 @@ export default async function ContactPage() {
             >
               <IconInstagram className="h-7 w-7" />
             </a>
-            <a
-              href="https://wa.me/254700000000"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary transition-colors hover:text-accent"
-              aria-label="WhatsApp"
-            >
-              <MessageCircle className="h-7 w-7" />
-            </a>
+            {CONTACT_PHONES_E164.map((num) => (
+              <a
+                key={num}
+                href={whatsappHref(num)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary transition-colors hover:text-accent"
+                aria-label={`WhatsApp ${formatKeDisplay(num)}`}
+              >
+                <MessageCircle className="h-7 w-7" />
+              </a>
+            ))}
           </div>
         </Container>
       </section>

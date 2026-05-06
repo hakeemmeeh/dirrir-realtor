@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
+import { WHATSAPP_PRIMARY_E164 } from "@/lib/contact-details";
 
-const WA_NUMBER = "254700000000";
+const WA_NUMBER = WHATSAPP_PRIMARY_E164;
 const text = encodeURIComponent(
   "Hello Dirrir Realtor, I'm interested in learning more about your properties in Nairobi.",
 );

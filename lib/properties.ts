@@ -106,14 +106,9 @@ const INTERIOR_FALLBACK_IMAGES = [
 ] as const;
 
 const SECOND_PARKLANDS_REAL_GALLERY = [
-  "/images/properties/second-parklands-real/second-parklands-real-01.jpeg",
-  "/images/properties/second-parklands-real/second-parklands-real-02.jpeg",
-  "/images/properties/second-parklands-real/second-parklands-real-03.jpeg",
+  "/images/second-parklands-cover.png",
   "/images/properties/second-parklands-real/second-parklands-real-04.jpeg",
   "/images/properties/second-parklands-real/second-parklands-real-05.jpeg",
-  "/images/properties/second-parklands-real/second-parklands-real-06.jpeg",
-  "/images/properties/second-parklands-real/second-parklands-real-07.jpeg",
-  "/images/properties/second-parklands-real/second-parklands-real-08.jpeg",
   "/images/properties/second-parklands-real/second-parklands-real-09.jpeg",
   "/images/properties/second-parklands-real/second-parklands-real-10.jpeg",
 ] as const;
@@ -251,7 +246,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Cafeteria",
       "Mini market",
     ],
-    gallery: withInteriorFallbacks([...SECOND_PARKLANDS_REAL_GALLERY]),
+    gallery: [...SECOND_PARKLANDS_REAL_GALLERY],
     heroVideoUrl: getPlaceholderHeroVideo("3-bed-second-avenue-parklands"),
   },
   {
@@ -588,6 +583,15 @@ export const getAllProperties = cache(async (): Promise<Property[]> => {
 
 export function getFeaturedFrom(list: Property[]): Property[] {
   return list.filter((p) => p.featured);
+}
+
+/** Hero poster for /properties and /developments: flagship Second Parklands render when listed. */
+export const SECOND_PARKLANDS_SLUG = "3-bed-second-avenue-parklands";
+
+export function getPortfolioHeroPoster(list: Property[]): string {
+  const flagship = list.find((p) => p.slug === SECOND_PARKLANDS_SLUG);
+  if (flagship?.gallery[0]) return flagship.gallery[0];
+  return list.find((p) => p.gallery[0])?.gallery[0] ?? "/images/hero-fallback.png";
 }
 
 /** Homepage hero: interleave Living & Investment featured listings (Hass-style mixed portfolio). */

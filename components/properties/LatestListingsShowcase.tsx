@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { formatUsd } from "@/lib/utils";
 import type { Property } from "@/lib/properties";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
+import { whatsappHref, WHATSAPP_PRIMARY_E164 } from "@/lib/contact-details";
 
 type Props = {
   items: Property[];
@@ -126,7 +127,10 @@ export function LatestListingsShowcase({ items }: Props) {
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href={`https://wa.me/254700000000?text=Hello%20Dirrir%20Realtor%2C%20I%20am%20interested%20in%20${encodeURIComponent(property.title)}`}
+                  href={whatsappHref(
+                    WHATSAPP_PRIMARY_E164,
+                    `Hello Dirrir Realtor, I am interested in ${property.title}`,
+                  )}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex min-h-11 items-center justify-center border border-accent/60 px-6 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary transition-colors hover:bg-accent/15"

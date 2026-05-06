@@ -30,12 +30,12 @@ export function EnquiryModal({ open, onClose, propertyTitle }: Props) {
   const t = useTranslations("Form");
   const tc = useTranslations("ContactPage");
   const formRef = useRef<HTMLFormElement>(null);
-  const [submitErr, setSubmitErr] = useState(false);
+  const [submitErr, setSubmitErr] = useState<string | null>(null);
 
   useEffect(() => {
     if (!open) {
       formRef.current?.reset();
-      setSubmitErr(false);
+      setSubmitErr(null);
     }
   }, [open]);
 
@@ -69,19 +69,24 @@ export function EnquiryModal({ open, onClose, propertyTitle }: Props) {
             <form
               ref={formRef}
               action={async (formData) => {
-                setSubmitErr(false);
+                setSubmitErr(null);
                 formData.set("propertyTitle", propertyTitle);
                 const res = await submitPropertyEnquiry(formData);
                 if (res.ok) onClose();
-                else setSubmitErr(true);
+                else setSubmitErr(res.error);
               }}
               className="mt-6 space-y-4"
             >
+              <div className="sr-only" aria-hidden>
+                <input type="text" name="_company" tabIndex={-1} autoComplete="off" />
+              </div>
               <div>
                 <label className="text-xs font-semibold text-text-light">{t("name")}</label>
                 <input
                   name="name"
                   required
+                  maxLength={120}
+                  autoComplete="name"
                   className="mt-1 w-full rounded-sm border border-border px-3 py-2.5 text-base sm:text-sm"
                 />
               </div>
@@ -91,6 +96,8 @@ export function EnquiryModal({ open, onClose, propertyTitle }: Props) {
                   name="email"
                   type="email"
                   required
+                  maxLength={254}
+                  autoComplete="email"
                   className="mt-1 w-full rounded-sm border border-border px-3 py-2.5 text-base sm:text-sm"
                 />
               </div>
@@ -101,6 +108,8 @@ export function EnquiryModal({ open, onClose, propertyTitle }: Props) {
                   type="tel"
                   inputMode="tel"
                   required
+                  maxLength={48}
+                  autoComplete="tel"
                   className="mt-1 w-full rounded-sm border border-border px-3 py-2.5 text-base sm:text-sm"
                 />
               </div>
@@ -109,12 +118,13 @@ export function EnquiryModal({ open, onClose, propertyTitle }: Props) {
                 <textarea
                   name="message"
                   rows={3}
+                  maxLength={8000}
                   className="mt-1 w-full rounded-sm border border-border px-3 py-2.5 text-base sm:text-sm"
                 />
               </div>
               {submitErr ? (
                 <p className="text-sm text-accent" role="alert">
-                  {tc("error")}
+                  {submitErr}
                 </p>
               ) : null}
               <SubmitButton label={tc("submit")} pendingLabel={tc("sending")} />

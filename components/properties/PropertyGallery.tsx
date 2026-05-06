@@ -36,7 +36,6 @@ export function PropertyGallery({ images, title }: Props) {
               fill
               className="object-cover transition-transform duration-700 hover:scale-[1.02]"
               sizes="(min-width:1280px) 80vw, 100vw"
-              priority
               onError={() => setBroken((b) => ({ ...b, [images[active]]: true }))}
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />

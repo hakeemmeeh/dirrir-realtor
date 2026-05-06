@@ -118,8 +118,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const messages = await getMessages();
-  const ga = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-  const fb = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
+  const gaRaw = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
+  const fbRaw = process.env.NEXT_PUBLIC_FB_PIXEL_ID?.trim();
+  const ga = gaRaw && /^G-[A-Z0-9]+$/i.test(gaRaw) ? gaRaw : null;
+  const fb = fbRaw && /^\d{10,20}$/.test(fbRaw) ? fbRaw : null;
 
   const fontVars = `${playfair.variable} ${dmSans.variable} ${plusJakarta.variable} ${dmMono.variable} ${bodoniModa.variable}`;
 
@@ -129,7 +131,7 @@ export default async function RootLayout({
         <LocalBusinessJsonLd />
         {ga ? (
           <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${ga}`} strategy="afterInteractive" />
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(ga)}`} strategy="afterInteractive" />
             <Script id="ga4" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];

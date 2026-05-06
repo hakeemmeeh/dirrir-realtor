@@ -8,7 +8,7 @@ import { NewDevelopments } from "@/components/home/NewDevelopments";
 import { PropertyGrid } from "@/components/properties/PropertyGrid";
 import { Container } from "@/components/ui/Container";
 import { TrustStrip } from "@/components/home/TrustStrip";
-import { getAllProperties } from "@/lib/properties";
+import { getAllProperties, getPortfolioHeroPoster } from "@/lib/properties";
 import { getTranslations } from "next-intl/server";
 import { buildMetadata } from "@/lib/seo";
 
@@ -30,8 +30,7 @@ export default async function DevelopmentsPage() {
   const t = await getTranslations("Home");
   const all = await getAllProperties();
   const listingPaths = all.map((p) => `/properties/${p.slug}`);
-  const heroPoster =
-    all.find((p) => p.gallery[0])?.gallery[0] ?? "/images/hero-fallback.png";
+  const heroPoster = getPortfolioHeroPoster(all);
   const completedDevelopments = all
     .filter((p) => !p.isNewDevelopment)
     .slice(0, 6);

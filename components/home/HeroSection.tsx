@@ -62,33 +62,33 @@ function StaticHero() {
       <Container className="relative flex min-h-[100svh] flex-col justify-end pb-16 pt-32 sm:pb-20 sm:pt-40 lg:pb-28 lg:pt-48">
         <div className="max-w-2xl text-white [text-rendering:optimizeLegibility] antialiased [text-shadow:0_1px_40px_rgba(0,0,0,0.45)]">
           <motion.h1
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 1, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
             className="font-sans text-[1.75rem] font-medium leading-[1.12] tracking-tight sm:text-4xl lg:text-5xl"
           >
             {t("heroBrandName")}
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 1, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="mt-3 font-mono text-[10px] font-bold uppercase tracking-luxury-widest text-white/70"
           >
             {t("heroBrandLocation")}
           </motion.p>
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 1, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="mt-4 text-lg font-medium text-accent sm:text-xl"
           >
             {t("heroBrandValue")}
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 1, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="mt-9 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:items-center"
           >
             <Button
@@ -195,7 +195,7 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
       <Container className="relative flex min-h-[100svh] flex-col justify-end pb-16 pt-32 sm:pb-18 sm:pt-40 lg:pb-24 lg:pt-48">
         <div className="flex w-full flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl text-white [text-rendering:optimizeLegibility] antialiased [text-shadow:0_1px_40px_rgba(0,0,0,0.45)]">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={current.slug}
                 initial={{ opacity: 1 }}
@@ -205,9 +205,10 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
               >
                 {len > 1 ? (
                   <motion.p
-                    initial={{ opacity: 0, y: 10 }}
+                    key={`meta-${current.slug}`}
+                    initial={{ opacity: 1, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     className="font-mono text-[10px] font-bold uppercase tracking-luxury-widest text-white/65"
                     aria-live="polite"
                   >
@@ -216,9 +217,10 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                 ) : null}
 
                 <motion.h1
-                  initial={{ opacity: 0, y: 10 }}
+                  key={`title-text-${current.slug}`}
+                  initial={{ opacity: 1, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.45, delay: 0.04, ease: [0.22, 1, 0.36, 1] }}
                   className={cn(
                     "font-sans text-[1.65rem] font-medium leading-[1.12] tracking-tight sm:text-4xl lg:text-5xl",
                     len > 1 ? "mt-3 sm:mt-4" : "mt-0",
@@ -228,27 +230,30 @@ function HeroPropertySlideshow({ slides }: { slides: Property[] }) {
                 </motion.h1>
 
                 <motion.p
-                  initial={{ opacity: 0, y: 10 }}
+                  key={`loc-${current.slug}`}
+                  initial={{ opacity: 1, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.45, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
                   className="mt-3 font-mono text-[10px] font-bold uppercase tracking-luxury-widest text-white/70"
                 >
                   {current.location} · {current.city?.trim() || "Nairobi"}
                 </motion.p>
 
                 <motion.p
-                  initial={{ opacity: 0, y: 10 }}
+                  key={`price-${current.slug}`}
+                  initial={{ opacity: 1, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
                   className="mt-4 text-lg font-semibold text-accent sm:text-xl"
                 >
                   {priceLabel}
                 </motion.p>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
+                  key={`cta-${current.slug}`}
+                  initial={{ opacity: 1, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.45, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
                   className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
                 >
                   <Button
