@@ -134,10 +134,14 @@ export function isSecondParklandsListing(p: Pick<Property, "slug" | "title">): b
 function secondParklandsShowcaseGallery(): string[] {
   /* Real project line-up first (cover + on-site JPEGs), then representative interiors
    * so “Visual Showcase” includes finished-room shots, not only façade/progress photos. */
-  return withInteriorFallbacks([...SECOND_PARKLANDS_CURATED_GALLERY]);
+  const merged = withInteriorFallbacks([...SECOND_PARKLANDS_CURATED_GALLERY]);
+  /* Omit fixed slide 21 (1-based counter) — client request; keeps order otherwise unchanged. */
+  if (merged.length <= 20) return merged;
+  return merged.filter((_, i) => i !== 20);
 }
 
 const ARQAM_REAL_GALLERY = [
+  "/images/properties/arqam-real/arqam-real-01-exterior-main.png",
   "/images/properties/arqam-real/arqam-real-11-exterior-entrance.png",
   "/images/properties/arqam-real/arqam-real-04-living-main.png",
   "/images/properties/arqam-real/arqam-real-05-living-alt.png",
