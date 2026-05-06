@@ -368,7 +368,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
   },
   {
     slug: "studio-westlands-sarit",
-    title: "Dirrir Heights",
+    title: "RABAT 1",
     propertyType: "Apartment",
     status: "For Rent",
     propertyId: "DRL-004",
@@ -386,9 +386,10 @@ export const FALLBACK_PROPERTIES: Property[] = [
     availableFrom: "2026-04-18",
     structureType: "Studio tower apartment",
     exteriorMaterial: "Concrete frame with glazed balcony lines",
-    tagline: "Westlands · Investor-ready studios",
+    tagline: "Westlands · Rabat portfolio — completed",
     collection: "investment",
     featured: true,
+    isNewDevelopment: false,
     description:
       "Compact studio with quality finishes, ideal for consultants and short stays. Walking distance to Sarit Centre and expressway access.",
     amenities: ["Gym", "Rooftop lounge", "High security", "Water storage"],
@@ -403,7 +404,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
   },
   {
     slug: "5-bed-riverside-garden",
-    title: "Dirrir Riverside",
+    title: "RABAT 2",
     propertyType: "Apartment",
     status: "For Sale",
     propertyId: "DRL-005",
@@ -423,9 +424,10 @@ export const FALLBACK_PROPERTIES: Property[] = [
     structureType: "Detached villa",
     exteriorMaterial: "Natural stone and painted masonry",
     extraDetails: "Heated pool and guest cottage",
-    tagline: "Riverside · Luxury villa collection",
+    tagline: "Riverside · Rabat portfolio — completed",
     collection: "living",
     featured: true,
+    isNewDevelopment: false,
     description:
       "Exclusive riverside apartment tower with panoramic views, heated pool, and bespoke interiors. Mature trees surround the development, offering full backup power and smart-home features.",
     amenities: ["Guest cottage", "Pool", "Smart home", "Full backup", "Staff block"],
@@ -440,7 +442,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
   },
   {
     slug: "3-bed-parklands-family",
-    title: "Dirrir Parklands",
+    title: "SAMSON",
     propertyType: "Apartment",
     status: "For Sale",
     propertyId: "DRL-006",
@@ -458,9 +460,10 @@ export const FALLBACK_PROPERTIES: Property[] = [
     availableFrom: "2026-05-10",
     structureType: "Family apartment block",
     exteriorMaterial: "Rendered masonry",
-    tagline: "Parklands · Family-centric apartments",
+    tagline: "Parklands · Rabat portfolio — completed",
     collection: "living",
-    featured: false,
+    featured: true,
+    isNewDevelopment: false,
     description:
       "Family-friendly layout with separate dining, utility area, and two parking slots. Close to Aga Khan institutions and Karura Forest trails.",
     amenities: ["Two parking", "Utility area", "Intercom", "CCTV"],
@@ -475,7 +478,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
   },
   {
     slug: "land-kilimani-quarter-acre",
-    title: "Dirrir Kilimani Quarter Acre",
+    title: "STAREHE",
     propertyType: "Land",
     status: "For Sale",
     propertyId: "DRL-007",
@@ -491,9 +494,10 @@ export const FALLBACK_PROPERTIES: Property[] = [
     structureType: "Development plot",
     exteriorMaterial: "N/A",
     extraDetails: "Approved plans available",
-    tagline: "Kilimani · Prime development parcel",
+    tagline: "Kilimani · Rabat portfolio — completed",
     collection: "investment",
-    featured: false,
+    featured: true,
+    isNewDevelopment: false,
     description:
       "Red-soil corner plot with approved building plans available. Excellent for boutique apartments or a private residence with room for a pool.",
     amenities: ["Corner plot", "Red soil", "Plans available"],
@@ -503,6 +507,145 @@ export const FALLBACK_PROPERTIES: Property[] = [
       P.buildingWhite,
       P.towerTwilight,
     ],
+  },
+  {
+    slug: "completed-marwa",
+    title: "MARWA",
+    propertyType: "Apartment",
+    status: "For Sale",
+    propertyId: "DRL-COMP-01",
+    price: 18500000,
+    bedrooms: 3,
+    bathrooms: 2,
+    areaSqft: 1450,
+    floor: "Mid-rise",
+    location: "Kilimani",
+    addressLine: "Kilimani",
+    city: "Nairobi",
+    country: "Kenya",
+    yearBuilt: 2020,
+    garages: 2,
+    structureType: "Residential block",
+    exteriorMaterial: "Rendered façade with aluminium glazing",
+    tagline: "Kilimani · Rabat portfolio — completed",
+    collection: "living",
+    featured: true,
+    isNewDevelopment: false,
+    description:
+      "Completed Rabat portfolio scheme in Kilimani — quality apartments delivered with strong rental history and clear title. Contact Dirrir Realtor for resale and letting availability.",
+    amenities: ["Two parking", "Backup power water storage", "High security", "Borehole"],
+    gallery: withInteriorFallbacks([P.towerTwilight, P.livingDoubleHeight, P.diningSkyline]),
+  },
+  {
+    slug: "completed-future-homes",
+    title: "FUTURE HOMES",
+    propertyType: "Apartment",
+    status: "For Sale",
+    propertyId: "DRL-COMP-02",
+    price: 22000000,
+    bedrooms: 3,
+    bathrooms: 3,
+    areaSqft: 1680,
+    floor: "Mixed floors",
+    location: "Westlands",
+    addressLine: "Westlands",
+    city: "Nairobi",
+    country: "Kenya",
+    yearBuilt: 2021,
+    garages: 2,
+    structureType: "Apartment tower",
+    exteriorMaterial: "Glass and composite cladding",
+    tagline: "Westlands · Rabat portfolio — completed",
+    collection: "living",
+    featured: true,
+    isNewDevelopment: false,
+    description:
+      "Future Homes — completed residential phase under Rabat Properties. Family-oriented layouts, strong access to Sarit and expressway links. Enquire for remaining inventory.",
+    amenities: ["Gym", "Kids play area", "Generator", "CCTV"],
+    gallery: withInteriorFallbacks([P.heightsHero, P.amenityPool, P.livingWarmCity]),
+  },
+  {
+    slug: "completed-rabat-3",
+    title: "RABAT 3",
+    propertyType: "Apartment",
+    status: "For Sale",
+    propertyId: "DRL-COMP-03",
+    price: 12500000,
+    bedrooms: 2,
+    bathrooms: 2,
+    areaSqft: 1180,
+    floor: "Low–mid rise",
+    location: "Parklands",
+    addressLine: "Parklands",
+    city: "Nairobi",
+    country: "Kenya",
+    yearBuilt: 2019,
+    garages: 1,
+    structureType: "Walk-up / low-rise block",
+    exteriorMaterial: "Rendered masonry",
+    tagline: "Parklands · Rabat portfolio — completed",
+    collection: "investment",
+    featured: true,
+    isNewDevelopment: false,
+    description:
+      "Additional completed Rabat-track development in Parklands — practical 2- and 3-bedroom mix, solid yields for investors. Dirrir Realtor handles sales and handover support.",
+    amenities: ["Parking", "Intercom", "Water storage", "Security"],
+    gallery: withInteriorFallbacks([P.heritageHero1, P.amenityLounge, P.diningWarm]),
+  },
+  {
+    slug: "completed-rabat-4",
+    title: "RABAT 4",
+    propertyType: "Apartment",
+    status: "For Rent",
+    propertyId: "DRL-COMP-04",
+    price: 140000,
+    bedrooms: 2,
+    bathrooms: 2,
+    areaSqft: 1100,
+    floor: "Upper floors",
+    location: "Lavington",
+    addressLine: "Lavington",
+    city: "Nairobi",
+    country: "Kenya",
+    yearBuilt: 2020,
+    garages: 1,
+    structureType: "Boutique apartment building",
+    exteriorMaterial: "Stone and render",
+    tagline: "Lavington · Rabat portfolio — completed",
+    collection: "investment",
+    featured: true,
+    isNewDevelopment: false,
+    description:
+      "RABAT 4 — completed lettings-led stock in Lavington. Executive finishes, proximity to Valley Arcade and schools. Ask Dirrir Realtor for current availability.",
+    amenities: ["Fibre ready", "Water backup", "CCTV", "Parking"],
+    gallery: withInteriorFallbacks([P.heritagePenthouse, P.amenityGym, P.diningSkyline]),
+  },
+  {
+    slug: "completed-rabat-5",
+    title: "RABAT 5",
+    propertyType: "Townhouse",
+    status: "For Sale",
+    propertyId: "DRL-COMP-05",
+    price: 42000000,
+    bedrooms: 4,
+    bathrooms: 4,
+    areaSqft: 3200,
+    location: "Riverside",
+    addressLine: "Riverside",
+    city: "Nairobi",
+    country: "Kenya",
+    yearBuilt: 2018,
+    garages: 2,
+    structureType: "Townhouse cluster",
+    exteriorMaterial: "Natural stone accents",
+    tagline: "Riverside · Rabat portfolio — completed",
+    collection: "living",
+    featured: true,
+    isNewDevelopment: false,
+    description:
+      "RABAT 5 — completed townhouse phase near Riverside. Larger family formats with gardens and staff quarters on selected units. Portfolio resale and letting via Dirrir Realtor.",
+    amenities: ["Garden", "Staff quarter option", "Full backup", "Two parking"],
+    gallery: withInteriorFallbacks([P.riversideHero, P.livingDoubleHeight, P.amenityPool]),
   },
   {
     slug: "arqam-project-parklands",
@@ -677,6 +820,37 @@ export function getNewDevelopmentsFrom(list: Property[], max = 3): Property[] {
 
   const fallback = getFeaturedFrom(list).sort((a, b) => a.price - b.price);
   return fallback.slice(0, max);
+}
+
+/** Completed developments rail: Rabat portfolio display names and three additional phases. */
+export const COMPLETED_DEVELOPMENT_SLUG_ORDER: readonly string[] = [
+  "studio-westlands-sarit",
+  "5-bed-riverside-garden",
+  "3-bed-parklands-family",
+  "land-kilimani-quarter-acre",
+  "completed-marwa",
+  "completed-future-homes",
+  "completed-rabat-3",
+  "completed-rabat-4",
+  "completed-rabat-5",
+];
+
+export function getCompletedDevelopmentsForShowcase(list: Property[], max = 9): Property[] {
+  const bySlug = new Map(list.map((p) => [p.slug, p]));
+  const ordered: Property[] = [];
+  for (const slug of COMPLETED_DEVELOPMENT_SLUG_ORDER) {
+    const p = bySlug.get(slug);
+    if (p && !p.isNewDevelopment) ordered.push(p);
+  }
+  if (ordered.length >= max) return ordered.slice(0, max);
+  const used = new Set(ordered.map((p) => p.slug));
+  for (const p of list) {
+    if (used.has(p.slug)) continue;
+    if (p.isNewDevelopment) continue;
+    ordered.push(p);
+    if (ordered.length >= max) break;
+  }
+  return ordered.slice(0, max);
 }
 
 export function getPropertyBySlugFrom(

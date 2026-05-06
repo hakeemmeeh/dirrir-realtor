@@ -8,7 +8,7 @@ import { NewDevelopments } from "@/components/home/NewDevelopments";
 import { PropertyGrid } from "@/components/properties/PropertyGrid";
 import { Container } from "@/components/ui/Container";
 import { TrustStrip } from "@/components/home/TrustStrip";
-import { getAllProperties, getPortfolioHeroPoster } from "@/lib/properties";
+import { getAllProperties, getCompletedDevelopmentsForShowcase, getPortfolioHeroPoster } from "@/lib/properties";
 import { getTranslations } from "next-intl/server";
 import { buildMetadata } from "@/lib/seo";
 
@@ -31,9 +31,7 @@ export default async function DevelopmentsPage() {
   const all = await getAllProperties();
   const listingPaths = all.map((p) => `/properties/${p.slug}`);
   const heroPoster = getPortfolioHeroPoster(all);
-  const completedDevelopments = all
-    .filter((p) => !p.isNewDevelopment)
-    .slice(0, 6);
+  const completedDevelopments = getCompletedDevelopmentsForShowcase(all, 9);
 
   return (
     <>
@@ -44,8 +42,8 @@ export default async function DevelopmentsPage() {
         compact
         posterSrc={heroPoster}
       />
-      <CompletedDevelopments properties={completedDevelopments} />
       <NewDevelopments properties={all} />
+      <CompletedDevelopments properties={completedDevelopments} />
       <CollectionChoiceGrid />
       <DevelopmentsWalkthrough />
       <section className="bg-background py-20 lg:py-32">

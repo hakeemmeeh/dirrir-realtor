@@ -6,18 +6,18 @@ import { NewDevelopments } from "@/components/home/NewDevelopments";
 import { ServiceCards } from "@/components/home/ServiceCards";
 import { TrustStrip } from "@/components/home/TrustStrip";
 import { MarketIntelligence } from "@/components/home/MarketIntelligence";
-import { getAllProperties, getHomeHeroSlidesFrom } from "@/lib/properties";
+import { getAllProperties, getCompletedDevelopmentsForShowcase, getHomeHeroSlidesFrom } from "@/lib/properties";
 
 export default async function HomePage() {
   const all = await getAllProperties();
   const heroSlides = getHomeHeroSlidesFrom(all);
-  const completedDevelopments = all.filter((p) => !p.isNewDevelopment).slice(0, 6);
+  const completedDevelopments = getCompletedDevelopmentsForShowcase(all, 9);
 
   return (
     <>
       <HeroSection slides={heroSlides} />
-      <CompletedDevelopments properties={completedDevelopments} />
       <NewDevelopments properties={all} />
+      <CompletedDevelopments properties={completedDevelopments} />
       <HomePropertyShowcase properties={all} />
       <TrustStrip />
       <IntroBlock />
