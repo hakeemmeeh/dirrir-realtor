@@ -565,89 +565,6 @@ export const FALLBACK_PROPERTIES: Property[] = [
     gallery: withInteriorFallbacks([P.heightsHero, P.amenityPool, P.livingWarmCity]),
   },
   {
-    slug: "completed-rabat-3",
-    title: "RABAT 3",
-    propertyType: "Apartment",
-    status: "For Sale",
-    propertyId: "DRL-COMP-03",
-    price: 12500000,
-    bedrooms: 2,
-    bathrooms: 2,
-    areaSqft: 1180,
-    floor: "Low–mid rise",
-    location: "Parklands",
-    addressLine: "Parklands",
-    city: "Nairobi",
-    country: "Kenya",
-    yearBuilt: 2019,
-    garages: 1,
-    structureType: "Walk-up / low-rise block",
-    exteriorMaterial: "Rendered masonry",
-    tagline: "Parklands · Rabat portfolio — completed",
-    collection: "investment",
-    featured: true,
-    isNewDevelopment: false,
-    description:
-      "Additional completed Rabat-track development in Parklands — practical 2- and 3-bedroom mix, solid yields for investors. Dirrir Realtor handles sales and handover support.",
-    amenities: ["Parking", "Intercom", "Water storage", "Security"],
-    gallery: withInteriorFallbacks([P.heritageHero1, P.amenityLounge, P.diningWarm]),
-  },
-  {
-    slug: "completed-rabat-4",
-    title: "RABAT 4",
-    propertyType: "Apartment",
-    status: "For Rent",
-    propertyId: "DRL-COMP-04",
-    price: 140000,
-    bedrooms: 2,
-    bathrooms: 2,
-    areaSqft: 1100,
-    floor: "Upper floors",
-    location: "Lavington",
-    addressLine: "Lavington",
-    city: "Nairobi",
-    country: "Kenya",
-    yearBuilt: 2020,
-    garages: 1,
-    structureType: "Boutique apartment building",
-    exteriorMaterial: "Stone and render",
-    tagline: "Lavington · Rabat portfolio — completed",
-    collection: "investment",
-    featured: true,
-    isNewDevelopment: false,
-    description:
-      "RABAT 4 — completed lettings-led stock in Lavington. Executive finishes, proximity to Valley Arcade and schools. Ask Dirrir Realtor for current availability.",
-    amenities: ["Fibre ready", "Water backup", "CCTV", "Parking"],
-    gallery: withInteriorFallbacks([P.heritagePenthouse, P.amenityGym, P.diningSkyline]),
-  },
-  {
-    slug: "completed-rabat-5",
-    title: "RABAT 5",
-    propertyType: "Townhouse",
-    status: "For Sale",
-    propertyId: "DRL-COMP-05",
-    price: 42000000,
-    bedrooms: 4,
-    bathrooms: 4,
-    areaSqft: 3200,
-    location: "Riverside",
-    addressLine: "Riverside",
-    city: "Nairobi",
-    country: "Kenya",
-    yearBuilt: 2018,
-    garages: 2,
-    structureType: "Townhouse cluster",
-    exteriorMaterial: "Natural stone accents",
-    tagline: "Riverside · Rabat portfolio — completed",
-    collection: "living",
-    featured: true,
-    isNewDevelopment: false,
-    description:
-      "RABAT 5 — completed townhouse phase near Riverside. Larger family formats with gardens and staff quarters on selected units. Portfolio resale and letting via Dirrir Realtor.",
-    amenities: ["Garden", "Staff quarter option", "Full backup", "Two parking"],
-    gallery: withInteriorFallbacks([P.riversideHero, P.livingDoubleHeight, P.amenityPool]),
-  },
-  {
     slug: "arqam-project-parklands",
     title: "Arqam Project",
     propertyType: "Apartment",
@@ -822,7 +739,7 @@ export function getNewDevelopmentsFrom(list: Property[], max = 3): Property[] {
   return fallback.slice(0, max);
 }
 
-/** Completed developments rail: Rabat portfolio display names and three additional phases. */
+/** Completed developments rail: six Rabat portfolio names (fixed order). */
 export const COMPLETED_DEVELOPMENT_SLUG_ORDER: readonly string[] = [
   "studio-westlands-sarit",
   "5-bed-riverside-garden",
@@ -830,12 +747,9 @@ export const COMPLETED_DEVELOPMENT_SLUG_ORDER: readonly string[] = [
   "land-kilimani-quarter-acre",
   "completed-marwa",
   "completed-future-homes",
-  "completed-rabat-3",
-  "completed-rabat-4",
-  "completed-rabat-5",
 ];
 
-export function getCompletedDevelopmentsForShowcase(list: Property[], max = 9): Property[] {
+export function getCompletedDevelopmentsForShowcase(list: Property[], max = 6): Property[] {
   const bySlug = new Map(list.map((p) => [p.slug, p]));
   const ordered: Property[] = [];
   for (const slug of COMPLETED_DEVELOPMENT_SLUG_ORDER) {

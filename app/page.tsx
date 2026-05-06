@@ -11,7 +11,7 @@ import { getAllProperties, getCompletedDevelopmentsForShowcase, getHomeHeroSlide
 export default async function HomePage() {
   const all = await getAllProperties();
   const heroSlides = getHomeHeroSlidesFrom(all);
-  const completedDevelopments = getCompletedDevelopmentsForShowcase(all, 9);
+  const completedDevelopments = getCompletedDevelopmentsForShowcase(all, 6);
 
   return (
     <>

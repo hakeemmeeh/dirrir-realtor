@@ -31,7 +31,7 @@ export default async function DevelopmentsPage() {
   const all = await getAllProperties();
   const listingPaths = all.map((p) => `/properties/${p.slug}`);
   const heroPoster = getPortfolioHeroPoster(all);
-  const completedDevelopments = getCompletedDevelopmentsForShowcase(all, 9);
+  const completedDevelopments = getCompletedDevelopmentsForShowcase(all, 6);
 
   return (
     <>
