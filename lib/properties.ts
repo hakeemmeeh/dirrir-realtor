@@ -131,13 +131,14 @@ export function isSecondParklandsListing(p: Pick<Property, "slug" | "title">): b
   return p.title.toLowerCase().includes("second parklands");
 }
 
+/** 1-based slide numbers removed from Second Parklands Visual Showcase (original order before filtering). */
+const SECOND_PARKLANDS_SHOWCASE_EXCLUDE_ONE_BASED = new Set([2, 3, 7, 10, 21]);
+
 function secondParklandsShowcaseGallery(): string[] {
   /* Real project line-up first (cover + on-site JPEGs), then representative interiors
    * so “Visual Showcase” includes finished-room shots, not only façade/progress photos. */
   const merged = withInteriorFallbacks([...SECOND_PARKLANDS_CURATED_GALLERY]);
-  /* Omit fixed slide 21 (1-based counter) — client request; keeps order otherwise unchanged. */
-  if (merged.length <= 20) return merged;
-  return merged.filter((_, i) => i !== 20);
+  return merged.filter((_, i) => !SECOND_PARKLANDS_SHOWCASE_EXCLUDE_ONE_BASED.has(i + 1));
 }
 
 const ARQAM_REAL_GALLERY = [
