@@ -105,13 +105,16 @@ const INTERIOR_FALLBACK_IMAGES = [
   "/images/intro-detail.png",
 ] as const;
 
-const SECOND_PARKLANDS_REAL_GALLERY = [
+const SECOND_PARKLANDS_CURATED_GALLERY = [
   "/images/second-parklands-cover.png",
   "/images/properties/second-parklands-real/second-parklands-real-04.jpeg",
   "/images/properties/second-parklands-real/second-parklands-real-05.jpeg",
   "/images/properties/second-parklands-real/second-parklands-real-09.jpeg",
   "/images/properties/second-parklands-real/second-parklands-real-10.jpeg",
 ] as const;
+
+/** Canonical slug for Dirrir Second Parklands (Sanity + fallback). */
+export const SECOND_PARKLANDS_SLUG = "3-bed-second-avenue-parklands";
 
 const ARQAM_REAL_GALLERY = [
   "/images/properties/arqam-real/arqam-real-01-exterior-main.png",
@@ -246,7 +249,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Cafeteria",
       "Mini market",
     ],
-    gallery: [...SECOND_PARKLANDS_REAL_GALLERY],
+    gallery: [...SECOND_PARKLANDS_CURATED_GALLERY],
     heroVideoUrl: getPlaceholderHeroVideo("3-bed-second-avenue-parklands"),
   },
   {
@@ -567,17 +570,29 @@ export function filterProperties(
   });
 }
 
+/** Second Parklands: force curated Visual Showcase (Sanity often ships a long gallery). */
+function applySecondParklandsGalleryOverride(list: Property[]): Property[] {
+  return list.map((p) =>
+    p.slug === SECOND_PARKLANDS_SLUG
+      ? { ...p, gallery: [...SECOND_PARKLANDS_CURATED_GALLERY] }
+      : p,
+  );
+}
+
 /** Cached listing source: Sanity when configured, otherwise `FALLBACK_PROPERTIES`. */
 export const getAllProperties = cache(async (): Promise<Property[]> => {
   const client = getSanityClient();
-  if (!sanityConfigured || !client) return FALLBACK_PROPERTIES;
+  if (!sanityConfigured || !client) {
+    return applySecondParklandsGalleryOverride(FALLBACK_PROPERTIES);
+  }
   try {
     const docs = await client.fetch<Record<string, unknown>[]>(allPropertiesQuery);
     const mapped = mapSanityProperties(docs);
-    return mapped.length > 0 ? mapped : FALLBACK_PROPERTIES;
+    const list = mapped.length > 0 ? mapped : FALLBACK_PROPERTIES;
+    return applySecondParklandsGalleryOverride(list);
   } catch (e) {
     console.error("[sanity] getAllProperties failed", e);
-    return FALLBACK_PROPERTIES;
+    return applySecondParklandsGalleryOverride(FALLBACK_PROPERTIES);
   }
 });
 
@@ -586,8 +601,6 @@ export function getFeaturedFrom(list: Property[]): Property[] {
 }
 
 /** Hero poster for /properties and /developments: flagship Second Parklands render when listed. */
-export const SECOND_PARKLANDS_SLUG = "3-bed-second-avenue-parklands";
-
 export function getPortfolioHeroPoster(list: Property[]): string {
   const flagship = list.find((p) => p.slug === SECOND_PARKLANDS_SLUG);
   if (flagship?.gallery[0]) return flagship.gallery[0];
