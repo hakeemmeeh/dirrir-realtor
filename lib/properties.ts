@@ -535,7 +535,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
     description:
       "Completed Rabat portfolio scheme in Kilimani — quality apartments delivered with strong rental history and clear title. Contact Dirrir Realtor for resale and letting availability.",
     amenities: ["Two parking", "Backup power water storage", "High security", "Borehole"],
-    gallery: withInteriorFallbacks([P.towerTwilight, P.livingDoubleHeight, P.diningSkyline]),
+    gallery: withInteriorFallbacks([P.heritagePenthouse, P.livingDoubleHeight, P.diningSkyline]),
   },
   {
     slug: "completed-future-homes",
@@ -563,7 +563,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
     description:
       "Future Homes — completed residential phase under Rabat Properties. Family-oriented layouts, strong access to Sarit and expressway links. Enquire for remaining inventory.",
     amenities: ["Gym", "Kids play area", "Generator", "CCTV"],
-    gallery: withInteriorFallbacks([P.heightsHero, P.amenityPool, P.livingWarmCity]),
+    gallery: withInteriorFallbacks([P.heritageHero2, P.amenityPool, P.livingWarmCity]),
   },
   {
     slug: "arqam-project-parklands",
