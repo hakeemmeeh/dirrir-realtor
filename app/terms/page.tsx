@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/PageHero";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Terms of Service",
   description: "Terms governing use of the Dirrir Realtor Limited website and services.",
-};
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (
@@ -35,7 +37,7 @@ export default function TermsPage() {
           <h2 className="font-serif text-2xl text-primary">Contact</h2>
           <p>
             Questions about these terms:{" "}
-            <a href="mailto:info@dirrirrealtor.co.ke">info@dirrirrealtor.co.ke</a>.
+            <a href="mailto:info@dirirrealtors.com">info@dirirrealtors.com</a>.
           </p>
         </Container>
       </section>

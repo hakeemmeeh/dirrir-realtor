@@ -6,7 +6,7 @@ import { MessageCircle } from "lucide-react";
 import { IconFacebook, IconInstagram } from "@/components/ui/SocialIcons";
 import { CONTACT_PHONES_E164, formatKeDisplay, telHref } from "@/lib/contact-details";
 
-const email = "info@dirrirrealtor.co.ke";
+const email = "info@dirirrealtors.com";
 
 export async function Footer() {
   const t = await getTranslations("Footer");

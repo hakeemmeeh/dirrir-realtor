@@ -110,6 +110,12 @@ export const metadata: Metadata = {
     apple: "/icon.png",
   },
   manifest: undefined,
+  other: {
+    "geo.region": "KE-110",
+    "geo.placename": "Nairobi, Kenya",
+    "geo.position": "-1.286389;36.817223",
+    "ICBM": "-1.286389, 36.817223",
+  },
 };
 
 export default async function RootLayout({

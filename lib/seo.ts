@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://dirrirrealtor.co.ke";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.dirirrealtors.com";
 
 export const SITE_NAME = "Dirrir Realtor Limited";
 export const SITE_TAGLINE = "Your Real Estate Professional";

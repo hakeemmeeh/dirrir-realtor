@@ -8,6 +8,7 @@ import { TeamSection } from "@/components/about/TeamSection";
 import { ValuesGrid } from "@/components/about/ValuesGrid";
 import { WhyChoose } from "@/components/about/WhyChoose";
 import { PageHero } from "@/components/PageHero";
+import { FAQPageJsonLd } from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -24,12 +25,36 @@ export const metadata: Metadata = buildMetadata({
   ],
 });
 
+const ABOUT_FAQS = [
+  {
+    question: "What areas of Nairobi does Dirrir Realtor cover?",
+    answer:
+      "Dirrir Realtor Limited covers Nairobi's prime residential neighbourhoods including Parklands, Kilimani, Westlands, Lavington, Riverside, and Kileleshwa. We also handle enquiries for emerging high-growth areas across Nairobi.",
+  },
+  {
+    question: "Is Dirrir Realtor Limited a registered company in Kenya?",
+    answer:
+      "Yes. Dirrir Realtor Limited (DRL) is a registered Kenyan real estate company operating under Rabat Properties Limited.",
+  },
+  {
+    question: "Does Dirrir Realtor help diaspora investors purchase property in Nairobi?",
+    answer:
+      "Yes. We offer dedicated diaspora investment services including virtual property tours via video call, remote transaction management, escrow guidance, and regular progress updates in your time zone.",
+  },
+  {
+    question: "How do I start the process of buying a property with Dirrir Realtor?",
+    answer:
+      "Contact us via our enquiry form, WhatsApp, or phone. We will assign you a dedicated agent who will shortlist properties matching your budget and preferences, arrange viewings, and guide you through to title transfer.",
+  },
+];
+
 export default async function AboutPage() {
   const t = await getTranslations("About");
 
   return (
     <>
-      <PageHero 
+      <FAQPageJsonLd questions={ABOUT_FAQS} />
+      <PageHero
         title={t("heroTitle")} 
         subtitle={t("heroSub")} 
         posterSrc="/images/about-hero.png"

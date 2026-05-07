@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/PageHero";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy",
-  description: "How Dirrir Realtor Limited collects, uses, and protects your information.",
-};
+  description: "How Dirrir Realtor Limited collects, uses, and protects your personal information.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
@@ -35,7 +37,7 @@ export default function PrivacyPage() {
           <h2 className="font-serif text-2xl text-primary">Contact</h2>
           <p>
             For privacy-related questions, contact us at{" "}
-            <a href="mailto:info@dirrirrealtor.co.ke">info@dirrirrealtor.co.ke</a>.
+            <a href="mailto:info@dirirrealtors.com">info@dirirrealtors.com</a>.
           </p>
         </Container>
       </section>

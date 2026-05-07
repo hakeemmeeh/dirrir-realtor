@@ -22,7 +22,7 @@ const team: TeamMember[] = [
     bio: "Leads client advisory for families and diaspora investors across Parklands, Kilimani, and Westlands — with a focus on transparent process and long-term value.",
     initials: "AD",
     accent: "from-[#c5a059] to-[#a68648]",
-    email: "hello@dirrirrealtor.co.ke",
+    email: "hello@dirirrealtors.com",
     linkedin: "https://www.linkedin.com",
   },
   {
@@ -39,7 +39,7 @@ const team: TeamMember[] = [
     bio: "Dedicated specialists for viewings, remote consultations, escrow guidance, and transaction coordination — available in local and diaspora time zones.",
     initials: "AD",
     accent: "from-[#9a7a3e] to-[#5a4720]",
-    email: "advisory@dirrirrealtor.co.ke",
+    email: "advisory@dirirrealtors.com",
   },
 ];
 

@@ -7,7 +7,7 @@ import {
 } from "@/lib/contact-details";
 import { Mail, MapPin, Phone } from "lucide-react";
 
-const email = "info@dirrirrealtor.co.ke";
+const email = "info@dirirrealtors.com";
 
 export function ContactInfo() {
   return (

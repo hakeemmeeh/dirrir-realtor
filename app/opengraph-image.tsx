@@ -74,7 +74,7 @@ export default async function OgImage() {
             textTransform: "uppercase",
           }}
         >
-          <div>dirrirrealtor.co.ke</div>
+          <div>dirirrealtors.com</div>
           <div>Your Real Estate Professional</div>
         </div>
       </div>
