@@ -169,7 +169,7 @@ function DevelopmentSlidesCarousel({
 
     let raf = 0;
     let last = performance.now();
-    const speedPxPerSec = 32; // gentle drift
+    const speedPxPerSec = 55; // gentle drift
 
     const loop = (now: number) => {
       const dt = (now - last) / 1000;
