@@ -502,10 +502,11 @@ export const FALLBACK_PROPERTIES: Property[] = [
       "Red-soil corner plot with approved building plans available. Excellent for boutique apartments or a private residence with room for a pool.",
     amenities: ["Corner plot", "Red soil", "Plans available"],
     gallery: [
+      P.towerTwilight,
+      P.heightsHero,
+      P.towersDusk,
       P.landPlotAerial,
       P.landPlotCorner,
-      P.buildingWhite,
-      P.towerTwilight,
     ],
   },
   {
