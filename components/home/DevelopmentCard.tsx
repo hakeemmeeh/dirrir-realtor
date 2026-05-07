@@ -11,10 +11,13 @@ type Props = {
   property: Property;
   index?: number;
   className?: string;
+  /** Ongoing pipeline vs delivered portfolio badge */
+  badgeVariant?: "ongoing" | "completed";
 };
 
-export function DevelopmentCard({ property: p, index = 0, className }: Props) {
+export function DevelopmentCard({ property: p, index = 0, className, badgeVariant = "completed" }: Props) {
   const t = useTranslations("PropertiesPage");
+  const tHome = useTranslations("Home");
   const priceLabel = p.status === "For Sale" ? formatUsd(p.price) : `${formatUsd(p.price)}/mo`;
   const areaLabel = p.areaSqft > 0 ? `${p.areaSqft.toLocaleString()} sq ft` : "N/A";
 
@@ -42,11 +45,24 @@ export function DevelopmentCard({ property: p, index = 0, className }: Props) {
       {/* Hover Overlay - Deeper darkening for readability on hover */}
       <div className="absolute inset-0 bg-black/85 opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-100" />
 
-      {/* Completion Status Badge - Top Left */}
+      {/* Status badge — ongoing pipeline vs delivered */}
       <div className="absolute left-6 top-6 z-10">
-        <div className="bg-accent px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
-          Completed
-        </div>
+        {badgeVariant === "ongoing" ? (
+          <div className="flex items-center gap-2 border-2 border-accent bg-primary px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
+            <span
+              className="relative flex h-2 w-2 shrink-0"
+              aria-hidden
+            >
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            </span>
+            {tHome("developmentBadgeOngoing")}
+          </div>
+        ) : (
+          <div className="bg-accent px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
+            {tHome("developmentBadgeCompleted")}
+          </div>
+        )}
       </div>
 
       {/* Content Container */}

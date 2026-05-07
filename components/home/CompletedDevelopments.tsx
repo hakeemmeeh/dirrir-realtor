@@ -17,7 +17,10 @@ export function CompletedDevelopments({ properties }: Props) {
   if (properties.length === 0) return null;
 
   return (
-    <section id="our-developments" className="bg-background pb-4 pt-10 lg:pb-6 lg:pt-14">
+    <section
+      id="our-developments"
+      className="border-t border-border bg-background pb-8 pt-12 lg:pb-10 lg:pt-14"
+    >
       <Container>
         <div className="mb-8 max-w-3xl sm:pr-24">
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
@@ -35,7 +38,11 @@ export function CompletedDevelopments({ properties }: Props) {
           </RevealOnScroll>
         </div>
 
-        <DevelopmentCarousel properties={properties} />
+        <DevelopmentCarousel
+          properties={properties}
+          cardBadgeVariant="completed"
+          mode="slides"
+        />
 
         <div className="mt-10">
           <Link
