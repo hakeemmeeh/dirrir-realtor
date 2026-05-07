@@ -176,6 +176,8 @@
     "priceRange": "Value Range",
     "studio": "Studio",
     "enquireNow": "Enquire",
+    "listingsCount": "{count} listings",
+    "listingsContext": "Updated daily · Nairobi & wider Kenya",
     "filters": {
       "location": "Location",
       "type": "Type",

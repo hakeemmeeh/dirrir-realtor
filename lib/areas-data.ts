@@ -1,5 +1,10 @@
 import type { AreaData } from "@/components/areas/AreaCard";
 
+/* Area covers — wide aerial / residential imagery from Unsplash chosen to evoke
+ * the character of each Nairobi neighbourhood. Easy to swap with a Sanity field
+ * later if we move areas into the CMS. */
+const UNSPLASH = (id: string) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1600&h=1100&q=85`;
 
 export const AREAS: AreaData[] = [
   {
@@ -10,7 +15,8 @@ export const AREAS: AreaData[] = [
     highlights: ["Aga Khan Academy", "Sarit Centre", "City Park", "Karura Forest nearby"],
     priceSale: "KES 10M – 25M+",
     priceRent: "KES 40K – 200K",
-    image: "/images/urban_residence.png",
+    /* Established mid-rise residential rooftops aerial */
+    image: UNSPLASH("photo-1486325212027-8081e485255e"),
   },
   {
     name: "Kilimani",
@@ -20,7 +26,8 @@ export const AREAS: AreaData[] = [
     highlights: ["Yaya Centre", "Prestige Plaza", "Adams Arcade", "Nightlife and dining"],
     priceSale: "KES 8M – 35M+",
     priceRent: "KES 50K – 250K",
-    image: "/images/villa_facade.png",
+    /* Modern apartment block — captures Kilimani's contemporary high-rise feel */
+    image: UNSPLASH("photo-1545324418-cc1a3fa10c00"),
   },
   {
     name: "Westlands",
@@ -30,7 +37,8 @@ export const AREAS: AreaData[] = [
     highlights: ["Sarit Centre", "The Village Market", "Waiyaki Way", "UN offices nearby"],
     priceSale: "KES 12M – 40M+",
     priceRent: "KES 45K – 280K",
-    image: "/images/highrise_exterior.png",
+    /* Westlands, Nairobi cityscape — actual Westlands office tower complex by Brian Marete */
+    image: UNSPLASH("photo-1669333490889-194e8f46a766"),
   },
   {
     name: "Lavington",
@@ -45,7 +53,8 @@ export const AREAS: AreaData[] = [
     ],
     priceSale: "KES 25M – 90M+",
     priceRent: "KES 80K – 350K",
-    image: "/images/luxury_villa.png",
+    /* Aerial of a leafy suburban neighbourhood with lush tree canopy — captures Lavington's signature green, tree-lined character */
+    image: UNSPLASH("photo-1758304480340-cb2c43aafd4f"),
   },
   {
     name: "Other Areas",
@@ -55,6 +64,7 @@ export const AREAS: AreaData[] = [
     highlights: ["Riverside", "South B & C", "Ngong Road", "Kileleshwa"],
     priceSale: "On request",
     priceRent: "On request",
-    image: "/images/waterfront_development.png",
+    /* Wider Nairobi cityscape — covers the diverse areas we serve */
+    image: UNSPLASH("photo-1480714378408-67cf0d13bc1b"),
   },
 ];

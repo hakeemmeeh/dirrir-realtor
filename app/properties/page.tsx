@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/PageHero";
 import { EmptyState } from "@/components/properties/EmptyState";
 import { FilterBar } from "@/components/properties/FilterBar";
-import { LatestListingsShowcase } from "@/components/properties/LatestListingsShowcase";
+import { PropertyList } from "@/components/properties/PropertyList";
 import { Container } from "@/components/ui/Container";
 import {
   filterProperties,
   getAllProperties,
-  getPortfolioHeroPoster,
   type PropertyFilters,
 } from "@/lib/properties";
 import { getTranslations } from "next-intl/server";
@@ -48,25 +46,28 @@ export default async function PropertiesPage({ searchParams }: Props) {
 
   const all = await getAllProperties();
   const filtered = filterProperties(all, filters);
-  const heroPoster = getPortfolioHeroPoster(all);
 
   return (
-    <>
-      <PageHero
-        title={t("heroTitle")}
-        subtitle={t("heroSub")}
-        compact
-        posterSrc={heroPoster}
-      />
+    <div className="pt-16 sm:pt-[4.75rem] lg:pt-24">
       <FilterBar />
-      <section className="py-12 lg:py-16">
-        <Container>
+      <section className="py-10 lg:py-14">
+        <Container className="max-w-[1480px]">
           {filtered.length === 0 ? (
             <EmptyState />
           ) : (
             <>
-              <LatestListingsShowcase items={filtered} />
-              <div className="mt-10 rounded-sm border border-border bg-background-alt p-6 sm:p-8">
+              <div className="mb-8 flex items-baseline justify-between gap-4 border-b border-border/60 pb-5 sm:mb-10 sm:pb-6">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-primary sm:text-[11px]">
+                  {t("listingsCount", { count: filtered.length })}
+                </p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-text-light sm:text-[11px]">
+                  {t("listingsContext")}
+                </p>
+              </div>
+
+              <PropertyList items={filtered} />
+
+              <div className="mt-16 rounded-sm border border-border bg-background-alt p-6 sm:p-8">
                 <p className="font-sans text-2xl font-medium tracking-tight text-primary">{t("journeyTitle")}</p>
                 <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-light sm:text-base">
                   {t("journeyBody")}
@@ -95,6 +96,6 @@ export default async function PropertiesPage({ searchParams }: Props) {
           )}
         </Container>
       </section>
-    </>
+    </div>
   );
 }

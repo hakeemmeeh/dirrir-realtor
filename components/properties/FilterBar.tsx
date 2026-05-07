@@ -10,9 +10,11 @@ const locations = [
   { v: "all", l: "All Locations" },
   { v: "parklands", l: "Parklands" },
   { v: "kilimani", l: "Kilimani" },
+  { v: "kileleshwa", l: "Kileleshwa" },
   { v: "westlands", l: "Westlands" },
   { v: "lavington", l: "Lavington" },
   { v: "riverside", l: "Riverside" },
+  { v: "eastleigh", l: "Eastleigh" },
   { v: "other", l: "Other" },
 ];
 

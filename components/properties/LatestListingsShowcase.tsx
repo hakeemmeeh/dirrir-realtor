@@ -68,11 +68,11 @@ export function LatestListingsShowcase({ items }: Props) {
         </RevealOnScroll>
       </div>
 
-      <div className="space-y-14">
+      <div className="space-y-24 lg:space-y-28">
         {launchRows.map((property) => (
           <article
             key={property.slug}
-            className="group grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch xl:gap-14"
+            className="group grid gap-8 lg:grid-cols-[1.25fr_0.85fr] lg:items-stretch xl:gap-16"
           >
             <div className="relative min-h-[260px] overflow-hidden bg-primary sm:min-h-[380px] lg:min-h-[500px]">
               <Image
@@ -92,7 +92,7 @@ export function LatestListingsShowcase({ items }: Props) {
                 {property.location}
               </p>
               <RevealOnScroll delay={0.04} duration={1.55} distance={95} direction="up">
-                <h3 className="mt-3 font-display text-3xl font-normal uppercase leading-[1.05] tracking-[0.02em] text-primary sm:text-4xl lg:text-5xl">
+                <h3 className="mt-3 font-display text-2xl font-normal uppercase leading-[1.08] tracking-[0.02em] text-primary sm:text-3xl lg:text-[2.25rem]">
                   {property.title}
                 </h3>
               </RevealOnScroll>

@@ -15,9 +15,11 @@ const STATUSES: PropertyStatus[] = ["For Sale", "For Rent"];
 const LOCATIONS: PropertyLocation[] = [
   "Parklands",
   "Kilimani",
+  "Kileleshwa",
   "Westlands",
   "Lavington",
   "Riverside",
+  "Eastleigh",
   "Other",
 ];
 const COLLECTIONS: PropertyCollection[] = ["living", "investment"];

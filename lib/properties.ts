@@ -9,9 +9,11 @@ export type PropertyType = "Apartment" | "House" | "Townhouse" | "Land";
 export type PropertyLocation =
   | "Parklands"
   | "Kilimani"
+  | "Kileleshwa"
   | "Westlands"
   | "Lavington"
   | "Riverside"
+  | "Eastleigh"
   | "Other";
 
 /** Hass-style portfolio split: homes to live in vs yield & capital growth. */
@@ -289,8 +291,8 @@ export const FALLBACK_PROPERTIES: Property[] = [
     areaSqft: 1100,
     lotSizeSqft: 1100,
     floor: "6th",
-    location: "Kilimani",
-    addressLine: "Yaya Corridor",
+    location: "Eastleigh",
+    addressLine: "Eastleigh, Nairobi",
     city: "Nairobi",
     country: "Kenya",
     yearBuilt: 2020,
@@ -301,7 +303,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
     structureType: "Mid-rise residential apartment",
     exteriorMaterial: "Glass, aluminium, and textured render",
     extraDetails: "Furnished executive unit",
-    tagline: "Kilimani · Urban living collection",
+    tagline: "Eastleigh · Urban living collection",
     collection: "living",
     isNewDevelopment: true,
     launchLabel: "Now Letting",
@@ -374,8 +376,8 @@ export const FALLBACK_PROPERTIES: Property[] = [
     bathrooms: 4,
     areaSqft: 3200,
     floor: "GF + 1",
-    location: "Lavington",
-    addressLine: "Peponi Road · Lavington",
+    location: "Kileleshwa",
+    addressLine: "Kileleshwa, Nairobi",
     city: "Nairobi",
     country: "Kenya",
     yearBuilt: 2019,
@@ -386,7 +388,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
     structureType: "Contemporary residential tower",
     exteriorMaterial: "Glass curtain wall, stone, and textured render",
     extraDetails: "Landscaped arrival and secure vehicular gate",
-    tagline: "Lavington · Peponi corridor",
+    tagline: "Kileleshwa · Premium residential corridor",
     collection: "living",
     isNewDevelopment: true,
     launchLabel: "New Release",
@@ -618,8 +620,8 @@ export const FALLBACK_PROPERTIES: Property[] = [
     bathrooms: 2,
     areaSqft: Math.round(133 * 10.7639),
     floor: "Floors 1-18",
-    location: "Parklands",
-    addressLine: "Arqam residential development",
+    location: "Kileleshwa",
+    addressLine: "Arqam residential development, Kileleshwa",
     city: "Nairobi",
     country: "Kenya",
     availableFrom: "Under development",
@@ -627,7 +629,7 @@ export const FALLBACK_PROPERTIES: Property[] = [
     exteriorMaterial: "Modern concrete structure with contemporary apartment finishes",
     extraDetails:
       "Floors 1-14 have 7 units per floor (including 2-bedroom, 4-bedroom, and duplex options). Floors 15-18 have 10 units per floor (2-bedroom and 3-bedroom options). Total planned units: 138.",
-    tagline: "Parklands · 18-floor mixed-unit apartment project",
+    tagline: "Kileleshwa · 18-floor mixed-unit apartment project",
     collection: "investment",
     isNewDevelopment: true,
     launchLabel: "Now Selling",

@@ -13,7 +13,7 @@ export async function NewDevelopments({ properties }: { properties: Property[] }
   return (
     <section
       id="new-developments"
-      className="relative overflow-hidden border-t-4 border-accent bg-gradient-to-b from-background-alt via-background-alt to-[#EEEAE4] pb-12 pt-10 lg:pb-20 lg:pt-16"
+      className="relative overflow-hidden bg-gradient-to-b from-background-alt via-background-alt to-[#EEEAE4] pb-12 pt-10 lg:pb-20 lg:pt-16"
     >
       <div
         className="pointer-events-none absolute -left-32 top-20 h-72 w-72 rounded-full bg-accent/[0.12] blur-3xl"
@@ -21,10 +21,6 @@ export async function NewDevelopments({ properties }: { properties: Property[] }
       />
       <div
         className="pointer-events-none absolute -right-24 top-[40%] h-64 w-64 rounded-full bg-primary/[0.06] blur-3xl"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent"
         aria-hidden
       />
 

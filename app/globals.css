@@ -87,6 +87,15 @@ body {
     @apply border border-white/20 bg-white/10 backdrop-blur-xl;
   }
 
+  /* Hide horizontal scrollbar on marquee/snap rails (Chromium, Firefox, IE/Edge legacy) */
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
   .story-editorial {
     @apply font-editorial text-[1.05rem] leading-[1.85] text-text;
   }
